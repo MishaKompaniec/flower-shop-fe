@@ -1,0 +1,273 @@
+{
+  "header": {
+    "main": "MAIN",
+    "store": "STORE",
+    "about": "ABOUT US",
+    "top": "BEST SELLERS",
+    "contacts": "CONTACTS"
+  },
+  "intro": {
+    "description": "Our prices let you give flowers for no reason at all!",
+    "btn": "Choose flowers"
+  },
+  "advantages": {
+    "title": "Advantages of flower",
+    "info": "Every day we learn and experiment, creating new floral arrangements. We strive to be a little better today than we were yesterday, to make our customers happy.",
+    "cards": {
+      "florists": {
+        "title": "Talented florists",
+        "text": "Our florists have years of experience and certificates confirming their expertise"
+      },
+      "fresh": {
+        "title": "Always fresh flowers",
+        "text": "Our bouquets will delight you for at least a week and a half"
+      },
+      "prices": {
+        "title": "Lowest prices in the city",
+        "text": "Our flower prices are on average 20% lower than in any other flower shop"
+      }
+    }
+  },
+  "instagram": {
+    "title1": "Follow us on",
+    "title2": "Instagram"
+  },
+  "bestSellers": {
+    "title": "Popular Products"
+  },
+  "about-us": {
+    "title": "Popular Products",
+    "hero": "Flower — give a smile to someone you love",
+    "block1": "Sometimes words aren’t enough to express all the love. Only an elegant bouquet can win the heart of a lovely lady and say all the tender words for you. Flowers carry beauty and are a universal gift for any occasion.",
+    "block2": "Flower is an online flower shop full of freshness, scents, and beauty — made for such special moments. We’re the most trusted company in the city, known for high quality and great service. We always stay in trend, move forward, and use only stylish and elegant packaging that complements our fresh, fragrant bouquets. A gift like this brings sparkle to a girl’s eyes and fills the world with a radiant smile.",
+    "block3": "We guarantee that every bouquet will leave you impressed and become a perfect decoration for any occasion. We put a piece of our soul into each arrangement — that’s why our customers value and choose us. One of our principles is affordable flowers, so you can make a gift anytime. Same-day delivery means you can enjoy fragrant blossoms at a great price today.",
+    "block4": "You can place an order online in just a few clicks, and within hours, our floral compositions will bring joy to someone — and you’ll see gratitude and love in her eyes.Even if you’re not in town but want to make your loved one happy, the perfect option is to order by phone or place your order online.",
+    "block6": "Our flower shop offers a vibrant celebration of color, emotion, and original ideas. For fans of classics, we have a refined variety of roses. If you love tenderness and youthfulness, choose tulip bouquets — pink, yellow, red — each is special in its own way. Peonies are always a win: charming in their softness and grace. Want to surprise someone? Then chrysanthemums and hydrangeas are the answer. Gift daisies when you want to express tender feelings — it’s no coincidence they’re used for love divination. The delicate scent of eustoma reminds of spring sunshine and warms even a rainy day."
+  },
+  "contacts": {
+    "title": "Contacts",
+    "address": "Address: 15 Tsvetochnaya St, Cherkasy",
+    "phone": "Phone: +38 (093) 123-45-67",
+    "email": "Email: info@flowershop.ck.ua",
+    "scheduleTitle": "Working hours:",
+    "schedule": {
+      "mon-fri": "Mon–Fri: 09:00 AM – 8:00 PM",
+      "sat": "Sat: 10:00 AM – 6:00 PM",
+      "sun": "Sun: 10:00 AM – 4:00 PM"
+    },
+    "note": "Flower delivery around the city, wedding and event decoration."
+  },
+  "basket": {
+    "title": "Basket",
+    "empty": "Basket is empty",
+    "total": "Total: {{total}} UAH",
+    "btn": "Checkout",
+    "modalTitle": "Order Placement",
+    "modal": "You have successfully placed your order",
+    "ok": "Ok",
+    "cancel": "Cansel"
+  },
+  "bestSellersBlock": {
+    "title": "Best Sellers",
+    "addToCart": "Add to Basket",
+    "viewCart": "View Basket",
+    "bouquet1": {
+      "title": "Luxurious Bouquet",
+      "description": "Bouquet of 101 roses of 'Prestige' variety"
+    },
+    "basket1": {
+      "title": "Roses in a Basket",
+      "description": "50 pink roses in a stylish basket."
+    },
+    "aroma1": {
+      "title": "Aromatic Composition",
+      "description": "Tender peonies and lavender in a box"
+    },
+    "roses1": {
+      "title": "Red Roses",
+      "description": "75 red roses of 'Grand Prestige' variety"
+    },
+    "bouquet2": {
+      "title": "Luxurious Bouquet",
+      "description": "Bouquet of 101 roses of 'Prestige' variety"
+    },
+    "basket2": {
+      "title": "Roses in a Basket",
+      "description": "50 pink roses in a stylish basket"
+    },
+    "aroma2": {
+      "title": "Aromatic Composition",
+      "description": "Tender peonies and lavender in a box"
+    },
+    "roses2": {
+      "title": "Red Roses",
+      "description": "75 red roses of 'Grand Prestige' variety"
+    }
+  },
+  "currency": {
+    "uah": "uah"
+  },
+  "plants": {
+    "ficus": {
+      "title": "Ficus",
+      "description": "A green houseplant with glossy leaves that adds coziness"
+    },
+    "aloe": {
+      "title": "Aloe",
+      "description": "A succulent plant that helps with skincare"
+    },
+    "kalanchoe": {
+      "title": "Kalanchoe",
+      "description": "A flowering houseplant with bright flowers and healing properties"
+    },
+    "spathiphyllum": {
+      "title": "Peace Lily",
+      "description": "A flowering plant known as “women’s happiness” with white blooms"
+    },
+    "fern": {
+      "title": "Fern",
+      "description": "A decorative green plant suitable for humid spaces"
+    },
+    "croton": {
+      "title": "Croton",
+      "description": "A plant with vibrant leaves, which can be red, yellow, or orange"
+    },
+    "sansevieria": {
+      "title": "Snake Plant",
+      "description": "An incredibly resilient plant with tough leaves, ideal for beginners"
+    },
+    "phalaenopsis": {
+      "title": "Phalaenopsis Orchid",
+      "description": "An exotic orchid with beautiful flowers, perfect for interior décor"
+    },
+    "zamioculcas": {
+      "title": "Zamioculcas",
+      "description": "A plant with glossy leaves that suits low-light rooms"
+    },
+    "dracaena": {
+      "title": "Dracaena",
+      "description": "An elegant houseplant with long leaves, looks great in interiors"
+    }
+  },
+  "fruitBouquets": {
+    "berryParadise": {
+      "title": "Berry Paradise",
+      "description": "A set of fresh berries: strawberries, raspberries, blueberries, and blackberries."
+    },
+    "tropicalFantasy": {
+      "title": "Tropical Fantasy",
+      "description": "Mango, pineapple, kiwi, and passion fruit in exquisite arrangement."
+    },
+    "sunnyMix": {
+      "title": "Sunny Mix",
+      "description": "Oranges, tangerines, peaches, and grapes in a vibrant bouquet."
+    },
+    "cherryDelight": {
+      "title": "Cherry Delight",
+      "description": "Ripe cherries and sweet cherries, complemented with decorative greenery."
+    },
+    "exoticHeaven": {
+      "title": "Exotic Heaven",
+      "description": "Dragon fruit, coconut, mango, and pineapple in a stylish composition."
+    },
+    "strawberryBliss": {
+      "title": "Strawberry Bliss",
+      "description": "Fresh strawberries combined with delicate chocolate decoration."
+    },
+    "fruitFirework": {
+      "title": "Fruit Firework",
+      "description": "A vibrant mix of watermelon, melon, pineapple, and kiwi."
+    },
+    "pomegranatePassion": {
+      "title": "Pomegranate Passion",
+      "description": "Pomegranate, red apples, and grapes in elegant packaging."
+    }
+  },
+  "bouquets": {
+    "redRose": {
+      "title": "Red Rose",
+      "description": "A red rose with long stems"
+    },
+    "whiteLily": {
+      "title": "White Lily",
+      "description": "A lily with white petals and a yellow center"
+    },
+    "colorfulTulips": {
+      "title": "Colorful Tulips",
+      "description": "Tulips of various colors in a bouquet"
+    },
+    "brightPinkRose": {
+      "title": "Bright Pink Rose",
+      "description": "A rose with bright pink petals"
+    },
+    "gentleWhiteLilies": {
+      "title": "Gentle White Lilies",
+      "description": "Delicate white lilies with green leaves"
+    },
+    "springTulips": {
+      "title": "Spring Tulips",
+      "description": "A bouquet of spring tulips with vibrant colors"
+    },
+    "miniRoses": {
+      "title": "Mini Roses",
+      "description": "A red rose with small buds"
+    },
+    "exoticLily": {
+      "title": "Exotic Lily",
+      "description": "A lily with an exotic aroma and pink petals"
+    },
+    "purpleTulips": {
+      "title": "Purple Tulips",
+      "description": "Tulips in white and purple tones"
+    },
+    "purpleTulips2": {
+      "title": "Purple Tulips",
+      "description": "Tulips in white and purple tones"
+    },
+    "deepRedRose": {
+      "title": "Deep Red Rose",
+      "description": "A rose with a deep red color and strong fragrance"
+    },
+    "deepRedRose2": {
+      "title": "Deep Red Rose",
+      "description": "A rose with a deep red color and strong fragrance"
+    },
+    "pinkTippedLily": {
+      "title": "Pink-Tipped Lily",
+      "description": "A lily with white petals and pink tips"
+    },
+    "pinkTippedLily2": {
+      "title": "Pink-Tipped Lily",
+      "description": "A lily with white petals and pink tips"
+    },
+    "orangeTulips": {
+      "title": "Orange Tulips",
+      "description": "A bouquet of tulips in yellow and orange shades"
+    },
+    "bushRose": {
+      "title": "Bush Rose",
+      "description": "A bush rose with many small buds"
+    },
+    "creamLily": {
+      "title": "Cream Lily",
+      "description": "A lily with large cream-colored petals"
+    },
+    "festiveTulips": {
+      "title": "Festive Tulips",
+      "description": "Colorful tulips in a bouquet for a special occasion"
+    },
+    "fieldDaisies": {
+      "title": "Field Daisies",
+      "description": "Fresh daisies picked straight from the field"
+    },
+    "dahlias": {
+      "title": "Dahlias",
+      "description": "Freshly picked dahlias from a farm near Kyiv"
+    }
+  },
+  "store": {
+    "bouquets": "BOUQUETS",
+    "plants": "PLANTS",
+    "fruitBouquets": "FRUITETS"
+  }
+}

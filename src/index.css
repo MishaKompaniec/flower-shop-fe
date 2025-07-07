@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Marck Script', cursive;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.custom-select-dropdown {
+  background-color: #50c878;
+}
+
+.custom-select-dropdown .ant-select-item-option-content {
+  color: white;
+}
+
+.custom-select-dropdown .ant-select-item-option-active,
+.custom-select-dropdown .ant-select-item-option-selected {
+  background-color: rgba(0, 100, 0, 0.7);
+}
+
+.custom-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: rgba(0, 100, 0, 0.7);
+}
