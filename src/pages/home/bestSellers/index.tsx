@@ -2,8 +2,8 @@ import { Card, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 import {
   InnerWrapper,
