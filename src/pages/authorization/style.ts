@@ -4,7 +4,9 @@ import { colors } from '../../theme/colors';
 export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${colors.black};
   background: ${colors.lightPinkBg};
 `;

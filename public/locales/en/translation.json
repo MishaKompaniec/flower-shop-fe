@@ -1,4 +1,23 @@
 {
+  "authorization": {
+    "login": "Login",
+    "registration": "Registration",
+    "password": "Password",
+    "email": "Email",
+    "loginBtn": "Sign in",
+    "registrationBtn": "Sign up",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "register": "Register",
+    "signIn": "Sign in",
+    "enterEmail": "Please enter your email!",
+    "invalidEmail": "Invalid email!",
+    "enterPassword": "Please enter your password!",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordRequired": "Please confirm your password!",
+    "passwordsNotMatch": "Passwords do not match!"
+  },
   "header": {
     "main": "MAIN",
     "store": "STORE",

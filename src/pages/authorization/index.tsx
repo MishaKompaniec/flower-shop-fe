@@ -1,57 +1,151 @@
+import { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 
 import { Title, Wrapper, Inner } from './style';
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const Authorization: FC = () => {
-  const onFinish = (values: { email: string; password: string }) => {
-    console.log('Success:', values);
-    // Здесь можно вызывать API login (fetch/axios)
+const AuthPage: FC = () => {
+  const { t } = useTranslation();
+
+  const [isLogin, setIsLogin] = useState(true);
+
+  const onFinishLogin = (values: { email: string; password: string }) => {
+    console.log('Login Success:', values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+  const onFinishRegister = (values: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }) => {
+    console.log('Register Success:', values);
   };
 
   return (
     <Wrapper>
       <Inner>
-        <Title>Авторизация</Title>
-        <Form
-          name='auth_form'
-          layout='vertical'
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label='Email'
-            name='email'
-            rules={[
-              { required: true, message: 'Пожалуйста, введите email!' },
-              { type: 'email', message: 'Некорректный email!' },
-            ]}
+        <Title>
+          {isLogin ? t('authorization.login') : t('authorization.registration')}
+        </Title>
+        {isLogin ? (
+          <Form
+            name='login_form'
+            layout='vertical'
+            onFinish={onFinishLogin}
+            initialValues={{ remember: true }}
           >
-            <Input placeholder='Введите ваш email' />
-          </Form.Item>
+            <Form.Item
+              label={t('authorization.email')}
+              name='email'
+              rules={[
+                { required: true, message: t('authorization.enterEmail') },
+                { type: 'email', message: t('authorization.invalidEmail') },
+              ]}
+            >
+              <Input placeholder={t('authorization.email')} />
+            </Form.Item>
 
-          <Form.Item
-            label='Пароль'
-            name='password'
-            rules={[{ required: true, message: 'Пожалуйста, введите пароль!' }]}
+            <Form.Item
+              label={t('authorization.password')}
+              name='password'
+              rules={[
+                { required: true, message: t('authorization.enterPassword') },
+              ]}
+            >
+              <Input.Password placeholder={t('authorization.password')} />
+            </Form.Item>
+
+            <Form.Item>
+              <Button type='primary' htmlType='submit' block>
+                {t('authorization.loginBtn')}
+              </Button>
+            </Form.Item>
+          </Form>
+        ) : (
+          <Form
+            name='register_form'
+            layout='vertical'
+            onFinish={onFinishRegister}
           >
-            <Input.Password placeholder='Введите пароль' />
-          </Form.Item>
+            <Form.Item
+              label={t('authorization.email')}
+              name='email'
+              rules={[
+                { required: true, message: t('authorization.enterEmail') },
+                { type: 'email', message: t('authorization.invalidEmail') },
+              ]}
+            >
+              <Input placeholder={t('authorization.email')} />
+            </Form.Item>
 
-          <Form.Item>
-            <Button type='primary' htmlType='submit' block>
-              Войти
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item
+              label={t('authorization.password')}
+              name='password'
+              rules={[
+                { required: true, message: t('authorization.enterPassword') },
+                { min: 6, message: t('authorization.passwordMinLength') },
+              ]}
+              hasFeedback
+            >
+              <Input.Password placeholder={t('authorization.password')} />
+            </Form.Item>
+
+            <Form.Item
+              label={t('authorization.confirmPassword')}
+              name='confirmPassword'
+              dependencies={['password']}
+              hasFeedback
+              rules={[
+                {
+                  required: true,
+                  message: t('authorization.confirmPasswordRequired'),
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(t('authorization.passwordsNotMatch'))
+                    );
+                  },
+                }),
+              ]}
+            >
+              <Input.Password
+                placeholder={t('authorization.confirmPassword')}
+              />
+            </Form.Item>
+
+            <Form.Item>
+              <Button type='primary' htmlType='submit' block>
+                {t('authorization.registrationBtn')}
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
+
+        <div style={{ textAlign: 'center', marginTop: 16 }}>
+          {isLogin ? (
+            <>
+              {t('authorization.noAccount')}{' '}
+              <Button type='link' onClick={() => setIsLogin(false)}>
+                {t('authorization.register')}
+              </Button>
+            </>
+          ) : (
+            <>
+              {t('authorization.haveAccount')}{' '}
+              <Button type='link' onClick={() => setIsLogin(true)}>
+                {t('authorization.signIn')}
+              </Button>
+            </>
+          )}
+        </div>
       </Inner>
     </Wrapper>
   );
 };
 
-export default Authorization;
+export default AuthPage;

@@ -1,4 +1,23 @@
 {
+  "authorization": {
+    "login": "Авторизация",
+    "registration": "Регистрация",
+    "password": "Пароль",
+    "email": "Email",
+    "loginBtn": "Войти",
+    "registrationBtn": "Зарегистрироваться",
+    "noAccount": "Нет аккаунта?",
+    "haveAccount": "Уже есть аккаунт?",
+    "register": "Зарегистрироваться",
+    "signIn": "Войти",
+    "enterEmail": "Пожалуйста, введите email!",
+    "invalidEmail": "Некорректный email!",
+    "enterPassword": "Пожалуйста, введите пароль!",
+    "passwordMinLength": "Пароль должен быть минимум 6 символов",
+    "confirmPassword": "Подтверждение пароля",
+    "confirmPasswordRequired": "Пожалуйста, подтвердите пароль!",
+    "passwordsNotMatch": "Пароли не совпадают!"
+  },
   "header": {
     "main": "ГЛАВНАЯ",
     "store": "МАГАЗИН",

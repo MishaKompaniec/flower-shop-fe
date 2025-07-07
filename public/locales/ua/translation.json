@@ -1,4 +1,23 @@
 {
+  "authorization": {
+    "login": "Авторизація",
+    "registration": "Реєстрація",
+    "password": "Пароль",
+    "email": "Email",
+    "loginBtn": "Увійти",
+    "registrationBtn": "Зареєструватися",
+    "noAccount": "Немає акаунта?",
+    "haveAccount": "Вже є акаунт?",
+    "register": "Зареєструватися",
+    "signIn": "Увійти",
+    "enterEmail": "Будь ласка, введіть email!",
+    "invalidEmail": "Некоректний email!",
+    "enterPassword": "Будь ласка, введіть пароль!",
+    "passwordMinLength": "Пароль повинен бути мінімум 6 символів",
+    "confirmPassword": "Підтвердження пароля",
+    "confirmPasswordRequired": "Будь ласка, підтвердіть пароль!",
+    "passwordsNotMatch": "Паролі не співпадають!"
+  },
   "header": {
     "main": "ГОЛОВНА",
     "store": "МАГАЗИН",
