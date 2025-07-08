@@ -1,6 +1,5 @@
 {
   "adminPanel": {
-    "adminTitle": "Admin Panel",
     "title": "Title",
     "price": "Price",
     "description": "Description",
@@ -8,7 +7,17 @@
     "addProduct": "Add Product",
     "confirmDelete": "Delete this product?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "modalTitle": "Create Product",
+    "save": "Save",
+    "cancel": "Cancel",
+    "required": "Required field",
+    "bouquets": "Bouquets",
+    "plants": "Plants",
+    "fruitBouquets": "Fruit Bouquets",
+    "titleTooLong": "Title must be at most 30 characters",
+    "descriptionTooLong": "Description must be at most 50 characters",
+    "priceTooHigh": "Price must not exceed 100000"
   },
   "authorization": {
     "login": "Login",

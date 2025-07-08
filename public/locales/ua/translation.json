@@ -1,6 +1,5 @@
 {
   "adminPanel": {
-    "adminTitle": "Адмін Панель",
     "title": "Назва",
     "price": "Ціна",
     "description": "Опис",
@@ -8,7 +7,17 @@
     "addProduct": "Додати товар",
     "confirmDelete": "Видалити цей товар?",
     "yes": "Так",
-    "no": "Ні"
+    "no": "Ні",
+    "modalTitle": "Створити товар",
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "required": "Обов'язкове поле",
+    "bouquets": "Букети",
+    "plants": "Рослини",
+    "fruitBouquets": "Фруктові букети",
+    "titleTooLong": "Назва не повинна перевищувати 30 символів",
+    "descriptionTooLong": "Опис не повинен перевищувати 50 символів",
+    "priceTooHigh": "Ціна не повинна перевищувати 100000"
   },
   "authorization": {
     "login": "Авторизація",
