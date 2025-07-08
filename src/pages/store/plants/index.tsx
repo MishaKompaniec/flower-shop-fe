@@ -1,10 +1,15 @@
 import { useTranslation } from 'react-i18next';
 
 import { Wrapper, Image } from './style';
-import { plants } from '../../../utils/pages';
 import { ProductCard } from '../../../components/productCard';
+import type { BasketItem } from '../../../types';
+import type { FC } from 'react';
 
-const Plants = () => {
+interface PlantsProps {
+  plants: BasketItem[];
+}
+
+const Plants: FC<PlantsProps> = ({ plants }) => {
   const { t } = useTranslation();
 
   return (
@@ -13,7 +18,7 @@ const Plants = () => {
         <ProductCard
           key={plant.id}
           product={plant}
-          cover={<Image alt={t('plant.title')} src={plant.image} />}
+          cover={<Image alt={t('plant.title')} src='/images/image3.jpg' />}
         />
       ))}
     </Wrapper>

@@ -20,13 +20,9 @@ const ProductCard = ({
   return (
     <Card hoverable cover={cover}>
       <CardInfo>
-        <CardTitle>{t(`${product.category}.${product.id}.title`)}</CardTitle>
-        <Description>
-          {t(`${product.category}.${product.id}.description`)}
-        </Description>
-        <Price>
-          {product.price} {t('currency.uah')}
-        </Price>
+        <CardTitle>{product.title}</CardTitle>
+        <Description>{product.description}</Description>
+        <Price>{product.price}</Price>
         <Button
           type={isInCart ? 'default' : 'primary'}
           onClick={() => {

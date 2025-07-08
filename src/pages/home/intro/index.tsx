@@ -20,7 +20,7 @@ const Intro = () => {
         <MainInfo>
           <Title>flower</Title>
           <Description>{t('intro.description')}</Description>
-          <Btn type="primary" size="large" onClick={() => navigate('/store')}>
+          <Btn type='primary' size='large' onClick={() => navigate('/store')}>
             {t('intro.btn')}
           </Btn>
         </MainInfo>

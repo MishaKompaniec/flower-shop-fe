@@ -3,14 +3,25 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Bouquets from './bouquets';
-import EdibleBouquets from './edibleBouquets';
+import FruitBouquets from './fruitBouquets';
 import Plants from './plants';
 import { Wrapper } from './style';
 import { useGetProductsQuery } from '../../services/productsApi';
+import type { BasketItem } from '../../types';
 
 const Store = () => {
   const { data: products } = useGetProductsQuery();
-  console.log(products, products);
+  const [bouquets, setBouquets] = useState<BasketItem[]>([]);
+  const [plants, setPlants] = useState<BasketItem[]>([]);
+  const [fruitBouquets, setFruitBouquets] = useState<BasketItem[]>([]);
+
+  useEffect(() => {
+    if (products?.length) {
+      setBouquets(products.filter((p) => p.category === 'bouquets'));
+      setPlants(products.filter((p) => p.category === 'plants'));
+      setFruitBouquets(products.filter((p) => p.category === 'fruitBouquets'));
+    }
+  }, [products]);
 
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
@@ -31,17 +42,17 @@ const Store = () => {
           {
             label: t('store.bouquets'),
             key: 'bouquets',
-            children: <Bouquets />,
+            children: <Bouquets bouquets={bouquets} />,
           },
           {
             label: t('store.plants'),
             key: 'plants',
-            children: <Plants />,
+            children: <Plants plants={plants} />,
           },
           {
             label: t('store.fruitBouquets'),
             key: 'fruit',
-            children: <EdibleBouquets />,
+            children: <FruitBouquets fruitBouquets={fruitBouquets} />,
           },
         ]}
       />
