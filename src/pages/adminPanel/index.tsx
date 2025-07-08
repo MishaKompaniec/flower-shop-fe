@@ -40,7 +40,7 @@ const AdminPanel = () => {
 
   return (
     <Wrapper>
-      <Btn type='primary' size='large' onClick={handleAdd}>
+      <Btn type='primary' onClick={handleAdd}>
         {t('adminPanel.addProduct')}
       </Btn>
 
@@ -49,6 +49,7 @@ const AdminPanel = () => {
         columns={Columns()}
         rowKey='id'
         pagination={false}
+        scroll={{ y: 400 }}
       />
 
       <Modal

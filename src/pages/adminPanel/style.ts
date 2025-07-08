@@ -5,10 +5,10 @@ import { Button } from 'antd';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  min-height: calc(100vh - 75px);
+  gap: 10px;
+  min-height: calc(100vh - 50px);
   margin: 50px auto 0 auto;
-  padding: 25px 25px 50px 25px;
+  padding: 15px 25px 15px 25px;
   color: ${colors.black};
   background: ${colors.lightPinkBg};
 
@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Btn = styled(Button)`
-  height: 50px;
+  height: 40px;
   margin: 0 auto;
   font-size: 20px;
 

@@ -11,12 +11,14 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
   const isAuthPage = location.pathname === '/authorization';
+  const isAdminPage = location.pathname === '/admin';
+  const hideFooter = isAuthPage || isAdminPage;
 
   return (
     <>
       {!isAuthPage && <Header />}
       <MainWrapper>{children}</MainWrapper>
-      {!isAuthPage && <Footer />}
+      {!hideFooter && <Footer />}
     </>
   );
 };

@@ -41,7 +41,7 @@ export const Columns = () => {
     {
       title: ' ',
       key: 'actions',
-      width: 50,
+      width: 60,
       render: (_: any, record: BasketItem) => (
         <Popconfirm
           title={t('adminPanel.confirmDelete')}

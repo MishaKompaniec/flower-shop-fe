@@ -77,9 +77,6 @@ const Header = () => {
           <MenuItemLink to='/'>{t('header.main')}</MenuItemLink>
 
           <MenuItemLink to='/store'>{t('header.store')}</MenuItemLink>
-          <MenuItem onClick={() => scrollToSection('about-us')}>
-            {t('header.about')}
-          </MenuItem>
           <MenuItem onClick={() => scrollToSection('contacts')}>
             {t('header.contacts')}
           </MenuItem>
