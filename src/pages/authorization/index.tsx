@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 
-import { Title, Wrapper, Inner } from './style';
+import { Title, Wrapper, Inner, LanguageSelectWrapper } from './style';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LanguageSelect } from '../../components/select';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();
@@ -24,6 +25,9 @@ const AuthPage: FC = () => {
 
   return (
     <Wrapper>
+      <LanguageSelectWrapper>
+        <LanguageSelect isBlack />
+      </LanguageSelectWrapper>
       <Inner>
         <Title>
           {isLogin ? t('authorization.login') : t('authorization.registration')}
