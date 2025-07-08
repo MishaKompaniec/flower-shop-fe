@@ -1,26 +1,44 @@
 import { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 
 import { Title, Wrapper, Inner, LanguageSelectWrapper } from './style';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelect } from '../../components/select';
+import { useLoginMutation, useRegisterMutation } from '../../services/authApi';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();
 
+  const [login, { isLoading: isLoggingIn }] = useLoginMutation();
+  const [register, { isLoading: isRegistering }] = useRegisterMutation();
+
   const [isLogin, setIsLogin] = useState(true);
 
-  const onFinishLogin = (values: { email: string; password: string }) => {
-    console.log('Login Success:', values);
+  const onFinishLogin = async (values: { email: string; password: string }) => {
+    try {
+      const res = await login(values).unwrap();
+      localStorage.setItem('token', res.token);
+      message.success(t('authorization.loginSuccess'));
+    } catch (err: any) {
+      message.error(err.data?.error || t('authorization.loginError'));
+    }
   };
 
-  const onFinishRegister = (values: {
+  const onFinishRegister = async (values: {
     email: string;
     password: string;
     confirmPassword: string;
   }) => {
-    console.log('Register Success:', values);
+    try {
+      const { confirmPassword, ...rest } = values;
+      const res = await register({ ...rest, role: 'user' }).unwrap();
+      console.log('res', res);
+      message.success(t('authorization.registerSuccess'));
+      setIsLogin(true);
+    } catch (err: any) {
+      message.error(err.data?.error || t('authorization.registerError'));
+    }
   };
 
   return (
@@ -61,7 +79,12 @@ const AuthPage: FC = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button type='primary' htmlType='submit' block>
+              <Button
+                type='primary'
+                htmlType='submit'
+                block
+                loading={isLoggingIn}
+              >
                 {t('authorization.loginBtn')}
               </Button>
             </Form.Item>
@@ -123,7 +146,12 @@ const AuthPage: FC = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button type='primary' htmlType='submit' block>
+              <Button
+                type='primary'
+                htmlType='submit'
+                block
+                loading={isRegistering}
+              >
                 {t('authorization.registrationBtn')}
               </Button>
             </Form.Item>

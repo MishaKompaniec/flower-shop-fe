@@ -6,8 +6,12 @@ import Bouquets from './bouquets';
 import EdibleBouquets from './edibleBouquets';
 import Plants from './plants';
 import { Wrapper } from './style';
+import { useGetProductsQuery } from '../../services/productsApi';
 
 const Store = () => {
+  const { data: products } = useGetProductsQuery();
+  console.log(products, products);
+
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
 
