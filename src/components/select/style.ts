@@ -2,11 +2,11 @@ import { Select as AntSelect } from 'antd';
 import styled, { css } from 'styled-components';
 import { colors } from '../../theme/colors';
 
-export const Select = styled(AntSelect)<{ isBlack?: boolean }>`
+export const Select = styled(AntSelect)<{ $isBlack?: boolean }>`
   &&& {
-    ${({ isBlack }) => {
-      const color = isBlack ? colors.black : colors.white;
-      const background = isBlack
+    ${({ $isBlack }) => {
+      const color = $isBlack ? colors.black : colors.white;
+      const background = $isBlack
         ? 'rgba(0, 0, 0, 0.1)'
         : 'rgba(255, 255, 255, 0.1)';
       return css`

@@ -1,5 +1,5 @@
 import i18n from 'i18next';
-import { Select as AntSelect } from './style';
+import { Select } from './style';
 import type { FC } from 'react';
 
 type LanguageSelectProps = {
@@ -8,13 +8,11 @@ type LanguageSelectProps = {
 
 const LanguageSelect: FC<LanguageSelectProps> = ({ isBlack }) => {
   return (
-    <AntSelect
-      isBlack={isBlack}
-      popupClassName='custom-select-dropdown'
+    <Select
+      $isBlack={isBlack}
+      classNames={{ popup: { root: 'custom-select-dropdown' } }}
       defaultValue={i18n.language}
-      onChange={(value) => {
-        i18n.changeLanguage(String(value));
-      }}
+      onChange={(value) => i18n.changeLanguage(String(value))}
       options={[
         { value: 'en', label: 'EN' },
         { value: 'ru', label: 'RU' },

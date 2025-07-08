@@ -6,9 +6,11 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelect } from '../../components/select';
 import { useLoginMutation, useRegisterMutation } from '../../services/authApi';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
   const [register, { isLoading: isRegistering }] = useRegisterMutation();
@@ -19,7 +21,7 @@ const AuthPage: FC = () => {
     try {
       const res = await login(values).unwrap();
       localStorage.setItem('token', res.token);
-      message.success(t('authorization.loginSuccess'));
+      navigate('/', { replace: false });
     } catch (err: any) {
       message.error(err.data?.error || t('authorization.loginError'));
     }
@@ -32,9 +34,7 @@ const AuthPage: FC = () => {
   }) => {
     try {
       const { confirmPassword, ...rest } = values;
-      const res = await register({ ...rest, role: 'user' }).unwrap();
-      console.log('res', res);
-      message.success(t('authorization.registerSuccess'));
+      await register({ ...rest, role: 'user' }).unwrap();
       setIsLogin(true);
     } catch (err: any) {
       message.error(err.data?.error || t('authorization.registerError'));

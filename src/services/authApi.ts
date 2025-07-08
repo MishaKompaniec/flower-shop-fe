@@ -23,7 +23,7 @@ interface LoginResponse {
 }
 
 const baseUrl =
-  process.env.REACT_APP_API_BASE_URL || 'http://localhost:4200/api';
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4200/api';
 
 export const authApi = createApi({
   reducerPath: 'authApi',

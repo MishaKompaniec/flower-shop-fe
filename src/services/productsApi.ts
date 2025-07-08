@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BasketItem } from '../types';
 
 const baseUrl =
-  process.env.REACT_APP_API_BASE_URL || 'http://localhost:4200/api';
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4200/api';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
