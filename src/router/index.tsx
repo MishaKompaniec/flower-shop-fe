@@ -3,6 +3,8 @@ import { Route, Routes as DomRoutes } from 'react-router-dom';
 import { ROUTES } from './route';
 import type { FC } from 'react';
 
+const token = localStorage.getItem('token');
+
 const Routes: FC = () => {
   return (
     <DomRoutes>
