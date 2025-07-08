@@ -5,6 +5,7 @@ export const Pages = {
   HOME: '/',
   STORE: '/store',
   AUTHORIZATION: '/authorization',
+  ADMIN: '/admin',
 };
 
 export const SwiperBreakpoints = {

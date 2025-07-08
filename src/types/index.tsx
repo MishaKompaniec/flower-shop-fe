@@ -22,7 +22,7 @@ export interface BasketItem {
   price: number;
   quantity: number;
   description: string;
-  category: string;
+  category: 'bouquets' | 'plants' | 'fruitBouquets';
 }
 
 export interface BasketContextType {

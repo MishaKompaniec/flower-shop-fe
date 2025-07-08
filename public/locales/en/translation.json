@@ -1,4 +1,15 @@
 {
+  "adminPanel": {
+    "adminTitle": "Admin Panel",
+    "title": "Title",
+    "price": "Price",
+    "description": "Description",
+    "category": "Category",
+    "addProduct": "Add Product",
+    "confirmDelete": "Delete this product?",
+    "yes": "Yes",
+    "no": "No"
+  },
   "authorization": {
     "login": "Login",
     "registration": "Registration",
@@ -23,7 +34,8 @@
     "store": "STORE",
     "about": "ABOUT US",
     "top": "BEST SELLERS",
-    "contacts": "CONTACTS"
+    "contacts": "CONTACTS",
+    "admin": "ADMIN"
   },
   "intro": {
     "description": "Our prices let you give flowers for no reason at all!",

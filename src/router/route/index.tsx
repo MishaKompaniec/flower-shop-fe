@@ -5,6 +5,7 @@ import { Pages } from '../../utils/pages';
 import type { IROUTE_MODEL } from '../../types';
 import type { RouteProps } from 'react-router-dom';
 import PrivateRoute from './privateRoute';
+import AdminPanel from '../../pages/adminPanel';
 
 export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
   {
@@ -20,6 +21,14 @@ export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
     element: (
       <PrivateRoute>
         <Store />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: Pages.ADMIN,
+    element: (
+      <PrivateRoute>
+        <AdminPanel />
       </PrivateRoute>
     ),
   },

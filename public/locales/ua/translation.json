@@ -1,4 +1,15 @@
 {
+  "adminPanel": {
+    "adminTitle": "Адмін Панель",
+    "title": "Назва",
+    "price": "Ціна",
+    "description": "Опис",
+    "category": "Категорія",
+    "addProduct": "Додати товар",
+    "confirmDelete": "Видалити цей товар?",
+    "yes": "Так",
+    "no": "Ні"
+  },
   "authorization": {
     "login": "Авторизація",
     "registration": "Реєстрація",
@@ -23,7 +34,8 @@
     "store": "МАГАЗИН",
     "about": "ПРО НАС",
     "top": "ХІТИ ПРОДАЖІВ",
-    "contacts": "КОНТАКТИ"
+    "contacts": "КОНТАКТИ",
+    "admin": "АДМIН"
   },
   "intro": {
     "description": "Наші ціни дозволяють вам дарувати квіти без приводу!",

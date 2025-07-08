@@ -15,11 +15,13 @@ import type { FC } from 'react';
 interface MobileMenuDrawerProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isAdmin: boolean;
 }
 
 const MobileMenuDrawer: FC<MobileMenuDrawerProps> = ({
   setIsMobileMenuOpen,
   isMobileMenuOpen,
+  isAdmin,
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -61,6 +63,11 @@ const MobileMenuDrawer: FC<MobileMenuDrawerProps> = ({
         <MenuItem onClick={() => scrollToSection('contacts')}>
           {t('header.contacts')}
         </MenuItem>
+        {isAdmin && (
+          <MenuItemLink to='/admin' onClick={() => setIsMobileMenuOpen(false)}>
+            {t('header.admin')}
+          </MenuItemLink>
+        )}
         <LanguageSelect />
       </Wrapper>
     </MobileMenuDrawerEl>

@@ -1,4 +1,15 @@
 {
+  "adminPanel": {
+    "adminTitle": "Админ Панель",
+    "title": "Название",
+    "price": "Цена",
+    "description": "Описание",
+    "category": "Категория",
+    "addProduct": "Добавить товар",
+    "confirmDelete": "Удалить этот товар?",
+    "yes": "Да",
+    "no": "Нет"
+  },
   "authorization": {
     "login": "Авторизация",
     "registration": "Регистрация",
@@ -23,7 +34,8 @@
     "store": "МАГАЗИН",
     "about": "О НАС",
     "top": "ТОП ПРОДАЖ",
-    "contacts": "КОНТАКТЫ"
+    "contacts": "КОНТАКТЫ",
+    "admin": "АДМИН"
   },
   "intro": {
     "description": "Наши цены позволят вам дарить цветы без повода!",

@@ -24,7 +24,22 @@ const Header = () => {
   const { t } = useTranslation();
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (token) {
+      try {
+        const payloadBase64 = token.split('.')[1];
+        const payload = JSON.parse(atob(payloadBase64));
+        setIsAdmin(payload.role === 'admin');
+      } catch (e) {
+        console.error('Failed to parse token', e);
+        setIsAdmin(false);
+      }
+    }
+  }, [token]);
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
@@ -54,19 +69,23 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <LogoWrapper to="/">
-        <Logo src="/images/logo.png" alt="flower" />
+      <LogoWrapper to='/'>
+        <Logo src='/images/logo.png' alt='flower' />
       </LogoWrapper>
       {!isMobile && (
         <Menu>
-          <MenuItemLink to="/">{t('header.main')}</MenuItemLink>
-          <MenuItemLink to="/store">{t('header.store')}</MenuItemLink>
+          <MenuItemLink to='/'>{t('header.main')}</MenuItemLink>
+
+          <MenuItemLink to='/store'>{t('header.store')}</MenuItemLink>
           <MenuItem onClick={() => scrollToSection('about-us')}>
             {t('header.about')}
           </MenuItem>
           <MenuItem onClick={() => scrollToSection('contacts')}>
             {t('header.contacts')}
           </MenuItem>
+          {isAdmin && (
+            <MenuItemLink to='/admin'>{t('header.admin')}</MenuItemLink>
+          )}
         </Menu>
       )}
 
@@ -84,6 +103,7 @@ const Header = () => {
       <MobileMenuDrawer
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isMobileMenuOpen={isMobileMenuOpen}
+        isAdmin={isAdmin}
       />
     </HeaderWrapper>
   );
