@@ -23,6 +23,7 @@ export interface BasketItem {
   quantity: number;
   description: string;
   category: 'bouquets' | 'plants' | 'fruitBouquets';
+  image?: string;
 }
 
 export interface BasketContextType {

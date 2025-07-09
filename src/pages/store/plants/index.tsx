@@ -18,7 +18,12 @@ const Plants: FC<PlantsProps> = ({ plants }) => {
         <ProductCard
           key={plant.id}
           product={plant}
-          cover={<Image alt={t('plant.title')} src='/images/image3.jpg' />}
+          cover={
+            <Image
+              alt={t('plant.title')}
+              src={plant.image ? plant.image : '/images/no-img.jpeg'}
+            />
+          }
         />
       ))}
     </Wrapper>
