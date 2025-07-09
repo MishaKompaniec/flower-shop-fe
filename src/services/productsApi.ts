@@ -37,6 +37,22 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['Product'],
     }),
+    uploadProductImage: builder.mutation<
+      { message: string; imagePath: string },
+      { id: string; image: File }
+    >({
+      query: ({ id, image }) => {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        return {
+          url: `/products/${id}/image`,
+          method: 'POST',
+          body: formData,
+        };
+      },
+      invalidatesTags: ['Product'],
+    }),
   }),
 });
 
@@ -44,4 +60,5 @@ export const {
   useGetProductsQuery,
   useCreateProductMutation,
   useDeleteProductMutation,
+  useUploadProductImageMutation,
 } = productsApi;

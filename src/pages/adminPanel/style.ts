@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../theme/colors';
 import { Button } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,6 +15,21 @@ export const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 20px 15px 40px 15px;
+  }
+
+  .ant-table-wrapper .ant-table-thead > tr > th,
+  .ant-table-wrapper .ant-table-tbody > tr > td {
+    padding: 10px;
+  }
+
+  .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(2),
+  .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(5) {
+    text-align: center;
+  }
+
+  .ant-table-wrapper .ant-table-thead > tr > th:nth-child(2),
+  .ant-table-wrapper .ant-table-thead > tr > th:nth-child(5) {
+    text-align: center;
   }
 `;
 
@@ -31,4 +47,20 @@ export const Btn = styled(Button)`
     height: 40px;
     font-size: 16px;
   }
+`;
+
+export const WrapperCheckOutlined = styled.div`
+  width: 100%;
+`;
+
+export const CheckOutlinedAnt = styled(CheckOutlined)`
+  display: block;
+  margin: 0 auto;
+  color: ${colors.pink};
+  font-size: 16px;
+`;
+
+export const UploadWrapper = styled.div`
+  display: flex;
+  gap: 8px;
 `;
