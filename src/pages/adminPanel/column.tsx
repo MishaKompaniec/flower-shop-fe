@@ -1,7 +1,8 @@
-import { Button, Popconfirm, Upload, message } from 'antd';
+import { Button, Checkbox, Popconfirm, Upload, message } from 'antd';
 import { DeleteOutlined, UploadOutlined } from '@ant-design/icons';
 import {
   useDeleteProductMutation,
+  useUpdateProductMutation,
   useUploadProductImageMutation,
 } from '../../services/productsApi';
 import type { BasketItem } from '../../types';
@@ -13,6 +14,7 @@ export const Columns = () => {
   const { t } = useTranslation();
   const [deleteProduct] = useDeleteProductMutation();
   const [uploadProductImage] = useUploadProductImageMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
   const handleDelete = async (id: string) => {
     try {
@@ -60,13 +62,24 @@ export const Columns = () => {
       title: t('adminPanel.isBestSellers'),
       dataIndex: 'isBestSellers',
       key: 'isBestSellers',
-      width: 100,
-      render: (isBestSellers: boolean) =>
-        isBestSellers ? (
-          <WrapperCheckOutlined>
-            <CheckOutlinedAnt />
-          </WrapperCheckOutlined>
-        ) : null,
+      width: 120,
+      render: (isBestSellers: boolean, record: BasketItem) => (
+        <Checkbox
+          checked={isBestSellers}
+          onChange={async (e) => {
+            try {
+              await updateProduct({
+                id: record.id,
+                data: { isBestSellers: e.target.checked },
+              }).unwrap();
+              message.success(t('adminPanel.updateSuccess'));
+            } catch (err) {
+              console.error(err);
+              message.error(t('adminPanel.updateError'));
+            }
+          }}
+        />
+      ),
     },
     {
       title: ' ',

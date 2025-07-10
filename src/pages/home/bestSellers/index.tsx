@@ -58,7 +58,14 @@ const BestSellers = () => {
               <SwiperSlide key={product.id}>
                 <Card
                   hoverable
-                  cover={<Image alt={t(product.title)} src={product.image} />}
+                  cover={
+                    <Image
+                      alt={t(product.title)}
+                      src={
+                        product.image ? product.image : '/images/no-img.jpeg'
+                      }
+                    />
+                  }
                 >
                   <CardInfo>
                     <CardTitle>{t(product.title)}</CardTitle>

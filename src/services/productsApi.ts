@@ -11,6 +11,7 @@ export const productsApi = createApi({
       query: () => '/products',
       providesTags: ['Product'],
     }),
+
     createProduct: builder.mutation<BasketItem, Partial<BasketItem>>({
       query: (body) => ({
         url: '/products',
@@ -19,6 +20,7 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['Product'],
     }),
+
     deleteProduct: builder.mutation<{ message: string }, string>({
       query: (id) => ({
         url: `/products/${id}`,
@@ -26,6 +28,7 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['Product'],
     }),
+
     uploadProductImage: builder.mutation<
       { message: string; imagePath: string },
       { id: string; image: File }
@@ -42,6 +45,18 @@ export const productsApi = createApi({
       },
       invalidatesTags: ['Product'],
     }),
+
+    updateProduct: builder.mutation<
+      BasketItem,
+      { id: string; data: Partial<BasketItem> }
+    >({
+      query: ({ id, data }) => ({
+        url: `/products/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: ['Product'],
+    }),
   }),
 });
 
@@ -50,4 +65,5 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useUploadProductImageMutation,
+  useUpdateProductMutation,
 } = productsApi;
