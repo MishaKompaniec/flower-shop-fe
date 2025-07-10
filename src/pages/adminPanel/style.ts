@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
   .ant-table-wrapper .ant-table-thead > tr > th,
   .ant-table-wrapper .ant-table-tbody > tr > td {
     padding: 10px;
+    font-size: 13px;
   }
 
   .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(2),

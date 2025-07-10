@@ -38,6 +38,7 @@ export const Columns = ({ onEdit }: ColumnsProps) => {
       title: t('adminPanel.price'),
       dataIndex: 'price',
       key: 'price',
+      width: 120,
       render: (price: number) => `${price} ₴`,
     },
     {
@@ -54,7 +55,7 @@ export const Columns = ({ onEdit }: ColumnsProps) => {
       title: t('adminPanel.image'),
       dataIndex: 'image',
       key: 'image',
-      width: 100,
+      width: 120,
       render: (image: string | undefined) =>
         image ? (
           <WrapperCheckOutlined>
