@@ -32,7 +32,7 @@ export const Columns = () => {
       title: t('adminPanel.price'),
       dataIndex: 'price',
       key: 'price',
-      render: (price: number) => `${price} €`,
+      render: (price: number) => `${price} ₴`,
     },
     {
       title: t('adminPanel.description'),

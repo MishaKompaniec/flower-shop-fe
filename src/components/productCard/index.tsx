@@ -22,7 +22,7 @@ const ProductCard = ({
       <CardInfo>
         <CardTitle>{product.title}</CardTitle>
         <Description>{product.description}</Description>
-        <Price>{product.price}</Price>
+        <Price>{product.price} ₴</Price>
         <Button
           type={isInCart ? 'default' : 'primary'}
           onClick={() => {

@@ -62,7 +62,7 @@ const AdminPanel = () => {
       >
         <Form
           initialValues={{
-            category: 'flowers',
+            category: 'bouquets',
           }}
           form={form}
           layout='vertical'
