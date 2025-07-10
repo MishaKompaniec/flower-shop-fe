@@ -17,11 +17,21 @@ import {
 } from './style';
 
 import { useCart } from '../../../context/basketContext';
-import { bestSellers, SwiperBreakpoints } from '../../../utils/pages';
+import { SwiperBreakpoints } from '../../../utils/pages';
+import { useGetProductsQuery } from '../../../services/productsApi';
+import type { BasketItem } from '../../../types';
+import { useEffect, useState } from 'react';
 
 const BestSellers = () => {
   const { basket, addToBasket, toggleBasket } = useCart();
   const { t } = useTranslation();
+
+  const { data: products } = useGetProductsQuery();
+  const [bestSellers, setBestSellers] = useState<BasketItem[]>([]);
+
+  useEffect(() => {
+    setBestSellers(products?.filter((p) => p.isBestSellers) || []);
+  }, [products]);
 
   return (
     <Wrapper id='bestSellers'>
@@ -53,9 +63,7 @@ const BestSellers = () => {
                   <CardInfo>
                     <CardTitle>{t(product.title)}</CardTitle>
                     <Description>{t(product.description)}</Description>
-                    <Price>
-                      {product.price} {t('currency.uah')}
-                    </Price>
+                    <Price>{product.price} ₴</Price>
                     <Button
                       type={isInCart ? 'default' : 'primary'}
                       onClick={() => {
