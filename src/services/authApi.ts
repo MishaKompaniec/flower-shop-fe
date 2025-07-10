@@ -1,4 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
 
 interface RegisterRequest {
   email: string;
@@ -22,14 +23,9 @@ interface LoginResponse {
   role: string;
 }
 
-const baseUrl =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4200/api';
-
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl,
-  }),
+  baseQuery: baseQueryWithAuthRedirect,
   endpoints: (builder) => ({
     register: builder.mutation<RegisterResponse, RegisterRequest>({
       query: (body) => ({

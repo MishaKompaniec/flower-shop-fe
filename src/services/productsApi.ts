@@ -1,21 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import type { BasketItem } from '../types';
-
-const baseUrl =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4200/api';
+import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl,
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithAuthRedirect,
   tagTypes: ['Product'],
   endpoints: (builder) => ({
     getProducts: builder.query<BasketItem[], void>({
