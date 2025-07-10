@@ -18,7 +18,8 @@
     "titleTooLong": "Title must be at most 30 characters",
     "descriptionTooLong": "Description must be at most 50 characters",
     "priceTooHigh": "Price must not exceed 100000",
-    "image": "Image"
+    "image": "Image",
+    "isBestSellers": "Best Seller"
   },
   "authorization": {
     "login": "Login",

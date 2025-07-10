@@ -57,6 +57,18 @@ export const Columns = () => {
         ) : null,
     },
     {
+      title: t('adminPanel.isBestSellers'),
+      dataIndex: 'isBestSellers',
+      key: 'isBestSellers',
+      width: 100,
+      render: (isBestSellers: boolean) =>
+        isBestSellers ? (
+          <WrapperCheckOutlined>
+            <CheckOutlinedAnt />
+          </WrapperCheckOutlined>
+        ) : null,
+    },
+    {
       title: ' ',
       key: 'actions',
       width: 100,

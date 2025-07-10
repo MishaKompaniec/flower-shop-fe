@@ -1,4 +1,4 @@
-import { Table, Modal, Form, Input, InputNumber, Select } from 'antd';
+import { Table, Modal, Form, Input, InputNumber, Select, Checkbox } from 'antd';
 import { Btn, Wrapper } from './style';
 import {
   useCreateProductMutation,
@@ -63,6 +63,7 @@ const AdminPanel = () => {
         <Form
           initialValues={{
             category: 'bouquets',
+            isBestSellers: false,
           }}
           form={form}
           layout='vertical'
@@ -116,6 +117,9 @@ const AdminPanel = () => {
                 {t('adminPanel.fruitBouquets')}
               </Option>
             </Select>
+          </Form.Item>
+          <Form.Item name='isBestSellers' valuePropName='checked'>
+            <Checkbox>{t('adminPanel.isBestSellers')}</Checkbox>
           </Form.Item>
         </Form>
       </Modal>

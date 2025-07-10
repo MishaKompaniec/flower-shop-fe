@@ -24,6 +24,7 @@ export interface BasketItem {
   description: string;
   category: 'bouquets' | 'plants' | 'fruitBouquets';
   image?: string;
+  isBestSellers: boolean;
 }
 
 export interface BasketContextType {
