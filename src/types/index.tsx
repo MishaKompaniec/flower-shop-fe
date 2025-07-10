@@ -45,3 +45,7 @@ export interface Advantage {
   title: string;
   text: string;
 }
+
+export interface ColumnsProps {
+  onEdit: (item: BasketItem) => void;
+}

@@ -1,12 +1,23 @@
-import { Table, Modal, Form, Input, InputNumber, Select, Checkbox } from 'antd';
+import {
+  Table,
+  Modal,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  Checkbox,
+  message,
+} from 'antd';
 import { Btn, Wrapper } from './style';
 import {
   useCreateProductMutation,
   useGetProductsQuery,
+  useUpdateProductMutation,
 } from '../../services/productsApi';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Columns } from './column';
+import type { BasketItem } from '../../types';
 
 const { Option } = Select;
 
@@ -15,27 +26,52 @@ const AdminPanel = () => {
   const { data: products } = useGetProductsQuery();
 
   const [addProduct] = useCreateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
+  const [editingItem, setEditingItem] = useState<BasketItem | null>(null);
 
   const handleAdd = () => {
+    setEditingItem(null);
     form.resetFields();
+    setIsModalOpen(true);
+  };
+
+  const handleEdit = (item: BasketItem) => {
+    setEditingItem(item);
+    form.setFieldsValue({
+      title: item.title,
+      price: item.price,
+      description: item.description,
+      category: item.category,
+    });
     setIsModalOpen(true);
   };
 
   const handleModalOk = async () => {
     try {
-      const newProduct = await form.validateFields();
-      addProduct(newProduct);
+      const values = await form.validateFields();
+
+      if (editingItem) {
+        await updateProduct({ id: editingItem.id, data: values }).unwrap();
+        message.success(t('adminPanel.updateSuccess'));
+      } else {
+        await addProduct(values).unwrap();
+        message.success(t('adminPanel.addSuccess'));
+      }
+
       setIsModalOpen(false);
+      setEditingItem(null);
     } catch (err) {
       console.log(err);
+      message.error(t('adminPanel.submitError'));
     }
   };
 
   const handleModalCancel = () => {
     setIsModalOpen(false);
+    setEditingItem(null);
   };
 
   return (
@@ -46,14 +82,16 @@ const AdminPanel = () => {
 
       <Table
         dataSource={products}
-        columns={Columns()}
+        columns={Columns({ onEdit: handleEdit })}
         rowKey='id'
         pagination={false}
         scroll={{ y: 400 }}
       />
 
       <Modal
-        title={t('adminPanel.modalTitle')}
+        title={
+          editingItem ? t('adminPanel.editTitle') : t('adminPanel.createTitle')
+        }
         open={isModalOpen}
         onOk={handleModalOk}
         onCancel={handleModalCancel}
@@ -118,9 +156,12 @@ const AdminPanel = () => {
               </Option>
             </Select>
           </Form.Item>
-          <Form.Item name='isBestSellers' valuePropName='checked'>
-            <Checkbox>{t('adminPanel.isBestSellers')}</Checkbox>
-          </Form.Item>
+
+          {!editingItem && (
+            <Form.Item name='isBestSellers' valuePropName='checked'>
+              <Checkbox>{t('adminPanel.isBestSellers')}</Checkbox>
+            </Form.Item>
+          )}
         </Form>
       </Modal>
     </Wrapper>

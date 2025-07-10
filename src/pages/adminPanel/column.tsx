@@ -1,16 +1,20 @@
 import { Button, Checkbox, Popconfirm, Upload, message } from 'antd';
-import { DeleteOutlined, UploadOutlined } from '@ant-design/icons';
+import {
+  DeleteOutlined,
+  UploadOutlined,
+  FormOutlined,
+} from '@ant-design/icons';
 import {
   useDeleteProductMutation,
   useUpdateProductMutation,
   useUploadProductImageMutation,
 } from '../../services/productsApi';
-import type { BasketItem } from '../../types';
+import type { BasketItem, ColumnsProps } from '../../types';
 import type { UploadProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
 
-export const Columns = () => {
+export const Columns = ({ onEdit }: ColumnsProps) => {
   const { t } = useTranslation();
   const [deleteProduct] = useDeleteProductMutation();
   const [uploadProductImage] = useUploadProductImageMutation();
@@ -84,7 +88,7 @@ export const Columns = () => {
     {
       title: ' ',
       key: 'actions',
-      width: 100,
+      width: 140,
       render: (_: any, record: BasketItem) => {
         const uploadProps: UploadProps = {
           name: 'image',
@@ -107,8 +111,13 @@ export const Columns = () => {
 
         return (
           <UploadWrapper>
+            <Button
+              type='text'
+              icon={<FormOutlined />}
+              onClick={() => onEdit(record)}
+            />
             <Upload {...uploadProps}>
-              <Button icon={<UploadOutlined />} />
+              <Button type='text' icon={<UploadOutlined />} />
             </Upload>
             <Popconfirm
               title={t('adminPanel.confirmDelete')}
@@ -116,7 +125,7 @@ export const Columns = () => {
               okText={t('adminPanel.yes')}
               cancelText={t('adminPanel.no')}
             >
-              <Button type='text' danger icon={<DeleteOutlined />} />
+              <Button type='text' icon={<DeleteOutlined />} danger />
             </Popconfirm>
           </UploadWrapper>
         );
