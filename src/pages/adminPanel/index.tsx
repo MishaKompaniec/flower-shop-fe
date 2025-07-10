@@ -60,7 +60,13 @@ const AdminPanel = () => {
         okText={t('adminPanel.save')}
         cancelText={t('adminPanel.cancel')}
       >
-        <Form form={form} layout='vertical'>
+        <Form
+          initialValues={{
+            category: 'flowers',
+          }}
+          form={form}
+          layout='vertical'
+        >
           <Form.Item
             label={t('adminPanel.title')}
             name='title'
@@ -103,7 +109,7 @@ const AdminPanel = () => {
             name='category'
             rules={[{ required: true, message: t('adminPanel.required') }]}
           >
-            <Select defaultValue='bouquets'>
+            <Select>
               <Option value='bouquets'>{t('adminPanel.bouquets')}</Option>
               <Option value='plants'>{t('adminPanel.plants')}</Option>
               <Option value='fruitBouquets'>
