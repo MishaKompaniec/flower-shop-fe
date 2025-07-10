@@ -23,12 +23,14 @@ export const Wrapper = styled.div`
   }
 
   .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(2),
-  .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(5) {
+  .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(5),
+  .ant-table-wrapper .ant-table-tbody > tr > td:nth-child(6) {
     text-align: center;
   }
 
   .ant-table-wrapper .ant-table-thead > tr > th:nth-child(2),
-  .ant-table-wrapper .ant-table-thead > tr > th:nth-child(5) {
+  .ant-table-wrapper .ant-table-thead > tr > th:nth-child(5),
+  .ant-table-wrapper .ant-table-thead > tr > th:nth-child(6) {
     text-align: center;
   }
 `;
