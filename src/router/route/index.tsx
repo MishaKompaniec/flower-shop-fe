@@ -6,6 +6,7 @@ import type { IROUTE_MODEL } from '../../types';
 import type { RouteProps } from 'react-router-dom';
 import PrivateRoute from './privateRoute';
 import AdminPanel from '../../pages/adminPanel';
+import Profile from '../../pages/profile';
 
 export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
   {
@@ -29,6 +30,14 @@ export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
     element: (
       <PrivateRoute>
         <AdminPanel />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: Pages.PROFILE,
+    element: (
+      <PrivateRoute>
+        <Profile />
       </PrivateRoute>
     ),
   },

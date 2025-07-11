@@ -93,3 +93,17 @@ export const BurgerButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const AvatarWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  & span svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;

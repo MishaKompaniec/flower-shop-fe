@@ -11,8 +11,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
   const isAuthPage = location.pathname === '/authorization';
+  const isProfilePage = location.pathname === '/profile';
   const isAdminPage = location.pathname === '/admin';
-  const hideFooter = isAuthPage || isAdminPage;
+
+  const hideFooter = isAuthPage || isAdminPage || isProfilePage;
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,7 +16,10 @@ import {
   FlexBox,
   Logo,
   Menu,
+  AvatarWrapper,
 } from './style';
+import { Avatar } from 'antd';
+import { smallIconStyle } from '../../utils';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -87,6 +90,9 @@ const Header = () => {
       )}
 
       <FlexBox>
+        <AvatarWrapper onClick={() => navigate('/profile')}>
+          <Avatar size={32} icon={<UserOutlined />} style={smallIconStyle} />
+        </AvatarWrapper>
         <Drawer />
         {!isMobile && <LanguageSelect />}
       </FlexBox>

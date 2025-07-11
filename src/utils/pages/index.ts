@@ -6,6 +6,7 @@ export const Pages = {
   STORE: '/store',
   AUTHORIZATION: '/authorization',
   ADMIN: '/admin',
+  PROFILE: '/profile',
 };
 
 export const SwiperBreakpoints = {
