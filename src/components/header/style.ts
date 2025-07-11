@@ -94,13 +94,32 @@ export const BurgerButton = styled.button`
   }
 `;
 
-export const AvatarWrapper = styled.div`
+export const AvatarWrapper = styled.div<{ $active?: boolean }>`
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-sizing: border-box;
 
-  & span svg {
-    width: 23px;
-    height: 23px;
+  ${({ $active }) =>
+    $active &&
+    `
+    border: 2px solid #2ecc71;
+  `}
+
+  & .ant-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    color: #2ecc71;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &:hover {
