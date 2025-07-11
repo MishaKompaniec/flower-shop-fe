@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Avatar, Button, Form, Input, message } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import {
   AvatarUploadLabel,
   AvatarWrapper,
@@ -13,19 +14,19 @@ import {
 import { largeIconStyle } from '../../utils';
 
 const Profile = () => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const onFinish = async (values: any) => {
     try {
       setLoading(true);
       console.log('Sending data to backend:', { ...values, avatarUrl });
-      message.success('Profile updated successfully!');
+      message.success(t('profile.success'));
     } catch (error) {
-      message.error('Failed to update profile');
+      message.error(t('profile.error'));
     } finally {
       setLoading(false);
     }
@@ -36,13 +37,13 @@ const Profile = () => {
     if (file) {
       const fakeUrl = URL.createObjectURL(file);
       setAvatarUrl(fakeUrl);
-      message.success('Avatar uploaded successfully!');
+      message.success(t('profile.avatarSuccess'));
     }
   };
 
   return (
     <Wrapper>
-      <Title>My Profile</Title>
+      <Title>{t('profile.title')}</Title>
 
       <FormWrapper>
         <FlexBox>
@@ -55,7 +56,7 @@ const Profile = () => {
                 style={largeIconStyle}
               />
               <Button type='text' size='small'>
-                Click to upload
+                {t('profile.uploadButton')}
               </Button>
             </AvatarUploadLabel>
             <HiddenFileInput
@@ -69,31 +70,27 @@ const Profile = () => {
             layout='vertical'
             form={form}
             onFinish={onFinish}
-            initialValues={{
-              name: '',
-              email: '',
-              phone: '',
-            }}
+            initialValues={{ name: '', email: '', phone: '' }}
           >
             <Form.Item
-              label='Email'
+              label={t('profile.email')}
               name='email'
               rules={[{ required: true, type: 'email' }]}
             >
-              <Input placeholder='Enter your email' />
+              <Input placeholder={t('profile.emailPlaceholder')} />
             </Form.Item>
 
-            <Form.Item label='Full Name' name='name'>
-              <Input placeholder='Enter your name' />
+            <Form.Item label={t('profile.name')} name='name'>
+              <Input placeholder={t('profile.namePlaceholder')} />
             </Form.Item>
 
-            <Form.Item label='Phone Number' name='phone'>
-              <Input placeholder='Enter your phone number' />
+            <Form.Item label={t('profile.phone')} name='phone'>
+              <Input placeholder={t('profile.phonePlaceholder')} />
             </Form.Item>
 
             <Form.Item>
               <Button type='primary' htmlType='submit' loading={loading} block>
-                Save Changes
+                {t('profile.save')}
               </Button>
             </Form.Item>
           </Form>

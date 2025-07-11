@@ -123,5 +123,19 @@
     "bouquets": "BOUQUETS",
     "plants": "PLANTS",
     "fruitBouquets": "FRUITETS"
+  },
+  "profile": {
+    "title": "My Profile",
+    "email": "Email",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "emailPlaceholder": "Enter your email",
+    "namePlaceholder": "Enter your name",
+    "phonePlaceholder": "Enter your phone number",
+    "uploadButton": "Click to upload",
+    "save": "Save Changes",
+    "success": "Profile updated successfully!",
+    "error": "Failed to update profile",
+    "avatarSuccess": "Avatar uploaded successfully!"
   }
 }
