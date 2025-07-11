@@ -136,6 +136,8 @@
     "save": "Save Changes",
     "success": "Profile updated successfully!",
     "error": "Failed to update profile",
-    "avatarSuccess": "Avatar uploaded successfully!"
+    "avatarSuccess": "Avatar uploaded successfully!",
+    "nameMaxLengthError": "Name cannot exceed 50 ch.",
+    "phoneInvalid": "Please enter a valid phone"
   }
 }

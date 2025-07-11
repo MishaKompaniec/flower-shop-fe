@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { Avatar, Button, Form, Input, message } from 'antd';
+import { useEffect, useRef, useState } from 'react';
+import { Avatar, Button, Form, Input, message, Spin } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -12,23 +12,39 @@ import {
   Wrapper,
 } from './style';
 import { largeIconStyle } from '../../utils';
+import { useGetMeQuery, useUpdateUserMutation } from '../../services/userApi';
 
 const Profile = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const { data: user, isLoading: isUserLoading } = useGetMeQuery();
+  const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
+
+  useEffect(() => {
+    if (user) {
+      form.setFieldsValue({
+        email: user.email,
+        name: user.fullName,
+        phone: user.phoneNumber,
+      });
+    }
+  }, [user, form]);
 
   const onFinish = async (values: any) => {
     try {
-      setLoading(true);
-      console.log('Sending data to backend:', { ...values, avatarUrl });
+      await updateUser({
+        email: values.email,
+        fullName: values.name,
+        phoneNumber: values.phone,
+      }).unwrap();
+
       message.success(t('profile.success'));
     } catch (error) {
+      console.error(error);
       message.error(t('profile.error'));
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -40,6 +56,14 @@ const Profile = () => {
       message.success(t('profile.avatarSuccess'));
     }
   };
+
+  if (isUserLoading) {
+    return (
+      <Wrapper>
+        <Spin />
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>
@@ -66,12 +90,7 @@ const Profile = () => {
               accept='image/*'
             />
           </AvatarWrapper>
-          <Form
-            layout='vertical'
-            form={form}
-            onFinish={onFinish}
-            initialValues={{ name: '', email: '', phone: '' }}
-          >
+          <Form layout='vertical' form={form} onFinish={onFinish}>
             <Form.Item
               label={t('profile.email')}
               name='email'
@@ -80,16 +99,39 @@ const Profile = () => {
               <Input placeholder={t('profile.emailPlaceholder')} />
             </Form.Item>
 
-            <Form.Item label={t('profile.name')} name='name'>
+            <Form.Item
+              label={t('profile.name')}
+              name='name'
+              rules={[
+                {
+                  max: 50,
+                  message: t('profile.nameMaxLengthError'),
+                },
+              ]}
+            >
               <Input placeholder={t('profile.namePlaceholder')} />
             </Form.Item>
 
-            <Form.Item label={t('profile.phone')} name='phone'>
+            <Form.Item
+              label={t('profile.phone')}
+              name='phone'
+              rules={[
+                {
+                  pattern: /^(\+380|0)\d{9}$/,
+                  message: t('profile.phoneInvalid'),
+                },
+              ]}
+            >
               <Input placeholder={t('profile.phonePlaceholder')} />
             </Form.Item>
 
             <Form.Item>
-              <Button type='primary' htmlType='submit' loading={loading} block>
+              <Button
+                type='primary'
+                htmlType='submit'
+                loading={isUpdating}
+                block
+              >
                 {t('profile.save')}
               </Button>
             </Form.Item>

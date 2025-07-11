@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../theme/colors';
+import { Form } from 'antd';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -68,7 +69,7 @@ export const HiddenFileInput = styled.input`
 `;
 
 export const FormWrapper = styled.div`
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
   background: white;
   padding: 30px;

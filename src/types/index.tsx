@@ -49,3 +49,17 @@ export interface Advantage {
 export interface ColumnsProps {
   onEdit: (item: BasketItem) => void;
 }
+
+export interface UserProfile {
+  id: string;
+  email: string;
+  fullName: string;
+  phoneNumber: string;
+  role: 'user' | 'admin';
+}
+
+export interface UpdateUserRequest {
+  email: string;
+  fullName: string;
+  phoneNumber: string;
+}
