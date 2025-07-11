@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors } from '../../theme/colors';
-import { Form } from 'antd';
 
 export const Wrapper = styled.div`
   display: flex;

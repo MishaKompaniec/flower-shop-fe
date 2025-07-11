@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Avatar, Button, Form, Input, message, Spin } from 'antd';
+import { Avatar, Button, Form, Input, message, notification, Spin } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -13,27 +13,60 @@ import {
 } from './style';
 import { largeIconStyle } from '../../utils';
 import { useGetMeQuery, useUpdateUserMutation } from '../../services/userApi';
+import type { ProfileFormValues } from '../../types';
 
 const Profile = () => {
+  const [api, contextHolder] = notification.useNotification();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+  const [initialValues, setInitialValues] = useState<ProfileFormValues | null>(
+    null
+  );
+  const [hasChanges, setHasChanges] = useState(false);
   const { data: user, isLoading: isUserLoading } = useGetMeQuery();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
 
   useEffect(() => {
     if (user) {
-      form.setFieldsValue({
+      const initial = {
         email: user.email,
         name: user.fullName,
         phone: user.phoneNumber,
-      });
+      };
+      setInitialValues(initial);
+      form.setFieldsValue(initial);
     }
   }, [user, form]);
 
+  const checkChanges = () => {
+    if (!initialValues) {
+      setHasChanges(false);
+      return;
+    }
+    const currentValues = form.getFieldsValue();
+    const changed =
+      currentValues.email !== initialValues.email ||
+      currentValues.name !== initialValues.name ||
+      currentValues.phone !== initialValues.phone;
+    setHasChanges(changed);
+  };
+
+  const onFieldsChange = () => {
+    checkChanges();
+  };
+
   const onFinish = async (values: any) => {
+    if (!hasChanges) {
+      notification.info({
+        message: t('profile.noChanges'),
+        placement: 'topRight',
+        duration: 2,
+      });
+      return;
+    }
+
     try {
       await updateUser({
         email: values.email,
@@ -41,7 +74,18 @@ const Profile = () => {
         phoneNumber: values.phone,
       }).unwrap();
 
-      message.success(t('profile.success'));
+      api.success({
+        message: t('profile.success'),
+        placement: 'topRight',
+        duration: 3,
+      });
+
+      setInitialValues({
+        email: values.email,
+        name: values.name,
+        phone: values.phone,
+      });
+      setHasChanges(false);
     } catch (error) {
       console.error(error);
       message.error(t('profile.error'));
@@ -90,7 +134,12 @@ const Profile = () => {
               accept='image/*'
             />
           </AvatarWrapper>
-          <Form layout='vertical' form={form} onFinish={onFinish}>
+          <Form
+            layout='vertical'
+            form={form}
+            onFinish={onFinish}
+            onFieldsChange={onFieldsChange}
+          >
             <Form.Item
               label={t('profile.email')}
               name='email'
@@ -130,6 +179,7 @@ const Profile = () => {
                 type='primary'
                 htmlType='submit'
                 loading={isUpdating}
+                disabled={!hasChanges}
                 block
               >
                 {t('profile.save')}
@@ -138,6 +188,7 @@ const Profile = () => {
           </Form>
         </FlexBox>
       </FormWrapper>
+      {contextHolder}
     </Wrapper>
   );
 };

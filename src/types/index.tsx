@@ -63,3 +63,9 @@ export interface UpdateUserRequest {
   fullName: string;
   phoneNumber: string;
 }
+
+export interface ProfileFormValues {
+  email?: string;
+  name?: string;
+  phone?: string;
+}
