@@ -85,7 +85,7 @@ const AdminPanel = () => {
         columns={Columns({ onEdit: handleEdit })}
         rowKey='id'
         pagination={false}
-        scroll={{ y: 400 }}
+        scroll={{ x: 'fit-content' }}
       />
 
       <Modal
