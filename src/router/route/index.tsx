@@ -11,19 +11,11 @@ import Profile from '../../pages/profile';
 export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
   {
     path: Pages.HOME,
-    element: (
-      <PrivateRoute>
-        <Home />
-      </PrivateRoute>
-    ),
+    element: <Home />,
   },
   {
     path: Pages.STORE,
-    element: (
-      <PrivateRoute>
-        <Store />
-      </PrivateRoute>
-    ),
+    element: <Store />,
   },
   {
     path: Pages.ADMIN,

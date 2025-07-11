@@ -90,12 +90,15 @@ const Header = () => {
       )}
 
       <FlexBox>
-        <AvatarWrapper
-          onClick={() => navigate('/profile')}
-          $active={location.pathname === '/profile'}
-        >
-          <Avatar size={32} icon={<UserOutlined />} style={smallIconStyle} />
-        </AvatarWrapper>
+        {token && (
+          <AvatarWrapper
+            onClick={() => navigate('/profile')}
+            $active={location.pathname === '/profile'}
+          >
+            <Avatar size={32} icon={<UserOutlined />} style={smallIconStyle} />
+          </AvatarWrapper>
+        )}
+
         <Drawer />
         {!isMobile && <LanguageSelect />}
       </FlexBox>
