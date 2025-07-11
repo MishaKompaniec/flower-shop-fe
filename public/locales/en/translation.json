@@ -103,7 +103,7 @@
   "basket": {
     "title": "Basket",
     "empty": "Basket is empty",
-    "total": "Total: {{total}} UAH",
+    "total": "Total:",
     "btn": "Checkout",
     "modalTitle": "Order Placement",
     "modal": "You have successfully placed your order",

@@ -64,7 +64,9 @@ const Drawer = () => {
               ))}
             </List>
           )}
-          <Total>{t('basket.total', { total: totalPrice })}</Total>
+          <Total>
+            {t('basket.total')} {totalPrice} ₴
+          </Total>
           {basket.length > 0 && (
             <Btn
               type='primary'

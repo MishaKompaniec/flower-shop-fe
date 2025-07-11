@@ -17,17 +17,15 @@ import type { DrawerItemProps } from '../../types';
 import { useCart } from '../../context/basketContext';
 
 const DrawerItem: FC<DrawerItemProps> = ({
-  product: { id, category, price, quantity },
+  product: { id, price, quantity, title },
 }) => {
   const { removeFromBasket, updateQuantity } = useCart();
   const { t } = useTranslation();
 
   return (
     <DrawerItemWrapper>
-      <Title>{t(`${category}.${id}.title`)}</Title>
-      <Price>
-        {price} {t('currency.uah')}
-      </Price>
+      <Title>{title}</Title>
+      <Price>{price} ₴</Price>
       <QuantityControls>
         <Button
           size='small'
