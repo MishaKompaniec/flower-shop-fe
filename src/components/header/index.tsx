@@ -20,6 +20,7 @@ import {
 } from './style';
 import { Avatar } from 'antd';
 import { smallIconStyle } from '../../utils';
+import { useUser } from '../../context/userContext';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const token = localStorage.getItem('token');
+  const { avatarUrl } = useUser();
 
   useEffect(() => {
     if (token) {
@@ -95,7 +97,12 @@ const Header = () => {
             onClick={() => navigate('/profile')}
             $active={location.pathname === '/profile'}
           >
-            <Avatar size={32} icon={<UserOutlined />} style={smallIconStyle} />
+            <Avatar
+              size={32}
+              src={avatarUrl}
+              icon={!avatarUrl && <UserOutlined />}
+              style={smallIconStyle}
+            />
           </AvatarWrapper>
         )}
 

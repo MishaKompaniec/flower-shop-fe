@@ -6,20 +6,23 @@ import Routes from './router';
 import ScrollToTop from './utils/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from './services/store';
+import { UserProvider } from './context/userContext';
 
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
-      <BasketProvider>
-        <BrowserRouter>
-          <Layout>
-            <ScrollToTop />
-            <Routes />
-          </Layout>
-        </BrowserRouter>
-      </BasketProvider>
+      <UserProvider>
+        <BasketProvider>
+          <BrowserRouter>
+            <Layout>
+              <ScrollToTop />
+              <Routes />
+            </Layout>
+          </BrowserRouter>
+        </BasketProvider>
+      </UserProvider>
     </Provider>
   );
-}
+};
 
 export default App;

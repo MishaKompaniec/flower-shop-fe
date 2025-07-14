@@ -13,13 +13,13 @@ import {
 } from './style';
 import { largeIconStyle } from '../../utils';
 import {
-  useGetAvatarQuery,
   useGetMeQuery,
   useUpdateUserMutation,
   useUploadAvatarMutation,
 } from '../../services/userApi';
 import type { ProfileFormValues } from '../../types';
 import { Spinner } from '../../components';
+import { useUser } from '../../context/userContext';
 
 const Profile = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -33,7 +33,7 @@ const Profile = () => {
   const { data: user, isLoading: isUserLoading } = useGetMeQuery();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
   const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
-  const { data: userAvatarUrl } = useGetAvatarQuery();
+  const { avatarUrl } = useUser();
 
   useEffect(() => {
     if (user) {
@@ -134,8 +134,8 @@ const Profile = () => {
             <AvatarUploadLabel onClick={() => fileInputRef.current?.click()}>
               <Avatar
                 size={128}
-                src={userAvatarUrl && userAvatarUrl.avatarUrl}
-                icon={!userAvatarUrl && <UserOutlined />}
+                src={avatarUrl}
+                icon={!avatarUrl && <UserOutlined />}
                 style={largeIconStyle}
               />
               <Button
