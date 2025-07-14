@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useGetAvatarQuery } from '../services/userApi';
+import { useAuth } from './authContext';
 
 type UserContextType = {
   avatarUrl: string | null;
@@ -10,12 +11,15 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { data } = useGetAvatarQuery();
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const { token } = useAuth();
+  const { data } = useGetAvatarQuery(undefined, { skip: !token });
+  const [avatarUrl, setAvatarUrl] = React.useState<string | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (data) {
       setAvatarUrl(data.avatarUrl);
+    } else {
+      setAvatarUrl(null);
     }
   }, [data]);
 

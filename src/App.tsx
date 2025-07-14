@@ -7,20 +7,23 @@ import ScrollToTop from './utils/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from './services/store';
 import { UserProvider } from './context/userContext';
+import { AuthProvider } from './context/authContext';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <UserProvider>
-        <BasketProvider>
-          <BrowserRouter>
-            <Layout>
-              <ScrollToTop />
-              <Routes />
-            </Layout>
-          </BrowserRouter>
-        </BasketProvider>
-      </UserProvider>
+      <AuthProvider>
+        <UserProvider>
+          <BasketProvider>
+            <BrowserRouter>
+              <Layout>
+                <ScrollToTop />
+                <Routes />
+              </Layout>
+            </BrowserRouter>
+          </BasketProvider>
+        </UserProvider>
+      </AuthProvider>
     </Provider>
   );
 };

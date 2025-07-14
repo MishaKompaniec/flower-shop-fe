@@ -7,11 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSelect } from '../../components/select';
 import { useLoginMutation, useRegisterMutation } from '../../services/authApi';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/authContext';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const { setToken } = useAuth();
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
   const [register, { isLoading: isRegistering }] = useRegisterMutation();
 
@@ -21,6 +23,7 @@ const AuthPage: FC = () => {
     try {
       const res = await login(values).unwrap();
       localStorage.setItem('token', res.token);
+      setToken(res.token);
       navigate('/', { replace: false });
     } catch (err: any) {
       message.error(err.data?.error || t('authorization.loginError'));

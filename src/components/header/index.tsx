@@ -21,6 +21,7 @@ import {
 import { Avatar } from 'antd';
 import { smallIconStyle } from '../../utils';
 import { useUser } from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const token = localStorage.getItem('token');
+  const { token } = useAuth();
   const { avatarUrl } = useUser();
 
   useEffect(() => {
