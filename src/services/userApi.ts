@@ -21,7 +21,31 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['User'],
     }),
+
+    uploadAvatar: builder.mutation<{ avatarUrl: string }, File>({
+      query: (file) => {
+        const formData = new FormData();
+        formData.append('avatar', file);
+
+        return {
+          url: '/user/me/avatar',
+          method: 'POST',
+          body: formData,
+        };
+      },
+      invalidatesTags: ['User'],
+    }),
+
+    getAvatar: builder.query<{ avatarUrl: string | null }, void>({
+      query: () => '/user/me/avatar',
+      providesTags: ['User'],
+    }),
   }),
 });
 
-export const { useGetMeQuery, useUpdateUserMutation } = userApi;
+export const {
+  useGetMeQuery,
+  useUpdateUserMutation,
+  useUploadAvatarMutation,
+  useGetAvatarQuery,
+} = userApi;

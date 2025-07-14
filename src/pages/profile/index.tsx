@@ -12,7 +12,12 @@ import {
   Wrapper,
 } from './style';
 import { largeIconStyle } from '../../utils';
-import { useGetMeQuery, useUpdateUserMutation } from '../../services/userApi';
+import {
+  useGetAvatarQuery,
+  useGetMeQuery,
+  useUpdateUserMutation,
+  useUploadAvatarMutation,
+} from '../../services/userApi';
 import type { ProfileFormValues } from '../../types';
 import { Spinner } from '../../components';
 
@@ -20,7 +25,6 @@ const Profile = () => {
   const [api, contextHolder] = notification.useNotification();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [initialValues, setInitialValues] = useState<ProfileFormValues | null>(
     null
@@ -28,6 +32,8 @@ const Profile = () => {
   const [hasChanges, setHasChanges] = useState(false);
   const { data: user, isLoading: isUserLoading } = useGetMeQuery();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
+  const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
+  const { data: userAvatarUrl } = useGetAvatarQuery();
 
   useEffect(() => {
     if (user) {
@@ -93,12 +99,24 @@ const Profile = () => {
     }
   };
 
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const fakeUrl = URL.createObjectURL(file);
-      setAvatarUrl(fakeUrl);
-      message.success(t('profile.avatarSuccess'));
+      try {
+        await uploadAvatar(file).unwrap();
+        api.success({
+          message: t('profile.avatarSuccess'),
+          placement: 'topRight',
+          duration: 3,
+        });
+      } catch (error: any) {
+        console.error('Upload avatar failed:', error);
+        api.error({
+          message: error.data.error,
+          placement: 'topRight',
+          duration: 3,
+        });
+      }
     }
   };
 
@@ -116,11 +134,16 @@ const Profile = () => {
             <AvatarUploadLabel onClick={() => fileInputRef.current?.click()}>
               <Avatar
                 size={128}
-                src={avatarUrl}
-                icon={!avatarUrl && <UserOutlined />}
+                src={userAvatarUrl && userAvatarUrl.avatarUrl}
+                icon={!userAvatarUrl && <UserOutlined />}
                 style={largeIconStyle}
               />
-              <Button type='text' size='small'>
+              <Button
+                type='text'
+                size='small'
+                loading={isUploading}
+                disabled={isUploading}
+              >
                 {t('profile.uploadButton')}
               </Button>
             </AvatarUploadLabel>
