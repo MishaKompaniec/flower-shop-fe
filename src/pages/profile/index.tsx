@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Avatar, Button, Form, Input, message, notification, Spin } from 'antd';
+import { Avatar, Button, Form, Input, message, notification } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -14,6 +14,7 @@ import {
 import { largeIconStyle } from '../../utils';
 import { useGetMeQuery, useUpdateUserMutation } from '../../services/userApi';
 import type { ProfileFormValues } from '../../types';
+import { Spinner } from '../../components';
 
 const Profile = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -102,11 +103,7 @@ const Profile = () => {
   };
 
   if (isUserLoading) {
-    return (
-      <Wrapper>
-        <Spin />
-      </Wrapper>
-    );
+    return <Spinner />;
   }
 
   return (

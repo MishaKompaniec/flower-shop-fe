@@ -4,21 +4,20 @@ import {
   UploadOutlined,
   FormOutlined,
 } from '@ant-design/icons';
-import {
-  useDeleteProductMutation,
-  useUpdateProductMutation,
-  useUploadProductImageMutation,
-} from '../../services/productsApi';
+
 import type { BasketItem, ColumnsProps } from '../../types';
 import type { UploadProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
+import type { ColumnsType } from 'antd/es/table';
 
-export const Columns = ({ onEdit }: ColumnsProps) => {
+export const getColumns = ({
+  onEdit,
+  deleteProduct,
+  uploadProductImage,
+  updateProduct,
+}: ColumnsProps): ColumnsType<BasketItem> => {
   const { t } = useTranslation();
-  const [deleteProduct] = useDeleteProductMutation();
-  const [uploadProductImage] = useUploadProductImageMutation();
-  const [updateProduct] = useUpdateProductMutation();
 
   const handleDelete = async (id: string) => {
     try {

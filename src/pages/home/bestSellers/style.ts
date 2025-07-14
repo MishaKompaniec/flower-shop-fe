@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import { colors } from '../../../theme/colors';
+import { Spin } from 'antd';
 
 export const Wrapper = styled.div`
   background-color: ${colors.pinkBg};
+`;
+
+export const Spinner = styled(Spin)`
+  display: block;
+  width: fit-content;
+  margin: 50px auto;
 `;
 
 export const InnerWrapper = styled.div`

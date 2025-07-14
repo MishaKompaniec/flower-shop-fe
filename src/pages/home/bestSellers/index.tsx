@@ -14,6 +14,7 @@ import {
   Image,
   Title,
   Price,
+  Spinner,
 } from './style';
 
 import { useCart } from '../../../context/basketContext';
@@ -26,12 +27,17 @@ const BestSellers = () => {
   const { basket, addToBasket, toggleBasket } = useCart();
   const { t } = useTranslation();
 
-  const { data: products } = useGetProductsQuery();
+  const { data: products, isLoading: productsIsLoading } =
+    useGetProductsQuery();
   const [bestSellers, setBestSellers] = useState<BasketItem[]>([]);
 
   useEffect(() => {
     setBestSellers(products?.filter((p) => p.isBestSellers) || []);
   }, [products]);
+
+  if (productsIsLoading) {
+    return <Spinner />;
+  }
 
   return (
     <Wrapper id='bestSellers'>

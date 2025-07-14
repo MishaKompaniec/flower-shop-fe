@@ -11,20 +11,25 @@ import {
 import { Btn, Wrapper } from './style';
 import {
   useCreateProductMutation,
+  useDeleteProductMutation,
   useGetProductsQuery,
   useUpdateProductMutation,
+  useUploadProductImageMutation,
 } from '../../services/productsApi';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { Columns } from './column';
 import type { BasketItem } from '../../types';
+import { Spinner } from '../../components';
+import { getColumns } from './getColumns';
 
 const { Option } = Select;
 
 const AdminPanel = () => {
   const { t } = useTranslation();
-  const { data: products } = useGetProductsQuery();
-
+  const { data: products, isLoading: productsIsLoading } =
+    useGetProductsQuery();
+  const [deleteProduct] = useDeleteProductMutation();
+  const [uploadProductImage] = useUploadProductImageMutation();
   const [addProduct] = useCreateProductMutation();
   const [updateProduct] = useUpdateProductMutation();
 
@@ -74,6 +79,17 @@ const AdminPanel = () => {
     setEditingItem(null);
   };
 
+  const columns = getColumns({
+    onEdit: handleEdit,
+    deleteProduct,
+    uploadProductImage,
+    updateProduct,
+  });
+
+  if (productsIsLoading) {
+    return <Spinner />;
+  }
+
   return (
     <Wrapper>
       <Btn type='primary' onClick={handleAdd}>
@@ -82,7 +98,7 @@ const AdminPanel = () => {
 
       <Table
         dataSource={products}
-        columns={Columns({ onEdit: handleEdit })}
+        columns={columns}
         rowKey='id'
         pagination={false}
         scroll={{ x: 'fit-content' }}

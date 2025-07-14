@@ -1,3 +1,9 @@
+import type {
+  useDeleteProductMutation,
+  useUpdateProductMutation,
+  useUploadProductImageMutation,
+} from '../services/productsApi';
+
 export interface IROUTE_MODEL<T> {
   path: string;
   element: T;
@@ -48,6 +54,9 @@ export interface Advantage {
 
 export interface ColumnsProps {
   onEdit: (item: BasketItem) => void;
+  deleteProduct: ReturnType<typeof useDeleteProductMutation>[0];
+  updateProduct: ReturnType<typeof useUpdateProductMutation>[0];
+  uploadProductImage: ReturnType<typeof useUploadProductImageMutation>[0];
 }
 
 export interface UserProfile {
