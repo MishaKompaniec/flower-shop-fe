@@ -1,4 +1,11 @@
-import { Button, Checkbox, Popconfirm, Upload, message } from 'antd';
+import {
+  Button,
+  Checkbox,
+  Popconfirm,
+  Upload,
+  message,
+  notification,
+} from 'antd';
 import {
   DeleteOutlined,
   UploadOutlined,
@@ -18,6 +25,8 @@ export const getColumns = ({
   updateProduct,
 }: ColumnsProps): ColumnsType<BasketItem> => {
   const { t } = useTranslation();
+
+  const [api, contextHolder] = notification.useNotification();
 
   const handleDelete = async (id: string) => {
     try {
@@ -99,11 +108,19 @@ export const getColumns = ({
                 id: record.id,
                 image: file as File,
               }).unwrap();
-              message.success(t('adminPanel.uploadSuccess'));
+              api.success({
+                message: t('adminPanel.uploadSuccess'),
+                placement: 'topRight',
+                duration: 3,
+              });
               onSuccess?.({}, new XMLHttpRequest());
-            } catch (error) {
+            } catch (error: any) {
               console.error(error);
-              message.error(t('adminPanel.uploadError'));
+              api.error({
+                message: error.data.error,
+                placement: 'topRight',
+                duration: 3,
+              });
               onError?.(error as any);
             }
           },
@@ -127,6 +144,7 @@ export const getColumns = ({
             >
               <Button type='text' icon={<DeleteOutlined />} danger />
             </Popconfirm>
+            {contextHolder}
           </UploadWrapper>
         );
       },

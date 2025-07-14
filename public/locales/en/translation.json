@@ -20,7 +20,11 @@
     "descriptionTooLong": "Description must be at most 50 characters",
     "priceTooHigh": "Price must not exceed 100000",
     "image": "Image",
-    "isBestSellers": "Best Seller"
+    "isBestSellers": "Best Seller",
+    "uploadSuccess": "Image uploaded successfully",
+    "uploadError": "Error uploading image",
+    "updateSuccess": "Product updated",
+    "updateError": "Failed to update product"
   },
   "authorization": {
     "login": "Login",

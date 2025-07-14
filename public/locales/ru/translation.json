@@ -20,7 +20,11 @@
     "descriptionTooLong": "Описание не должно превышать 50 символов",
     "priceTooHigh": "Цена не должна превышать 100000",
     "image": "Изображение",
-    "isBestSellers": "Лучший товар"
+    "isBestSellers": "Лучший товар",
+    "uploadSuccess": "Изображение успешно загружено",
+    "uploadError": "Ошибка при загрузке изображения",
+    "updateSuccess": "Товар обновлён",
+    "updateError": "Ошибка при обновлении товара"
   },
   "authorization": {
     "login": "Авторизация",
