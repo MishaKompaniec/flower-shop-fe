@@ -1,7 +1,7 @@
 import { Card, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-import { Description, CardTitle, CardInfo, Price } from './style';
+import { Description, CardTitle, CardInfo, Price, Star } from './style';
 import type { BasketItem } from '../../types';
 import type { ReactNode } from 'react';
 import { useCart } from '../../context/basketContext';
@@ -20,6 +20,7 @@ const ProductCard = ({
   return (
     <Card hoverable cover={cover}>
       <CardInfo>
+        <Star />
         <CardTitle>{product.title}</CardTitle>
         <Description>{product.description}</Description>
         <Price>{product.price} ₴</Price>

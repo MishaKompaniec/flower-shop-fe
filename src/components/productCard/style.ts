@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { colors } from '../../theme/colors';
+import { StarFilled } from '@ant-design/icons';
 
 export const CardInfo = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,5 +32,12 @@ export const Description = styled.p`
 export const Price = styled.p`
   font-size: 16px;
   font-weight: bold;
+  color: ${colors.pink};
+`;
+
+export const Star = styled(StarFilled)`
+  position: absolute;
+  top: -15px;
+  right: -15px;
   color: ${colors.pink};
 `;
