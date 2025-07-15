@@ -145,6 +145,18 @@
     "nameMaxLengthError": "Имя не может превышать 50 c.",
     "phoneInvalid": "Пожалуйста, введите корректный номер",
     "edit": "Редактировать",
-    "cancel": "Отмена"
+    "cancel": "Отмена",
+    "profileTab": "Профиль",
+    "passwordTab": "Смена пароля",
+    "currentPassword": "Текущий пароль",
+    "currentPasswordPlaceholder": "Введите текущий пароль",
+    "newPassword": "Новый пароль",
+    "newPasswordPlaceholder": "Введите новый пароль",
+    "changePassword": "Сменить пароль",
+    "changePasswordSuccess": "Пароль успешно изменён",
+    "changePasswordError": "Не удалось сменить пароль. Попробуйте снова.",
+    "requiredField": "Это поле обязательно",
+    "passwordMinLength": "Пароль должен содержать не менее 6 символов",
+    "passwordSuccess": "Пароль успешно изменён"
   }
 }

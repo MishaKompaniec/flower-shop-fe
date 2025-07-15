@@ -145,6 +145,17 @@
     "nameMaxLengthError": "Name cannot exceed 50 ch.",
     "phoneInvalid": "Please enter a valid phone",
     "edit": "Edit",
-    "cancel": "Cancel"
+    "profileTab": "Profile",
+    "passwordTab": "Change Password",
+    "currentPassword": "Current Password",
+    "currentPasswordPlaceholder": "Enter your current password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "changePassword": "Change Password",
+    "changePasswordSuccess": "Password changed successfully",
+    "changePasswordError": "Failed to change password. Please try again.",
+    "requiredField": "This field is required",
+    "passwordMinLength": "Password must be at least 6 characters long",
+    "passwordSuccess": "Password changed successfully"
   }
 }

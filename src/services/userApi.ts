@@ -40,6 +40,17 @@ export const userApi = createApi({
       query: () => '/user/me/avatar',
       providesTags: ['User'],
     }),
+
+    changePassword: builder.mutation<
+      { message: string },
+      { currentPassword: string; newPassword: string }
+    >({
+      query: (body) => ({
+        url: '/user/me/password',
+        method: 'PUT',
+        body,
+      }),
+    }),
   }),
 });
 
@@ -48,4 +59,5 @@ export const {
   useUpdateUserMutation,
   useUploadAvatarMutation,
   useGetAvatarQuery,
+  useChangePasswordMutation,
 } = userApi;

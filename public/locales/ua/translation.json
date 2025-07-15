@@ -144,6 +144,18 @@
     "nameMaxLengthError": "Ім'я не може перевищувати 50 с.",
     "phoneInvalid": "Будь ласка, введіть коректний номер",
     "edit": "Редагувати",
-    "cancel": "Скасувати"
+    "cancel": "Скасувати",
+    "profileTab": "Профіль",
+    "passwordTab": "Зміна паролю",
+    "currentPassword": "Поточний пароль",
+    "currentPasswordPlaceholder": "Введіть поточний пароль",
+    "newPassword": "Новий пароль",
+    "newPasswordPlaceholder": "Введіть новий пароль",
+    "changePassword": "Змінити пароль",
+    "changePasswordSuccess": "Пароль успішно змінено",
+    "changePasswordError": "Не вдалося змінити пароль. Спробуйте ще раз.",
+    "requiredField": "Це поле обов’язкове",
+    "passwordMinLength": "Пароль має містити щонайменше 6 символів",
+    "passwordSuccess": "Пароль успішно змінено"
   }
 }

@@ -1,4 +1,5 @@
 import { colors } from '@/theme/colors';
+import { Form } from 'antd';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -13,6 +14,16 @@ export const Wrapper = styled.div`
 
   .ant-form-item:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    & .ant-tabs-nav {
+      padding: 0 15px 0 15px;
+    }
+
+    & .ant-tabs .ant-tabs-tab {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -30,6 +41,7 @@ export const Title = styled.h1`
 `;
 
 export const FlexBox = styled.div`
+  min-height: 352px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -37,6 +49,7 @@ export const FlexBox = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
+    min-height: 100%;
     gap: 30px;
   }
 `;
