@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   padding: 15px 25px;
   color: ${colors.black};
   background: ${colors.lightPinkBg};
+
+  .ant-form-item:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const Title = styled.h1`
