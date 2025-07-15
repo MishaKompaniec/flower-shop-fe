@@ -1,11 +1,4 @@
-import {
-  Button,
-  Checkbox,
-  Popconfirm,
-  Upload,
-  message,
-  notification,
-} from 'antd';
+import { Button, Checkbox, Popconfirm, Upload } from 'antd';
 import {
   DeleteOutlined,
   UploadOutlined,
@@ -17,6 +10,7 @@ import type { UploadProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
 import type { ColumnsType } from 'antd/es/table';
+import { useNotificationContext } from '../../context/notificationContext';
 
 export const getColumns = ({
   onEdit,
@@ -25,8 +19,7 @@ export const getColumns = ({
   updateProduct,
 }: ColumnsProps): ColumnsType<BasketItem> => {
   const { t } = useTranslation();
-
-  const [api, contextHolder] = notification.useNotification();
+  const api = useNotificationContext();
 
   const handleDelete = async (id: string) => {
     try {
@@ -85,10 +78,18 @@ export const getColumns = ({
                 id: record.id,
                 data: { isBestSellers: e.target.checked },
               }).unwrap();
-              message.success(t('adminPanel.updateSuccess'));
+              api.success({
+                message: t('adminPanel.updateSuccess'),
+                placement: 'topRight',
+                duration: 3,
+              });
             } catch (err) {
               console.error(err);
-              message.error(t('adminPanel.updateError'));
+              api.error({
+                message: t('adminPanel.updateError'),
+                placement: 'topRight',
+                duration: 3,
+              });
             }
           }}
         />
@@ -144,7 +145,6 @@ export const getColumns = ({
             >
               <Button type='text' icon={<DeleteOutlined />} danger />
             </Popconfirm>
-            {contextHolder}
           </UploadWrapper>
         );
       },

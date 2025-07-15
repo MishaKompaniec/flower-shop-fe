@@ -1,13 +1,4 @@
-import {
-  Table,
-  Modal,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  Checkbox,
-  message,
-} from 'antd';
+import { Table, Modal, Form, Input, InputNumber, Select, Checkbox } from 'antd';
 import { Btn, Wrapper } from './style';
 import {
   useCreateProductMutation,
@@ -21,11 +12,13 @@ import { useState } from 'react';
 import type { BasketItem } from '../../types';
 import { Spinner } from '../../components';
 import { getColumns } from './getColumns';
+import { useNotificationContext } from '../../context/notificationContext';
 
 const { Option } = Select;
 
 const AdminPanel = () => {
   const { t } = useTranslation();
+  const api = useNotificationContext();
   const { data: products, isLoading: productsIsLoading } =
     useGetProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
@@ -60,17 +53,29 @@ const AdminPanel = () => {
 
       if (editingItem) {
         await updateProduct({ id: editingItem.id, data: values }).unwrap();
-        message.success(t('adminPanel.updateSuccess'));
+        api.success({
+          message: t('adminPanel.updateSuccess'),
+          placement: 'topRight',
+          duration: 3,
+        });
       } else {
         await addProduct(values).unwrap();
-        message.success(t('adminPanel.addSuccess'));
+        api.success({
+          message: t('adminPanel.addSuccess'),
+          placement: 'topRight',
+          duration: 3,
+        });
       }
 
       setIsModalOpen(false);
       setEditingItem(null);
     } catch (err) {
       console.log(err);
-      message.error(t('adminPanel.submitError'));
+      api.error({
+        message: t('adminPanel.submitError'),
+        placement: 'topRight',
+        duration: 3,
+      });
     }
   };
 

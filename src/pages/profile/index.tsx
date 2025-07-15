@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Avatar, Button, Form, Input, message, notification } from 'antd';
+import { Avatar, Button, Form, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -20,9 +20,10 @@ import {
 import type { ProfileFormValues } from '../../types';
 import { Spinner } from '../../components';
 import { useUser } from '../../context/userContext';
+import { useNotificationContext } from '../../context/notificationContext';
 
 const Profile = () => {
-  const [api, contextHolder] = notification.useNotification();
+  const api = useNotificationContext();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -69,10 +70,10 @@ const Profile = () => {
 
   const onFinish = async (values: any) => {
     if (!hasChanges) {
-      notification.info({
+      api.success({
         message: t('profile.noChanges'),
         placement: 'topRight',
-        duration: 2,
+        duration: 3,
       });
       return;
     }
@@ -98,8 +99,11 @@ const Profile = () => {
       setHasChanges(false);
       setIsEditing(false);
     } catch (error) {
-      console.error(error);
-      message.error(t('profile.error'));
+      api.error({
+        message: t('profile.error'),
+        placement: 'topRight',
+        duration: 3,
+      });
     }
   };
 
@@ -242,7 +246,6 @@ const Profile = () => {
           </Form>
         </FlexBox>
       </FormWrapper>
-      {contextHolder}
     </Wrapper>
   );
 };

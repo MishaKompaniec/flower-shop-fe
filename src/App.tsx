@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom';
-
 import { Layout } from './components/layout';
 import { BasketProvider } from './context/basketContext';
 import Routes from './router';
@@ -8,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './services/store';
 import { UserProvider } from './context/userContext';
 import { AuthProvider } from './context/authContext';
+import { NotificationProvider } from './context/notificationContext';
 
 const App = () => {
   return (
@@ -15,12 +15,14 @@ const App = () => {
       <AuthProvider>
         <UserProvider>
           <BasketProvider>
-            <BrowserRouter>
-              <Layout>
-                <ScrollToTop />
-                <Routes />
-              </Layout>
-            </BrowserRouter>
+            <NotificationProvider>
+              <BrowserRouter>
+                <Layout>
+                  <ScrollToTop />
+                  <Routes />
+                </Layout>
+              </BrowserRouter>
+            </NotificationProvider>
           </BasketProvider>
         </UserProvider>
       </AuthProvider>

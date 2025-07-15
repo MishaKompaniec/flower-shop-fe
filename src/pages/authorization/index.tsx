@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 import { Title, Wrapper, Inner, LanguageSelectWrapper } from './style';
 import type { FC } from 'react';
@@ -8,10 +8,12 @@ import { LanguageSelect } from '../../components/select';
 import { useLoginMutation, useRegisterMutation } from '../../services/authApi';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
+import { useNotificationContext } from '../../context/notificationContext';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const api = useNotificationContext();
 
   const { setToken } = useAuth();
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
@@ -26,7 +28,11 @@ const AuthPage: FC = () => {
       setToken(res.token);
       navigate('/', { replace: false });
     } catch (err: any) {
-      message.error(err.data?.error || t('authorization.loginError'));
+      api.error({
+        message: t('authorization.loginError'),
+        placement: 'topRight',
+        duration: 3,
+      });
     }
   };
 
@@ -40,7 +46,11 @@ const AuthPage: FC = () => {
       await register({ ...rest, role: 'user' }).unwrap();
       setIsLogin(true);
     } catch (err: any) {
-      message.error(err.data?.error || t('authorization.registerError'));
+      api.error({
+        message: t('authorization.registerError'),
+        placement: 'topRight',
+        duration: 3,
+      });
     }
   };
 
