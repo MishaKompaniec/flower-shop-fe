@@ -1,3 +1,4 @@
+import { BasketContextType, BasketItem } from '@/types';
 import React, {
   createContext,
   useContext,
@@ -5,7 +6,6 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import type { BasketContextType, BasketItem } from '../../types';
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
 

@@ -1,9 +1,8 @@
 import { ConfigProvider } from 'antd';
-import React, { type PropsWithChildren } from 'react';
-
+import { FC, type PropsWithChildren } from 'react';
 import { colors } from './colors';
 
-const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
+const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ConfigProvider
       theme={{

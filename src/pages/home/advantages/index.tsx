@@ -11,9 +11,9 @@ import {
   Text,
   Img,
 } from './style';
-import { useAdvantagesData } from '../../../utils/pages';
-import type { AdvantageItemProps } from '../../../types';
 import type { FC } from 'react';
+import { AdvantageItemProps } from '@/types';
+import { useAdvantagesData } from '@/utils/pages';
 
 const AdvantageItem: FC<AdvantageItemProps> = ({ title, text }) => (
   <AdvantagesItem>

@@ -17,11 +17,11 @@ import {
   Spinner,
 } from './style';
 
-import { SwiperBreakpoints } from '../../../utils/pages';
-import { useGetProductsQuery } from '../../../services/productsApi';
-import type { BasketItem } from '../../../types';
 import { useEffect, useState } from 'react';
-import { useCart } from '../../../context/basketContext';
+import { useCart } from '@/context/basketContext';
+import { useGetProductsQuery } from '@/services/productsApi';
+import { BasketItem } from '@/types';
+import { SwiperBreakpoints } from '@/utils/pages';
 
 const BestSellers = () => {
   const { basket, addToBasket, toggleBasket } = useCart();

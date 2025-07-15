@@ -6,8 +6,8 @@ import Bouquets from './bouquets';
 import FruitBouquets from './fruitBouquets';
 import Plants from './plants';
 import { Wrapper } from './style';
-import { useGetProductsQuery } from '../../services/productsApi';
-import type { BasketItem } from '../../types';
+import { useGetProductsQuery } from '@/services/productsApi';
+import { BasketItem } from '@/types';
 
 const Store = () => {
   const { data: products } = useGetProductsQuery();

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { colors } from '../../theme/colors';
 import { Button } from 'antd';
 import { CheckOutlined } from '@ant-design/icons';
+import { colors } from '@/theme/colors';
 
 export const Wrapper = styled.div`
   display: flex;

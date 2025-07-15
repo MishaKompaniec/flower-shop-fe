@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import { Wrapper, Image } from './style';
-import { ProductCard } from '../../../components/productCard';
-import type { BasketItem } from '../../../types';
 import type { FC } from 'react';
+import { BasketItem } from '@/types';
+import { ProductCard } from '@/components';
 
 interface PlantsProps {
   plants: BasketItem[];

@@ -1,12 +1,12 @@
-import Authorization from '../../pages/authorization';
-import Store from '../../pages/store';
-import Home from '../../pages/home';
-import { Pages } from '../../utils/pages';
-import type { IROUTE_MODEL } from '../../types';
 import type { RouteProps } from 'react-router-dom';
 import PrivateRoute from './privateRoute';
-import AdminPanel from '../../pages/adminPanel';
-import Profile from '../../pages/profile';
+import { IROUTE_MODEL } from '@/types';
+import { Pages } from '@/utils/pages';
+import Home from '@/pages/home';
+import Store from '@/pages/store';
+import AdminPanel from '@/pages/adminPanel';
+import Profile from '@/pages/profile';
+import Authorization from '@/pages/authorization';
 
 export const ROUTES: IROUTE_MODEL<RouteProps['children']>[] = [
   {

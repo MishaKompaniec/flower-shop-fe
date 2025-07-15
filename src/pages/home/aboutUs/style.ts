@@ -1,5 +1,5 @@
+import { colors } from '@/theme/colors';
 import styled, { keyframes } from 'styled-components';
-import { colors } from '../../../theme/colors';
 
 export const Wrapper = styled.div`
   margin: 0 auto;

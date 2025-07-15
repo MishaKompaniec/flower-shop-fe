@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn } from '@reduxjs/toolkit/query';
 import type { FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { redirectToLogin } from '../utils/navigation';
+import { redirectToLogin } from '@/utils/navigation';
 
 const baseUrl =
   import.meta.env.VITE_API_BASE_URL || 'http://localhost:4200/api';

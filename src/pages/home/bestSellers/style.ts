@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors } from '../../../theme/colors';
 import { Spin } from 'antd';
+import { colors } from '@/theme/colors';
 
 export const Wrapper = styled.div`
   background-color: ${colors.pinkBg};

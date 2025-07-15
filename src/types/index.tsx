@@ -1,8 +1,8 @@
-import type {
+import {
   useDeleteProductMutation,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from '../services/productsApi';
+} from '@/services/productsApi';
 
 export interface IROUTE_MODEL<T> {
   path: string;

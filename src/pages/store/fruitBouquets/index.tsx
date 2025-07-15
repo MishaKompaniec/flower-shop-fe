@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { ProductCard } from '../../../components/productCard';
 import { Wrapper, Image } from './style';
-import type { BasketItem } from '../../../types';
+import { BasketItem } from '@/types';
+import { ProductCard } from '@/components';
 
 interface EdibleBouquetsProps {
   fruitBouquets: BasketItem[];

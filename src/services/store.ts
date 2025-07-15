@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authApi } from '../services/authApi';
-import { productsApi } from '../services/productsApi';
 import { userApi } from './userApi';
+import { productsApi } from './productsApi';
 
 export const store = configureStore({
   reducer: {

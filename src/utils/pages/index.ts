@@ -1,5 +1,5 @@
+import { Advantage } from '@/types';
 import { useTranslation } from 'react-i18next';
-import type { Advantage } from '../../types';
 
 export const Pages = {
   HOME: '/',

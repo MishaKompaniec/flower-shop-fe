@@ -1,5 +1,5 @@
+import { colors } from '@/theme/colors';
 import styled from 'styled-components';
-import { colors } from '../../theme/colors';
 
 export const Wrapper = styled.div`
   height: 100%;

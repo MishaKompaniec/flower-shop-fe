@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useAuth } from '../authContext';
-import { useGetAvatarQuery } from '../../services/userApi';
+import { useGetAvatarQuery } from '@/services/userApi';
 
 type UserContextType = {
   avatarUrl: string | null;

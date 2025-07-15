@@ -10,7 +10,7 @@ import type { UploadProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
 import type { ColumnsType } from 'antd/es/table';
-import { useNotificationContext } from '../../context/notificationContext';
+import { useNotificationContext } from '@/context/notificationContext';
 
 export const getColumns = ({
   onEdit,

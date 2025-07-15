@@ -2,9 +2,9 @@ import { Card, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { Description, CardTitle, CardInfo, Price, Star } from './style';
-import type { BasketItem } from '../../types';
 import type { ReactNode } from 'react';
-import { useCart } from '../../context/basketContext';
+import { BasketItem } from '@/types';
+import { useCart } from '@/context/basketContext';
 
 const ProductCard = ({
   product,

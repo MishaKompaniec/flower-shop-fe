@@ -4,11 +4,11 @@ import { Form, Input, Button } from 'antd';
 import { Title, Wrapper, Inner, LanguageSelectWrapper } from './style';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LanguageSelect } from '../../components/select';
-import { useLoginMutation, useRegisterMutation } from '../../services/authApi';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/authContext';
-import { useNotificationContext } from '../../context/notificationContext';
+import { useNotificationContext } from '@/context/notificationContext';
+import { useAuth } from '@/context/authContext';
+import { useLoginMutation, useRegisterMutation } from '@/services/authApi';
+import { LanguageSelect } from '@/components';
 
 const AuthPage: FC = () => {
   const { t } = useTranslation();

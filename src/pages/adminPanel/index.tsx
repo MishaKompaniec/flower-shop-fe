@@ -1,18 +1,18 @@
 import { Table, Modal, Form, Input, InputNumber, Select, Checkbox } from 'antd';
 import { Btn, Wrapper } from './style';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { getColumns } from './getColumns';
+import { useNotificationContext } from '@/context/notificationContext';
 import {
   useCreateProductMutation,
   useDeleteProductMutation,
   useGetProductsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from '../../services/productsApi';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import type { BasketItem } from '../../types';
-import { Spinner } from '../../components';
-import { getColumns } from './getColumns';
-import { useNotificationContext } from '../../context/notificationContext';
+} from '@/services/productsApi';
+import { BasketItem } from '@/types';
+import { Spinner } from '@/components';
 
 const { Option } = Select;
 

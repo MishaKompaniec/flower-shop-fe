@@ -11,16 +11,16 @@ import {
   Title,
   Wrapper,
 } from './style';
-import { largeIconStyle } from '../../utils';
+import { useNotificationContext } from '@/context/notificationContext';
+import { ProfileFormValues } from '@/types';
 import {
   useGetMeQuery,
   useUpdateUserMutation,
   useUploadAvatarMutation,
-} from '../../services/userApi';
-import type { ProfileFormValues } from '../../types';
-import { Spinner } from '../../components';
-import { useNotificationContext } from '../../context/notificationContext';
-import { useUser } from '../../context/userContext';
+} from '@/services/userApi';
+import { useUser } from '@/context/userContext';
+import { Spinner } from '@/components';
+import { largeIconStyle } from '@/utils';
 
 const Profile = () => {
   const api = useNotificationContext();

@@ -1,5 +1,5 @@
+import { colors } from '@/theme/colors';
 import styled, { keyframes } from 'styled-components';
-import { colors } from '../../../theme/colors';
 
 const rotate = keyframes`
   0% { transform: rotate(0deg); }

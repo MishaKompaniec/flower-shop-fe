@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import type { BasketItem } from '../types';
 import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
+import { BasketItem } from '@/types';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',

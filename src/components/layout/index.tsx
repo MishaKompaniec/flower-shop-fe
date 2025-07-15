@@ -4,8 +4,8 @@ import { Footer } from '../footer';
 import { Header } from '../header';
 
 import { MainWrapper } from './style';
-import type { LayoutProps } from '../../types';
 import type { FC } from 'react';
+import { LayoutProps } from '@/types';
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const location = useLocation();

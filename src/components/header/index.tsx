@@ -2,11 +2,7 @@ import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-
 import { Drawer } from '../drawer';
-import { MobileMenuDrawer } from '../mobileMenuDrawer';
-import { LanguageSelect } from '../select';
-
 import {
   HeaderWrapper,
   MenuItemLink,
@@ -19,9 +15,11 @@ import {
   AvatarWrapper,
 } from './style';
 import { Avatar } from 'antd';
-import { smallIconStyle } from '../../utils';
-import { useUser } from '../../context/userContext';
-import { useAuth } from '../../context/authContext';
+import { useAuth } from '@/context/authContext';
+import { useUser } from '@/context/userContext';
+import { smallIconStyle } from '@/utils';
+import { LanguageSelect } from '../select';
+import { MobileMenuDrawer } from '../mobileMenuDrawer';
 
 const Header = () => {
   const navigate = useNavigate();

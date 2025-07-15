@@ -13,8 +13,8 @@ import {
   CloseBtn,
 } from './style';
 import type { FC } from 'react';
-import type { DrawerItemProps } from '../../types';
-import { useCart } from '../../context/basketContext';
+import { DrawerItemProps } from '@/types';
+import { useCart } from '@/context/basketContext';
 
 const DrawerItem: FC<DrawerItemProps> = ({
   product: { id, price, quantity, title },

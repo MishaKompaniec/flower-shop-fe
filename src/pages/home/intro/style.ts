@@ -1,6 +1,6 @@
+import { colors } from '@/theme/colors';
 import { Button } from 'antd';
 import styled from 'styled-components';
-import { colors } from '../../../theme/colors';
 
 export const MainWrapper = styled.div`
   position: relative;
