@@ -19,8 +19,8 @@ import {
 } from '../../services/userApi';
 import type { ProfileFormValues } from '../../types';
 import { Spinner } from '../../components';
-import { useUser } from '../../context/userContext';
 import { useNotificationContext } from '../../context/notificationContext';
+import { useUser } from '../../context/userContext';
 
 const Profile = () => {
   const api = useNotificationContext();
