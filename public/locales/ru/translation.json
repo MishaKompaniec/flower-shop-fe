@@ -43,7 +43,8 @@
     "passwordMinLength": "Пароль должен быть минимум 6 символов",
     "confirmPassword": "Подтверждение пароля",
     "confirmPasswordRequired": "Пожалуйста, подтвердите пароль!",
-    "passwordsNotMatch": "Пароли не совпадают!"
+    "passwordsNotMatch": "Пароли не совпадают!",
+    "registerError:": "При регистрации произошла ошибка!"
   },
   "header": {
     "main": "ГЛАВНАЯ",

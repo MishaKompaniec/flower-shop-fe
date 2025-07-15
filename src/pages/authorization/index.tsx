@@ -27,9 +27,9 @@ const AuthPage: FC = () => {
       localStorage.setItem('token', res.token);
       setToken(res.token);
       navigate('/', { replace: false });
-    } catch (err: any) {
+    } catch (error: any) {
       api.error({
-        message: t('authorization.loginError'),
+        message: error.data.error || t('authorization.loginError'),
         placement: 'topRight',
         duration: 3,
       });
@@ -45,9 +45,9 @@ const AuthPage: FC = () => {
       const { confirmPassword, ...rest } = values;
       await register({ ...rest, role: 'user' }).unwrap();
       setIsLogin(true);
-    } catch (err: any) {
+    } catch (error: any) {
       api.error({
-        message: t('authorization.registerError'),
+        message: error.data.error || t('authorization.registerError'),
         placement: 'topRight',
         duration: 3,
       });

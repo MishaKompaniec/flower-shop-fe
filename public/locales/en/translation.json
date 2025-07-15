@@ -43,7 +43,8 @@
     "passwordMinLength": "Password must be at least 6 characters",
     "confirmPassword": "Confirm Password",
     "confirmPasswordRequired": "Please confirm your password!",
-    "passwordsNotMatch": "Passwords do not match!"
+    "passwordsNotMatch": "Passwords do not match!",
+    "registerError:": "There was an error during registration!"
   },
   "header": {
     "main": "MAIN",

@@ -69,10 +69,10 @@ const AdminPanel = () => {
 
       setIsModalOpen(false);
       setEditingItem(null);
-    } catch (err) {
-      console.log(err);
+    } catch (error: any) {
+      console.log(error);
       api.error({
-        message: t('adminPanel.submitError'),
+        message: error.data.error || t('adminPanel.submitError'),
         placement: 'topRight',
         duration: 3,
       });

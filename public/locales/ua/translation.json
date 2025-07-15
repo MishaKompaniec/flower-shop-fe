@@ -42,7 +42,8 @@
     "passwordMinLength": "Пароль повинен бути мінімум 6 символів",
     "confirmPassword": "Підтвердження пароля",
     "confirmPasswordRequired": "Будь ласка, підтвердіть пароль!",
-    "passwordsNotMatch": "Паролі не співпадають!"
+    "passwordsNotMatch": "Паролі не співпадають!",
+    "registerError:": "Під час реєстрації сталася помилка!"
   },
   "header": {
     "main": "ГОЛОВНА",

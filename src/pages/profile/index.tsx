@@ -98,9 +98,9 @@ const Profile = () => {
       });
       setHasChanges(false);
       setIsEditing(false);
-    } catch (error) {
+    } catch (error: any) {
       api.error({
-        message: t('profile.error'),
+        message: error.data.error || t('profile.error'),
         placement: 'topRight',
         duration: 3,
       });
@@ -126,6 +126,27 @@ const Profile = () => {
         });
       }
     }
+  };
+
+  const formatPhoneNumber = (input: string): string => {
+    const digits = input.replace(/\D/g, '').slice(0, 12);
+    let formatted = '+380';
+
+    if (digits.length > 3) {
+      const phoneDigits = digits.slice(3);
+      const parts = [
+        phoneDigits.slice(0, 2),
+        phoneDigits.slice(2, 5),
+        phoneDigits.slice(5, 7),
+        phoneDigits.slice(7, 9),
+      ].filter(Boolean);
+
+      formatted += ' ' + parts.join(' ');
+    } else {
+      formatted += ' ' + digits.slice(3);
+    }
+
+    return formatted;
   };
 
   if (isUserLoading) {
@@ -201,7 +222,7 @@ const Profile = () => {
               name='phone'
               rules={[
                 {
-                  pattern: /^(\+380|0)\d{9}$/,
+                  pattern: /^\+380 \d{2} \d{3} \d{2} \d{2}$/,
                   message: t('profile.phoneInvalid'),
                 },
               ]}
@@ -209,6 +230,11 @@ const Profile = () => {
               <Input
                 placeholder={t('profile.phonePlaceholder')}
                 disabled={!isEditing}
+                value={form.getFieldValue('phone')}
+                onChange={(e) => {
+                  const formatted = formatPhoneNumber(e.target.value);
+                  form.setFieldsValue({ phone: formatted });
+                }}
               />
             </Form.Item>
 

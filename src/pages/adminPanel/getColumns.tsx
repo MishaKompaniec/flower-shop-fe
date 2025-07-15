@@ -83,10 +83,10 @@ export const getColumns = ({
                 placement: 'topRight',
                 duration: 3,
               });
-            } catch (err) {
-              console.error(err);
+            } catch (error: any) {
+              console.error(error);
               api.error({
-                message: t('adminPanel.updateError'),
+                message: error.data.error || t('adminPanel.updateError'),
                 placement: 'topRight',
                 duration: 3,
               });
