@@ -48,3 +48,8 @@ p {
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
   background-color: rgba(0, 100, 0, 0.7);
 }
+
+.ant-input-outlined[disabled] {
+  background: white;
+  color: #1c1c1c;
+}

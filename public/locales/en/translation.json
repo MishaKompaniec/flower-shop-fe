@@ -142,6 +142,8 @@
     "error": "Failed to update profile",
     "avatarSuccess": "Avatar uploaded successfully!",
     "nameMaxLengthError": "Name cannot exceed 50 ch.",
-    "phoneInvalid": "Please enter a valid phone"
+    "phoneInvalid": "Please enter a valid phone",
+    "edit": "Edit",
+    "cancel": "Cancel"
   }
 }

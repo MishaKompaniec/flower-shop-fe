@@ -30,6 +30,7 @@ const Profile = () => {
     null
   );
   const [hasChanges, setHasChanges] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const { data: user, isLoading: isUserLoading } = useGetMeQuery();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
   const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
@@ -44,6 +45,8 @@ const Profile = () => {
       };
       setInitialValues(initial);
       form.setFieldsValue(initial);
+      setHasChanges(false);
+      setIsEditing(false);
     }
   }, [user, form]);
 
@@ -93,6 +96,7 @@ const Profile = () => {
         phone: values.phone,
       });
       setHasChanges(false);
+      setIsEditing(false);
     } catch (error) {
       console.error(error);
       message.error(t('profile.error'));
@@ -154,6 +158,7 @@ const Profile = () => {
               accept='image/*'
             />
           </AvatarWrapper>
+
           <Form
             layout='vertical'
             form={form}
@@ -165,7 +170,10 @@ const Profile = () => {
               name='email'
               rules={[{ required: true, type: 'email' }]}
             >
-              <Input placeholder={t('profile.emailPlaceholder')} />
+              <Input
+                placeholder={t('profile.emailPlaceholder')}
+                disabled={!isEditing}
+              />
             </Form.Item>
 
             <Form.Item
@@ -178,7 +186,10 @@ const Profile = () => {
                 },
               ]}
             >
-              <Input placeholder={t('profile.namePlaceholder')} />
+              <Input
+                placeholder={t('profile.namePlaceholder')}
+                disabled={!isEditing}
+              />
             </Form.Item>
 
             <Form.Item
@@ -191,19 +202,42 @@ const Profile = () => {
                 },
               ]}
             >
-              <Input placeholder={t('profile.phonePlaceholder')} />
+              <Input
+                placeholder={t('profile.phonePlaceholder')}
+                disabled={!isEditing}
+              />
             </Form.Item>
 
             <Form.Item>
-              <Button
-                type='primary'
-                htmlType='submit'
-                loading={isUpdating}
-                disabled={!hasChanges}
-                block
-              >
-                {t('profile.save')}
-              </Button>
+              {!isEditing ? (
+                <Button type='default' onClick={() => setIsEditing(true)} block>
+                  {t('profile.edit')}
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    loading={isUpdating}
+                    disabled={!hasChanges}
+                    block
+                    style={{ marginBottom: 8 }}
+                  >
+                    {t('profile.save')}
+                  </Button>
+                  <Button
+                    type='default'
+                    onClick={() => {
+                      form.setFieldsValue(initialValues ?? {});
+                      setHasChanges(false);
+                      setIsEditing(false);
+                    }}
+                    block
+                  >
+                    {t('profile.cancel')}
+                  </Button>
+                </>
+              )}
             </Form.Item>
           </Form>
         </FlexBox>
