@@ -114,7 +114,9 @@
     "modalTitle": "Order Placement",
     "modal": "You have successfully placed your order",
     "ok": "Ok",
-    "cancel": "Cansel"
+    "cancel": "Cansel",
+    "orderSuccessfully": "Order created successfully!",
+    "error": "Failed to create order."
   },
   "bestSellersBlock": {
     "title": "Best Sellers",

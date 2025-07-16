@@ -78,3 +78,22 @@ export interface ProfileFormValues {
   name?: string;
   phone?: string;
 }
+
+export interface OrderProduct {
+  productId: string;
+  quantity: number;
+  price: number;
+  title: string;
+}
+
+export interface Order {
+  userId: string;
+  products: OrderProduct[];
+  totalPrice: number;
+  status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  createdAt: string;
+}
+
+export interface OrderCreateRequest {
+  products: OrderProduct[];
+}

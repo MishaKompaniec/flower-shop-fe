@@ -14,9 +14,12 @@ import {
   Btn,
 } from './style';
 import { useCart } from '../../context/basketContext';
+import { useCreateOrderMutation } from '@/services/ordersApi';
+import { useNotificationContext } from '@/context/notificationContext';
 
 const Drawer = () => {
   const { t } = useTranslation();
+  const api = useNotificationContext();
   const {
     isBasketOpen,
     closeBasket,
@@ -26,13 +29,41 @@ const Drawer = () => {
     totalItems,
     basket,
   } = useCart();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
 
-  const handleOk = () => {
-    clearBasket();
-    closeBasket();
-    setIsModalOpen(false);
+  const handleOk = async () => {
+    try {
+      const orderPayload = {
+        products: basket.map(({ id: productId, quantity, price, title }) => ({
+          productId,
+          quantity,
+          price,
+          title,
+        })),
+      };
+
+      await createOrder(orderPayload).unwrap();
+
+      api.success({
+        message: t('basket.orderSuccessfully'),
+        placement: 'topRight',
+        duration: 3,
+      });
+
+      clearBasket();
+      closeBasket();
+      setIsModalOpen(false);
+    } catch (error: any) {
+      console.error('Failed to create order:', error);
+      api.error({
+        message: error.data.error || t('basket.error'),
+        placement: 'topRight',
+        duration: 3,
+      });
+    }
   };
 
   useEffect(() => {
@@ -60,7 +91,7 @@ const Drawer = () => {
           ) : (
             <List>
               {basket.map((product) => (
-                <DrawerItem product={product} />
+                <DrawerItem key={product.id} product={product} />
               ))}
             </List>
           )}
@@ -72,6 +103,7 @@ const Drawer = () => {
               type='primary'
               size='large'
               onClick={() => setIsModalOpen(true)}
+              loading={isLoading}
             >
               {t('basket.btn')}
             </Btn>
@@ -82,6 +114,7 @@ const Drawer = () => {
         title={t('basket.modalTitle')}
         open={isModalOpen}
         onOk={handleOk}
+        confirmLoading={isLoading}
         onCancel={() => setIsModalOpen(false)}
         okText={t('basket.ok')}
         cancelText={t('basket.cancel')}
