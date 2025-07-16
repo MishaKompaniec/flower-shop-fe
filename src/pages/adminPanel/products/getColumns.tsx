@@ -5,12 +5,12 @@ import {
   FormOutlined,
 } from '@ant-design/icons';
 
-import type { BasketItem, ColumnsProps } from '../../types';
 import type { UploadProps } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
 import type { ColumnsType } from 'antd/es/table';
 import { useNotificationContext } from '@/context/notificationContext';
+import { BasketItem, ColumnsProps } from '@/types';
+import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
 
 export const getColumns = ({
   onEdit,

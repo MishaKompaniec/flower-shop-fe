@@ -24,7 +24,9 @@
     "uploadSuccess": "Image uploaded successfully",
     "uploadError": "Error uploading image",
     "updateSuccess": "Product updated",
-    "updateError": "Failed to update product"
+    "updateError": "Failed to update product",
+    "orders": "Orders",
+    "products": "Products"
   },
   "authorization": {
     "login": "Login",

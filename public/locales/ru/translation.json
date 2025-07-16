@@ -24,7 +24,9 @@
     "uploadSuccess": "Изображение успешно загружено",
     "uploadError": "Ошибка при загрузке изображения",
     "updateSuccess": "Товар обновлён",
-    "updateError": "Ошибка при обновлении товара"
+    "updateError": "Ошибка при обновлении товара",
+    "orders": "Заказы",
+    "products": "Товары"
   },
   "authorization": {
     "login": "Авторизация",
