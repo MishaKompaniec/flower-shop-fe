@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import { useTranslation } from 'react-i18next';
 import Products from './products';
 import { Wrapper } from './style';
+import { Orders } from './orders';
 
 const AdminPanel = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const AdminPanel = () => {
           {
             key: 'orders',
             label: t('adminPanel.orders'),
-            children: <>test</>,
+            children: <Orders />,
           },
           {
             key: 'products',

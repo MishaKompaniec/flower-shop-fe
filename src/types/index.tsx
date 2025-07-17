@@ -87,6 +87,7 @@ export interface OrderProduct {
 }
 
 export interface Order {
+  id: string;
   userId: string;
   products: OrderProduct[];
   totalPrice: number;

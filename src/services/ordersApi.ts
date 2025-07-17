@@ -7,19 +7,16 @@ export const ordersApi = createApi({
   baseQuery: baseQueryWithAuthRedirect,
   tagTypes: ['Order'],
   endpoints: (builder) => ({
-    // Получить все заказы (для админа)
     getOrders: builder.query<Order[], void>({
       query: () => '/orders',
       providesTags: ['Order'],
     }),
 
-    // Получить свои заказы (для пользователя)
     getMyOrders: builder.query<Order[], void>({
       query: () => '/orders/my',
       providesTags: ['Order'],
     }),
 
-    // Создать заказ
     createOrder: builder.mutation<Order, OrderCreateRequest>({
       query: (body) => ({
         url: '/orders',
