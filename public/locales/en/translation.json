@@ -114,11 +114,17 @@
     "total": "Total:",
     "btn": "Checkout",
     "modalTitle": "Order Placement",
-    "modal": "You have successfully placed your order",
+    "modal": "Currently, payment is only possible in cash or by card to the courier upon receiving your order.",
     "ok": "Ok",
     "cancel": "Cansel",
     "orderSuccessfully": "Order created successfully!",
-    "error": "Failed to create order."
+    "error": "Failed to create order.",
+    "phone": "Phone",
+    "address": "Address",
+    "phonePlaceholder": "Enter your phone number",
+    "addressPlaceholder": "Enter delivery address",
+    "required": "This field is required",
+    "phoneInvalid": "Phone number must be in format +380 XX XXX XX XX"
   },
   "bestSellersBlock": {
     "title": "Best Sellers",

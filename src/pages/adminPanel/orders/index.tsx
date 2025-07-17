@@ -31,6 +31,14 @@ const Orders = () => {
             </DateText>
             <Status status={order.status}>{order.status}</Status>
           </Header>
+
+          <Details>
+            <b>Phone:</b> {order.phone}
+          </Details>
+          <Details>
+            <b>Address:</b> {order.address}
+          </Details>
+
           <ProductList>
             {order.products.map((product, idx) => (
               <Product key={idx}>

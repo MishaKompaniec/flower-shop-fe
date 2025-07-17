@@ -1,9 +1,7 @@
-import { Drawer as AntDrawer, Modal } from 'antd';
+import { Drawer as AntDrawer, Modal, Input, Form } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { DrawerItem } from '../drawerItem';
-
 import {
   DrawerContent,
   BasketWrapper,
@@ -16,6 +14,7 @@ import {
 import { useCart } from '../../context/basketContext';
 import { useCreateOrderMutation } from '@/services/ordersApi';
 import { useNotificationContext } from '@/context/notificationContext';
+import { formatPhoneNumber } from '@/utils';
 
 const Drawer = () => {
   const { t } = useTranslation();
@@ -34,8 +33,12 @@ const Drawer = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [createOrder, { isLoading }] = useCreateOrderMutation();
 
+  const [form] = Form.useForm();
+
   const handleOk = async () => {
     try {
+      const values = await form.validateFields();
+
       const orderPayload = {
         products: basket.map(({ id: productId, quantity, price, title }) => ({
           productId,
@@ -43,6 +46,8 @@ const Drawer = () => {
           price,
           title,
         })),
+        phone: values.phone,
+        address: values.address,
       };
 
       await createOrder(orderPayload).unwrap();
@@ -56,13 +61,17 @@ const Drawer = () => {
       clearBasket();
       closeBasket();
       setIsModalOpen(false);
+      form.resetFields();
     } catch (error: any) {
-      console.error('Failed to create order:', error);
-      api.error({
-        message: error.data.error || t('basket.error'),
-        placement: 'topRight',
-        duration: 3,
-      });
+      if (error.errorFields) {
+      } else {
+        console.error('Failed to create order:', error);
+        api.error({
+          message: error.data?.error || t('basket.error'),
+          placement: 'topRight',
+          duration: 3,
+        });
+      }
     }
   };
 
@@ -115,11 +124,49 @@ const Drawer = () => {
         open={isModalOpen}
         onOk={handleOk}
         confirmLoading={isLoading}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => {
+          setIsModalOpen(false);
+          form.resetFields();
+        }}
         okText={t('basket.ok')}
         cancelText={t('basket.cancel')}
       >
-        <p>{t('basket.modal')}</p>
+        <Form
+          form={form}
+          layout='vertical'
+          initialValues={{ phone: '', address: '' }}
+          preserve={false}
+        >
+          <Form.Item
+            label={t('basket.phone')}
+            name='phone'
+            rules={[
+              { required: true, message: t('basket.required') },
+              {
+                pattern: /^\+380 \d{2} \d{3} \d{2} \d{2}$/,
+                message: t('basket.phoneInvalid'),
+              },
+            ]}
+          >
+            <Input
+              placeholder={t('basket.phonePlaceholder')}
+              onChange={(e) => {
+                const formatted = formatPhoneNumber(e.target.value);
+                form.setFieldsValue({ phone: formatted });
+              }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label={t('basket.address')}
+            name='address'
+            rules={[{ required: true, message: t('basket.required') }]}
+          >
+            <Input placeholder={t('basket.addressPlaceholder')} />
+          </Form.Item>
+
+          <p>{t('basket.modal')}</p>
+        </Form>
       </Modal>
     </>
   );

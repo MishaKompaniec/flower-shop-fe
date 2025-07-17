@@ -88,6 +88,8 @@ export interface OrderProduct {
 
 export interface Order {
   id: string;
+  phone: string;
+  address: string;
   userId: string;
   products: OrderProduct[];
   totalPrice: number;
