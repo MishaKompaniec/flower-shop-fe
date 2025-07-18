@@ -16,12 +16,25 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const { token } = useAuth();
 
-  const { data: avatarData } = useGetAvatarQuery(undefined, { skip: !token });
-  const { data: user, isLoading: isUserLoading } = useGetMeQuery(undefined, {
-    skip: !token,
-  });
+  const { data: avatarData, refetch: refetchAvatar } = useGetAvatarQuery(
+    undefined,
+    { skip: !token }
+  );
+
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    refetch: refetchUser,
+  } = useGetMeQuery(undefined, { skip: !token });
 
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (token) {
+      refetchAvatar();
+      refetchUser();
+    }
+  }, [token, refetchAvatar, refetchUser]);
 
   useEffect(() => {
     if (avatarData?.avatarUrl) {
