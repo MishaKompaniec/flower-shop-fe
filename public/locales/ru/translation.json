@@ -36,7 +36,8 @@
     "address": "Адрес",
     "total": "Итого",
     "markAsCompleted": "Отметить как выполнено",
-    "deleteOrder": "Удалить заказ"
+    "deleteOrder": "Удалить заказ",
+    "addSuccess": "Товар успешно добавлен"
   },
   "authorization": {
     "login": "Авторизация",

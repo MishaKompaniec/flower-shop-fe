@@ -35,7 +35,8 @@
     "address": "Address",
     "total": "Total",
     "markAsCompleted": "Mark as completed",
-    "deleteOrder": "Delete order"
+    "deleteOrder": "Delete order",
+    "addSuccess": "Item successfully added"
   },
   "authorization": {
     "login": "Login",

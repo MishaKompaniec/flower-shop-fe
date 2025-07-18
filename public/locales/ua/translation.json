@@ -34,7 +34,8 @@
     "address": "Адреса",
     "total": "Разом",
     "markAsCompleted": "Позначити як виконане",
-    "deleteOrder": "Видалити замовлення"
+    "deleteOrder": "Видалити замовлення",
+    "addSuccess": " Товар успішно додано"
   },
   "authorization": {
     "login": "Авторизація",
