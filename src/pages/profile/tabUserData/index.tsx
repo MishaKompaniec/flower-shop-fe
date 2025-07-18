@@ -141,7 +141,6 @@ const TabUserData = () => {
         <Input
           placeholder={t('profile.phonePlaceholder')}
           disabled={!isEditing}
-          value={form.getFieldValue('phone')}
           onChange={(e) => {
             const formatted = formatPhoneNumber(e.target.value);
             form.setFieldsValue({ phone: formatted });
