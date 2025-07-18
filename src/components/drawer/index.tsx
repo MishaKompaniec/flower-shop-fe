@@ -1,4 +1,4 @@
-import { Drawer as AntDrawer, Modal } from 'antd';
+import { Drawer as AntDrawer } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DrawerItem } from '../drawerItem';
@@ -12,13 +12,12 @@ import {
   Btn,
 } from './style';
 import { useCart } from '../../context/basketContext';
-import { useNavigate } from 'react-router-dom';
 import { CreateOrderModal } from '../createOrderModal';
 import { useCreateOrderMutation } from '@/services/ordersApi';
+import { UnauthorizedModal } from '../unauthorizedModal';
 
 const Drawer = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [isUnauthorizedModalOpen, setIsUnauthorizedModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -83,22 +82,11 @@ const Drawer = () => {
         createOrder={createOrder}
         isLoading={isLoading}
       />
-
-      <Modal
-        centered
-        title={t('basket.unauthorizedTitle')}
-        open={isUnauthorizedModalOpen}
-        onOk={() => {
-          setIsUnauthorizedModalOpen(false);
-          setIsModalOpen(false);
-          navigate('/authorization');
-        }}
-        onCancel={() => setIsUnauthorizedModalOpen(false)}
-        okText={t('basket.goToLogin')}
-        cancelText={t('basket.cancel')}
-      >
-        <p>{t('basket.unauthorizedMessage')}</p>
-      </Modal>
+      <UnauthorizedModal
+        setIsModalOpen={setIsModalOpen}
+        setIsUnauthorizedModalOpen={setIsUnauthorizedModalOpen}
+        isUnauthorizedModalOpen={isUnauthorizedModalOpen}
+      />
     </>
   );
 };
