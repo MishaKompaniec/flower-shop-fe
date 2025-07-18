@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
+import { rawBaseQuery } from './baseQueryWithAuthRedirect';
 
 interface RegisterRequest {
   email: string;
@@ -25,7 +25,7 @@ interface LoginResponse {
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: baseQueryWithAuthRedirect,
+  baseQuery: rawBaseQuery,
   endpoints: (builder) => ({
     register: builder.mutation<RegisterResponse, RegisterRequest>({
       query: (body) => ({

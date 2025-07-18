@@ -1,10 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
+import { rawBaseQuery } from './baseQueryWithAuthRedirect';
 import { BasketItem } from '@/types';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  baseQuery: baseQueryWithAuthRedirect,
+  baseQuery: rawBaseQuery,
   tagTypes: ['Product'],
   endpoints: (builder) => ({
     getProducts: builder.query<BasketItem[], void>({

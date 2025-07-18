@@ -1,10 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
+import { rawBaseQuery } from './baseQueryWithAuthRedirect';
 import { Order, OrderCreateRequest } from '@/types';
 
 export const ordersApi = createApi({
   reducerPath: 'ordersApi',
-  baseQuery: baseQueryWithAuthRedirect,
+  baseQuery: rawBaseQuery,
   tagTypes: ['Order'],
   endpoints: (builder) => ({
     getOrders: builder.query<Order[], void>({

@@ -1,10 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithAuthRedirect } from './baseQueryWithAuthRedirect';
+import { rawBaseQuery } from './baseQueryWithAuthRedirect';
 import { UpdateUserRequest, UserProfile } from '@/types';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: baseQueryWithAuthRedirect,
+  baseQuery: rawBaseQuery,
   tagTypes: ['User'],
 
   endpoints: (builder) => ({
