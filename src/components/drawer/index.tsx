@@ -16,9 +16,11 @@ import { useCreateOrderMutation } from '@/services/ordersApi';
 import { useNotificationContext } from '@/context/notificationContext';
 import { formatPhoneNumber } from '@/utils';
 import { useUser } from '@/context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 const Drawer = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const api = useNotificationContext();
   const { user } = useUser();
   const {
@@ -31,6 +33,7 @@ const Drawer = () => {
     basket,
   } = useCart();
 
+  const [isUnauthorizedModalOpen, setIsUnauthorizedModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -64,8 +67,9 @@ const Drawer = () => {
       setIsModalOpen(false);
       form.resetFields();
     } catch (error: any) {
-      if (error.errorFields) {
-      } else {
+      if (error?.status === 401) {
+        setIsUnauthorizedModalOpen(true);
+      } else if (!error?.errorFields) {
         console.error('Failed to create order:', error);
         api.error({
           message: error.data?.error || t('basket.error'),
@@ -180,6 +184,21 @@ const Drawer = () => {
 
           <p>{t('basket.modal')}</p>
         </Form>
+      </Modal>
+      <Modal
+        centered
+        title={t('basket.unauthorizedTitle')}
+        open={isUnauthorizedModalOpen}
+        onOk={() => {
+          setIsUnauthorizedModalOpen(false);
+          setIsModalOpen(false);
+          navigate('/authorization');
+        }}
+        onCancel={() => setIsUnauthorizedModalOpen(false)}
+        okText={t('basket.goToLogin')}
+        cancelText={t('basket.cancel')}
+      >
+        <p>{t('basket.unauthorizedMessage')}</p>
       </Modal>
     </>
   );

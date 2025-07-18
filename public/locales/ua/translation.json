@@ -138,7 +138,10 @@
     "addressPlaceholder": "Введіть адресу доставки",
     "required": "Це поле є обовʼязковим",
     "phoneInvalid": "Номер телефону повинен бути у форматі +380 XX XXX XX XX",
-    "addressTooLong": "Адреса не повинна перевищувати 70 символів"
+    "addressTooLong": "Адреса не повинна перевищувати 70 символів",
+    "unauthorizedTitle": "Потрібна авторизація",
+    "unauthorizedMessage": "Щоб оформити замовлення, увійдіть до свого акаунта.",
+    "goToLogin": "Перейти до авторизації"
   },
   "bestSellersBlock": {
     "title": "Хіти продажів",

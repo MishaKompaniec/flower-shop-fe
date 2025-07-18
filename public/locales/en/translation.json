@@ -138,7 +138,10 @@
     "addressPlaceholder": "Enter delivery address",
     "required": "This field is required",
     "phoneInvalid": "Phone number must be in format +380 XX XXX XX XX",
-    "addressTooLong": "Address must be 70 characters or fewer"
+    "addressTooLong": "Address must be 70 characters or fewer",
+    "unauthorizedTitle": "Authorization required",
+    "unauthorizedMessage": "To place an order, you need to be logged in.",
+    "goToLogin": "Go to login"
   },
   "bestSellersBlock": {
     "title": "Best Sellers",
