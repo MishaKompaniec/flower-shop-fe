@@ -93,7 +93,7 @@ export interface Order {
   userId: string;
   products: OrderProduct[];
   totalPrice: number;
-  status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  status: 'pending' | 'completed';
   createdAt: string;
 }
 

@@ -26,7 +26,17 @@
     "updateSuccess": "Товар обновлён",
     "updateError": "Ошибка при обновлении товара",
     "orders": "Заказы",
-    "products": "Товары"
+    "products": "Товари",
+    "dateFormat": "D MMM YYYY [в] HH:mm",
+    "status": {
+      "pending": "В ожидании",
+      "completed": "Завершён"
+    },
+    "phone": "Телефон",
+    "address": "Адрес",
+    "total": "Итого",
+    "markAsCompleted": "Отметить как выполнено",
+    "deleteOrder": "Удалить заказ"
   },
   "authorization": {
     "login": "Авторизация",

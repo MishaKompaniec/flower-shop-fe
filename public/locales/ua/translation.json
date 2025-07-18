@@ -25,7 +25,16 @@
     "updateSuccess": "Товар оновлено",
     "updateError": "Помилка під час оновлення товару",
     "orders": "Замовлення",
-    "products": "Товари"
+    "dateFormat": "D MMM YYYY [о] HH:mm",
+    "status": {
+      "pending": "Очікується",
+      "completed": "Завершено"
+    },
+    "phone": "Телефон",
+    "address": "Адреса",
+    "total": "Разом",
+    "markAsCompleted": "Позначити як виконане",
+    "deleteOrder": "Видалити замовлення"
   },
   "authorization": {
     "login": "Авторизація",

@@ -26,7 +26,16 @@
     "updateSuccess": "Product updated",
     "updateError": "Failed to update product",
     "orders": "Orders",
-    "products": "Products"
+    "products": "Products",
+    "status": {
+      "pending": "Pending",
+      "completed": "Completed"
+    },
+    "phone": "Phone",
+    "address": "Address",
+    "total": "Total",
+    "markAsCompleted": "Mark as completed",
+    "deleteOrder": "Delete order"
   },
   "authorization": {
     "login": "Login",

@@ -12,12 +12,8 @@ export const OrderCard = styled.div`
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-
   display: flex;
   flex-direction: column;
-
-  /* Чтобы карточки одинаковой высоты в гриде, можно добавить min-height, если нужно */
-  /* min-height: 300px; */
 `;
 
 export const Header = styled.div`
@@ -34,7 +30,6 @@ export const DateText = styled.div`
 export const Status = styled.div<{ status: string }>`
   font-size: 14px;
   font-weight: bold;
-  text-transform: capitalize;
   color: ${({ status }) => {
     switch (status) {
       case 'completed':
@@ -74,4 +69,10 @@ export const Total = styled.div`
   font-weight: 600;
   text-align: right;
   margin-top: auto;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
