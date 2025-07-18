@@ -8,3 +8,4 @@ export * from './productCard';
 export * from './select';
 export * from './spinner';
 export * from './orderCard';
+export * from './createOrderModal';
