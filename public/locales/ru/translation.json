@@ -139,7 +139,8 @@
     "phonePlaceholder": "Введите номер телефона",
     "addressPlaceholder": "Введите адрес доставки",
     "required": "Это поле обязательно",
-    "phoneInvalid": "Номер телефона должен быть в формате +380 XX XXX XX XX"
+    "phoneInvalid": "Номер телефона должен быть в формате +380 XX XXX XX XX",
+    "addressTooLong": "Адрес не должен превышать 70 символов"
   },
   "bestSellersBlock": {
     "title": "Хиты продаж",

@@ -15,10 +15,12 @@ import { useCart } from '../../context/basketContext';
 import { useCreateOrderMutation } from '@/services/ordersApi';
 import { useNotificationContext } from '@/context/notificationContext';
 import { formatPhoneNumber } from '@/utils';
+import { useUser } from '@/context/userContext';
 
 const Drawer = () => {
   const { t } = useTranslation();
   const api = useNotificationContext();
+  const { user } = useUser();
   const {
     isBasketOpen,
     closeBasket,
@@ -32,7 +34,6 @@ const Drawer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [createOrder, { isLoading }] = useCreateOrderMutation();
-
   const [form] = Form.useForm();
 
   const handleOk = async () => {
@@ -81,6 +82,12 @@ const Drawer = () => {
     window.addEventListener('resize', checkScreen);
     return () => window.removeEventListener('resize', checkScreen);
   }, []);
+
+  useEffect(() => {
+    if (isModalOpen && user?.phoneNumber) {
+      form.setFieldsValue({ phone: formatPhoneNumber(user.phoneNumber) });
+    }
+  }, [isModalOpen, user, form]);
 
   return (
     <>
@@ -160,9 +167,15 @@ const Drawer = () => {
           <Form.Item
             label={t('basket.address')}
             name='address'
-            rules={[{ required: true, message: t('basket.required') }]}
+            rules={[
+              { required: true, message: t('basket.required') },
+              { max: 70, message: t('basket.addressTooLong') },
+            ]}
           >
-            <Input placeholder={t('basket.addressPlaceholder')} />
+            <Input
+              placeholder={t('basket.addressPlaceholder')}
+              maxLength={100}
+            />
           </Form.Item>
 
           <p>{t('basket.modal')}</p>

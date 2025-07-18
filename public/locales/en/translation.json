@@ -137,7 +137,8 @@
     "phonePlaceholder": "Enter your phone number",
     "addressPlaceholder": "Enter delivery address",
     "required": "This field is required",
-    "phoneInvalid": "Phone number must be in format +380 XX XXX XX XX"
+    "phoneInvalid": "Phone number must be in format +380 XX XXX XX XX",
+    "addressTooLong": "Address must be 70 characters or fewer"
   },
   "bestSellersBlock": {
     "title": "Best Sellers",
@@ -179,6 +180,7 @@
     "changePasswordError": "Failed to change password. Please try again.",
     "requiredField": "This field is required",
     "passwordMinLength": "Password must be at least 6 characters long",
-    "passwordSuccess": "Password changed successfully"
+    "passwordSuccess": "Password changed successfully",
+    "cancel": "Cancel"
   }
 }

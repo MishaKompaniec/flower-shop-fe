@@ -137,7 +137,8 @@
     "phonePlaceholder": "Введіть номер телефону",
     "addressPlaceholder": "Введіть адресу доставки",
     "required": "Це поле є обовʼязковим",
-    "phoneInvalid": "Номер телефону повинен бути у форматі +380 XX XXX XX XX"
+    "phoneInvalid": "Номер телефону повинен бути у форматі +380 XX XXX XX XX",
+    "addressTooLong": "Адреса не повинна перевищувати 70 символів"
   },
   "bestSellersBlock": {
     "title": "Хіти продажів",
