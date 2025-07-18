@@ -24,7 +24,9 @@
     "uploadError": "Помилка під час завантаження зображення",
     "updateSuccess": "Товар оновлено",
     "updateError": "Помилка під час оновлення товару",
-    "orders": "Замовлення",
+    "newOrders": "Нові замовлення",
+    "completedOrders": "Виконані замовлення",
+    "products": "Товари",
     "dateFormat": "D MMM YYYY [о] HH:mm",
     "status": {
       "pending": "Очікується",
@@ -35,7 +37,9 @@
     "total": "Разом",
     "markAsCompleted": "Позначити як виконане",
     "deleteOrder": "Видалити замовлення",
-    "addSuccess": " Товар успішно додано"
+    "addSuccess": " Товар успішно додано",
+    "noNewOrders": "Наразі немає нових замовлень",
+    "noCompletedOrders": "Наразі немає виконаних замовлень"
   },
   "authorization": {
     "login": "Авторизація",

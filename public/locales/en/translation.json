@@ -25,7 +25,8 @@
     "uploadError": "Error uploading image",
     "updateSuccess": "Product updated",
     "updateError": "Failed to update product",
-    "orders": "Orders",
+    "newOrders": "New orders",
+    "completedOrders": "Completed orders",
     "products": "Products",
     "status": {
       "pending": "Pending",
@@ -36,7 +37,9 @@
     "total": "Total",
     "markAsCompleted": "Mark as completed",
     "deleteOrder": "Delete order",
-    "addSuccess": "Item successfully added"
+    "addSuccess": "Item successfully added",
+    "noNewOrders": "There are currently no new orders",
+    "noCompletedOrders": "There are currently no completed orders"
   },
   "authorization": {
     "login": "Login",

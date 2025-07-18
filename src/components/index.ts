@@ -7,3 +7,4 @@ export * from './mobileMenuDrawer';
 export * from './productCard';
 export * from './select';
 export * from './spinner';
+export * from './orderCard';

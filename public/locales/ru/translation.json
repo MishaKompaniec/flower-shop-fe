@@ -26,7 +26,9 @@
     "updateSuccess": "Товар обновлён",
     "updateError": "Ошибка при обновлении товара",
     "orders": "Заказы",
-    "products": "Товари",
+    "newOrders": "Новые заказы",
+    "completedOrders": "Выполненые заказы",
+    "products": "Товары",
     "dateFormat": "D MMM YYYY [в] HH:mm",
     "status": {
       "pending": "В ожидании",
@@ -37,7 +39,9 @@
     "total": "Итого",
     "markAsCompleted": "Отметить как выполнено",
     "deleteOrder": "Удалить заказ",
-    "addSuccess": "Товар успешно добавлен"
+    "addSuccess": "Товар успешно добавлен",
+    "noNewOrders": "На данный момент нет новых заказов",
+    "noCompletedOrders": "На данный момент нет выполненных заказов"
   },
   "authorization": {
     "login": "Авторизация",
