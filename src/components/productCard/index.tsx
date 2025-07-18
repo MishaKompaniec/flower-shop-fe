@@ -20,7 +20,7 @@ const ProductCard = ({
   return (
     <Card hoverable cover={cover}>
       <CardInfo>
-        <Star />
+        {product.isBestSellers && <Star />}
         <CardTitle>{product.title}</CardTitle>
         <Description>{product.description}</Description>
         <Price>{product.price} ₴</Price>
