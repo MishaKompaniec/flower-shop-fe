@@ -184,6 +184,7 @@
     "changePasswordError": "Не вдалося змінити пароль. Спробуйте ще раз.",
     "requiredField": "Це поле обов’язкове",
     "passwordMinLength": "Пароль має містити щонайменше 6 символів",
-    "passwordSuccess": "Пароль успішно змінено"
+    "passwordSuccess": "Пароль успішно змінено",
+    "logoutButton": "Вийти"
   }
 }

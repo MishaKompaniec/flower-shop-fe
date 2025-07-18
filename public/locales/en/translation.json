@@ -184,6 +184,7 @@
     "requiredField": "This field is required",
     "passwordMinLength": "Password must be at least 6 characters long",
     "passwordSuccess": "Password changed successfully",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "logoutButton": "Log out"
   }
 }

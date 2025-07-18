@@ -17,13 +17,18 @@ import { useUser } from '@/context/userContext';
 import { largeIconStyle } from '@/utils';
 import { TabPassword } from './tabPassword';
 import { TabUserData } from './tabUserData';
+import { Pages } from '@/utils/pages';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/authContext';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const api = useNotificationContext();
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
   const { avatarUrl } = useUser();
+  const { logout } = useAuth();
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -44,6 +49,11 @@ const Profile = () => {
         });
       }
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate(Pages.AUTHORIZATION);
   };
 
   return (
@@ -75,7 +85,11 @@ const Profile = () => {
               onChange={handleAvatarChange}
               accept='image/*'
             />
+            <Button type='default' danger size='small' onClick={handleLogout}>
+              {t('profile.logoutButton')}
+            </Button>
           </AvatarWrapper>
+
           <Tabs
             defaultActiveKey='profile'
             items={[
