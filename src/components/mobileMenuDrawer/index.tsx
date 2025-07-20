@@ -1,9 +1,9 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-
 import { LanguageSelect } from '../select';
-
+import { Pages } from '@/utils/pages';
+import type { FC } from 'react';
 import {
   MobileMenuDrawerEl,
   CloseIconWrapper,
@@ -11,17 +11,19 @@ import {
   MenuItem,
   Wrapper,
 } from './style';
-import type { FC } from 'react';
+
 interface MobileMenuDrawerProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isAdmin: boolean;
+  token: string | null;
 }
 
 const MobileMenuDrawer: FC<MobileMenuDrawerProps> = ({
   setIsMobileMenuOpen,
   isMobileMenuOpen,
   isAdmin,
+  token,
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -51,7 +53,10 @@ const MobileMenuDrawer: FC<MobileMenuDrawerProps> = ({
         <CloseIconWrapper onClick={() => setIsMobileMenuOpen(false)}>
           <CloseOutlined />
         </CloseIconWrapper>
-        <MenuItemLink to='/store' onClick={() => setIsMobileMenuOpen(false)}>
+        <MenuItemLink
+          to={Pages.STORE}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
           {t('header.store')}
         </MenuItemLink>
         <MenuItem onClick={() => scrollToSection('about-us')}>
@@ -63,8 +68,19 @@ const MobileMenuDrawer: FC<MobileMenuDrawerProps> = ({
         <MenuItem onClick={() => scrollToSection('contacts')}>
           {t('header.contacts')}
         </MenuItem>
+        {!token && (
+          <MenuItemLink
+            to={Pages.AUTHORIZATION}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('header.login')}
+          </MenuItemLink>
+        )}
         {isAdmin && (
-          <MenuItemLink to='/admin' onClick={() => setIsMobileMenuOpen(false)}>
+          <MenuItemLink
+            to={Pages.ADMIN}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             {t('header.admin')}
           </MenuItemLink>
         )}

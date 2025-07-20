@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Drawer } from '../drawer';
+import { Pages } from '@/utils/pages';
 import {
   HeaderWrapper,
   MenuItemLink,
@@ -78,14 +79,18 @@ const Header = () => {
       </LogoWrapper>
       {!isMobile && (
         <Menu>
-          <MenuItemLink to='/'>{t('header.main')}</MenuItemLink>
-
-          <MenuItemLink to='/store'>{t('header.store')}</MenuItemLink>
+          <MenuItemLink to={Pages.HOME}>{t('header.main')}</MenuItemLink>
+          <MenuItemLink to={Pages.STORE}>{t('header.store')}</MenuItemLink>
           <MenuItem onClick={() => scrollToSection('contacts')}>
             {t('header.contacts')}
           </MenuItem>
+          {!token && (
+            <MenuItemLink to={Pages.AUTHORIZATION}>
+              {t('header.login')}
+            </MenuItemLink>
+          )}
           {isAdmin && (
-            <MenuItemLink to='/admin'>{t('header.admin')}</MenuItemLink>
+            <MenuItemLink to={Pages.ADMIN}>{t('header.admin')}</MenuItemLink>
           )}
         </Menu>
       )}
@@ -93,8 +98,8 @@ const Header = () => {
       <FlexBox>
         {token && (
           <AvatarWrapper
-            onClick={() => navigate('/profile')}
-            $active={location.pathname === '/profile'}
+            onClick={() => navigate(Pages.PROFILE)}
+            $active={location.pathname === Pages.PROFILE}
           >
             <Avatar
               size={32}
@@ -119,6 +124,7 @@ const Header = () => {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isMobileMenuOpen={isMobileMenuOpen}
         isAdmin={isAdmin}
+        token={token}
       />
     </HeaderWrapper>
   );
