@@ -15,3 +15,9 @@ export const Image = styled.img`
   height: 200px;
   object-fit: cover;
 `;
+
+export const SelectWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 15px 0 0;
+`;

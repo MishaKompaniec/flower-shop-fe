@@ -7,8 +7,17 @@ export const productsApi = createApi({
   baseQuery: rawBaseQuery,
   tagTypes: ['Product'],
   endpoints: (builder) => ({
-    getProducts: builder.query<BasketItem[], void>({
-      query: () => '/products',
+    getProducts: builder.query<
+      BasketItem[],
+      { sortBy?: string; order?: 'asc' | 'desc' } | void
+    >({
+      query: (params) => {
+        const queryString = params
+          ? `?sortBy=${params.sortBy ?? 'title'}&order=${params.order ?? 'asc'}`
+          : '';
+
+        return `/products${queryString}`;
+      },
       providesTags: ['Product'],
     }),
 

@@ -57,6 +57,8 @@ export interface ColumnsProps {
   deleteProduct: ReturnType<typeof useDeleteProductMutation>[0];
   updateProduct: ReturnType<typeof useUpdateProductMutation>[0];
   uploadProductImage: ReturnType<typeof useUploadProductImageMutation>[0];
+  currentSortBy?: string | null;
+  currentOrder?: 'ascend' | 'descend' | null;
 }
 
 export interface UserProfile {

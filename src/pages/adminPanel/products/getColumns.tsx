@@ -17,6 +17,8 @@ export const getColumns = ({
   deleteProduct,
   uploadProductImage,
   updateProduct,
+  currentSortBy,
+  currentOrder,
 }: ColumnsProps): ColumnsType<BasketItem> => {
   const { t } = useTranslation();
   const api = useNotificationContext();
@@ -34,12 +36,16 @@ export const getColumns = ({
       title: t('adminPanel.title'),
       dataIndex: 'title',
       key: 'title',
+      sorter: true,
+      sortOrder: currentSortBy === 'title' ? currentOrder : null,
     },
     {
       title: t('adminPanel.price'),
       dataIndex: 'price',
       key: 'price',
       width: 120,
+      sorter: true,
+      sortOrder: currentSortBy === 'price' ? currentOrder : null,
       render: (price: number) => `${price} ₴`,
     },
     {
@@ -51,6 +57,8 @@ export const getColumns = ({
       title: t('adminPanel.category'),
       dataIndex: 'category',
       key: 'category',
+      sorter: true,
+      sortOrder: currentSortBy === 'category' ? currentOrder : null,
     },
     {
       title: t('adminPanel.image'),

@@ -19,16 +19,23 @@ const { Option } = Select;
 const Products = () => {
   const { t } = useTranslation();
   const api = useNotificationContext();
-  const { data: products, isLoading: productsIsLoading } =
-    useGetProductsQuery();
+
+  const [sortBy, setSortBy] = useState<string | null>('title');
+  const [order, setOrder] = useState<'ascend' | 'descend' | null>('ascend');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
+  const [editingItem, setEditingItem] = useState<BasketItem | null>(null);
+  const apiOrder =
+    order === 'ascend' ? 'asc' : order === 'descend' ? 'desc' : 'asc';
+
+  const { data: products, isLoading: productsIsLoading } = useGetProductsQuery({
+    sortBy: sortBy ?? 'title',
+    order: apiOrder,
+  });
   const [deleteProduct] = useDeleteProductMutation();
   const [uploadProductImage] = useUploadProductImageMutation();
   const [addProduct] = useCreateProductMutation();
   const [updateProduct] = useUpdateProductMutation();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [form] = Form.useForm();
-  const [editingItem, setEditingItem] = useState<BasketItem | null>(null);
 
   const handleAdd = () => {
     setEditingItem(null);
@@ -89,6 +96,8 @@ const Products = () => {
     deleteProduct,
     uploadProductImage,
     updateProduct,
+    currentSortBy: sortBy,
+    currentOrder: order,
   });
 
   if (productsIsLoading) {
@@ -106,6 +115,13 @@ const Products = () => {
         rowKey='id'
         pagination={false}
         scroll={{ x: 'fit-content' }}
+        onChange={(pagination, filters, sorter) => {
+          if (!Array.isArray(sorter)) {
+            setSortBy(sorter.field as string);
+            setOrder(sorter.order ?? null);
+          }
+        }}
+        sortDirections={['ascend', 'descend']}
       />
 
       <Modal

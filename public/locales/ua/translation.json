@@ -155,7 +155,10 @@
   "store": {
     "bouquets": "БУКЕТИ",
     "plants": "РОСЛИНИ",
-    "fruitBouquets": "ФРУТЕТИ"
+    "fruitBouquets": "ФРУТЕТИ",
+    "sortByPrice": "Сортувати за ціною",
+    "sortByPriceAsc": "Спочатку дешевші",
+    "sortByPriceDesc": "Спочатку дорожчі"
   },
   "profile": {
     "title": "Мій профіль",
