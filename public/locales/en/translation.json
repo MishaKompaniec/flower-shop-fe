@@ -190,5 +190,34 @@
     "passwordSuccess": "Password changed successfully",
     "cancel": "Cancel",
     "logoutButton": "Log out"
+  },
+  "feedbacks": {
+    "title": "Reviews",
+    "items": {
+      "1": {
+        "name": "Marie Antouani",
+        "feedback": "Really loved the flowers! Fast delivery and great quality."
+      },
+      "2": {
+        "name": "Andrew Green",
+        "feedback": "I’ve ordered more than once – always top notch!"
+      },
+      "3": {
+        "name": "Oscar Marinsky",
+        "feedback": "Thank you for the lovely bouquet, my mom was thrilled!"
+      },
+      "4": {
+        "name": "Ramyna Alinamy",
+        "feedback": "Beautiful, fast and easy. Highly recommend!"
+      },
+      "5": {
+        "name": "Kateryna Levina",
+        "feedback": "The bouquet looked even better than in the photo! Very satisfied with the service."
+      },
+      "6": {
+        "name": "Ihor Svetlov",
+        "feedback": "Really impressed by the fast delivery and freshness of the flowers. Will order again."
+      }
+    }
   }
 }
