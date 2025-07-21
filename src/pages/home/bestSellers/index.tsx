@@ -50,7 +50,7 @@ const BestSellers = () => {
           pagination={{ clickable: true }}
           modules={[Pagination, Autoplay]}
           style={{ paddingBottom: '35px' }}
-          loop
+          loop={bestSellers.length >= 3}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
