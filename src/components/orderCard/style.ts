@@ -21,19 +21,15 @@ export const DateText = styled.div`
   font-size: 14px;
 `;
 
-export const Status = styled.div<{ status: string }>`
+export const Status = styled.div<{ $status: string }>`
   font-size: 14px;
   font-weight: bold;
-  color: ${({ status }) => {
-    switch (status) {
+  color: ${({ $status }) => {
+    switch ($status) {
       case 'completed':
         return 'green';
       case 'pending':
         return 'orange';
-      case 'processing':
-        return 'blue';
-      case 'cancelled':
-        return 'red';
       default:
         return '#999';
     }

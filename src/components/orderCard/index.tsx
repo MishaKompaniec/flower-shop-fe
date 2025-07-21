@@ -37,7 +37,7 @@ const OrderCard: FC<OrderCardProps> = ({ order }) => {
         <DateText>
           {dayjs(order.createdAt).format('MMM D, YYYY [at] HH:mm')}
         </DateText>
-        <Status status={order.status}>
+        <Status $status={order.status}>
           {t(`adminPanel.status.${order.status}`)}
         </Status>
       </Header>
