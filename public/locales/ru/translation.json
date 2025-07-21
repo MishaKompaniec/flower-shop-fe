@@ -157,7 +157,10 @@
   "store": {
     "bouquets": "БУКЕТЫ",
     "plants": "РАСТЕНИЯ",
-    "fruitBouquets": "ФРУТЕТЫ"
+    "fruitBouquets": "ФРУТЕТЫ",
+    "sortByPrice": "Сортировать по цене",
+    "sortByPriceAsc": "Сначала дешёвые",
+    "sortByPriceDesc": "Сначала дорогие"
   },
   "profile": {
     "title": "Мой профиль",

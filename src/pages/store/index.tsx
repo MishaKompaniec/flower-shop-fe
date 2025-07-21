@@ -2,29 +2,37 @@ import { Tabs } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Bouquets from './bouquets';
-import FruitBouquets from './fruitBouquets';
-import Plants from './plants';
 import { Wrapper } from './style';
 import { useGetProductsQuery } from '@/services/productsApi';
 import { BasketItem } from '@/types';
+import ProductList from './productList';
 
 const Store = () => {
   const { data: products } = useGetProductsQuery();
+  const { t } = useTranslation();
+
   const [bouquets, setBouquets] = useState<BasketItem[]>([]);
   const [plants, setPlants] = useState<BasketItem[]>([]);
   const [fruitBouquets, setFruitBouquets] = useState<BasketItem[]>([]);
+  const [priceSortOrder, setPriceSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (products?.length) {
-      setBouquets(products.filter((p) => p.category === 'bouquets'));
-      setPlants(products.filter((p) => p.category === 'plants'));
-      setFruitBouquets(products.filter((p) => p.category === 'fruitBouquets'));
-    }
-  }, [products]);
+      const sortByPrice = (arr: BasketItem[]) =>
+        [...arr].sort((a, b) =>
+          priceSortOrder === 'asc' ? a.price - b.price : b.price - a.price
+        );
 
-  const { t } = useTranslation();
-  const [isMobile, setIsMobile] = useState(false);
+      setBouquets(
+        sortByPrice(products.filter((p) => p.category === 'bouquets'))
+      );
+      setPlants(sortByPrice(products.filter((p) => p.category === 'plants')));
+      setFruitBouquets(
+        sortByPrice(products.filter((p) => p.category === 'fruitBouquets'))
+      );
+    }
+  }, [products, priceSortOrder]);
 
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 768);
@@ -42,17 +50,35 @@ const Store = () => {
           {
             label: t('store.bouquets'),
             key: 'bouquets',
-            children: <Bouquets bouquets={bouquets} />,
+            children: (
+              <ProductList
+                products={bouquets}
+                priceSortOrder={priceSortOrder}
+                setPriceSortOrder={setPriceSortOrder}
+              />
+            ),
           },
           {
             label: t('store.plants'),
             key: 'plants',
-            children: <Plants plants={plants} />,
+            children: (
+              <ProductList
+                products={plants}
+                priceSortOrder={priceSortOrder}
+                setPriceSortOrder={setPriceSortOrder}
+              />
+            ),
           },
           {
             label: t('store.fruitBouquets'),
             key: 'fruit',
-            children: <FruitBouquets fruitBouquets={fruitBouquets} />,
+            children: (
+              <ProductList
+                products={fruitBouquets}
+                priceSortOrder={priceSortOrder}
+                setPriceSortOrder={setPriceSortOrder}
+              />
+            ),
           },
         ]}
       />

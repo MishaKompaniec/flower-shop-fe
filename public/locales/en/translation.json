@@ -155,7 +155,10 @@
   "store": {
     "bouquets": "BOUQUETS",
     "plants": "PLANTS",
-    "fruitBouquets": "FRUITETS"
+    "fruitBouquets": "FRUITETS",
+    "sortByPrice": "Sort by price",
+    "sortByPriceAsc": "Cheapest first",
+    "sortByPriceDesc": "Most expensive first"
   },
   "profile": {
     "title": "My Profile",
