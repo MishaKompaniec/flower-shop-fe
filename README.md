@@ -2,7 +2,11 @@
 
 ## Project Overview
 
-This is a small flower shop web application featuring a main page and a shopping cart.
+This is a small flower shop website. I implemented the logic for regular users: a home page, a shop page, a shopping cart, and a user profile.
+
+I also implemented admin functionality: an admin panel that allows viewing and managing new orders, reviewing completed orders, as well as adding, editing, and deleting products in the shop.
+
+The backend for this website was built using Node.js and Express.
 
 - **Shopping Cart**: Implemented using React Context API with data persistence via `localStorage`.
 - **Routing**: Handled through React Router for seamless navigation between pages.
@@ -18,6 +22,7 @@ This is a small flower shop web application featuring a main page and a shopping
 - **Framework**: React
 - **Language**: TypeScript
 - **Routing**: React Router
+- **Data Fetching**: RTK Query
 - **State Management**: React Context API + `localStorage`
 - **UI Components**: Ant Design (antd)
 - **Styling**: styled-components
@@ -31,5 +36,5 @@ To run the project locally:
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
