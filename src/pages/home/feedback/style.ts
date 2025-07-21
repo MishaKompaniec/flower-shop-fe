@@ -37,16 +37,28 @@ export const FeedbackWrapper = styled.div`
   gap: 15px;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 export const FeedbackTitle = styled.h3`
   font-size: 18px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
 `;
 
 export const FeedbackText = styled.p`
   font-size: 14px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 export const Image = styled.img`
@@ -54,4 +66,9 @@ export const Image = styled.img`
   height: 120px;
   border-radius: 100px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
