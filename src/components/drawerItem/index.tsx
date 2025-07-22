@@ -1,8 +1,6 @@
 import MinusOutlined from '@ant-design/icons/MinusOutlined';
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import { Button } from 'antd';
-import { useTranslation } from 'react-i18next';
-
 import {
   DrawerItemWrapper,
   QuantityControls,
@@ -12,15 +10,31 @@ import {
   Btn,
   CloseBtn,
 } from './style';
+
 import type { FC } from 'react';
 import { DrawerItemProps } from '@/types';
-import { useCart } from '@/context/basketContext';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/store/store';
+import { removeFromBasket, updateQuantity } from '@/store/slices/basketSlice';
 
 const DrawerItem: FC<DrawerItemProps> = ({
   product: { id, price, quantity, title },
 }) => {
-  const { removeFromBasket, updateQuantity } = useCart();
-  const { t } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      dispatch(updateQuantity({ id, quantity: quantity - 1 }));
+    }
+  };
+
+  const handleIncrease = () => {
+    dispatch(updateQuantity({ id, quantity: quantity + 1 }));
+  };
+
+  const handleRemove = () => {
+    dispatch(removeFromBasket(id));
+  };
 
   return (
     <DrawerItemWrapper>
@@ -30,20 +44,12 @@ const DrawerItem: FC<DrawerItemProps> = ({
         <Button
           size='small'
           icon={<MinusOutlined />}
-          onClick={() => updateQuantity(id, quantity - 1)}
+          onClick={handleDecrease}
         />
         <Counter>{quantity}</Counter>
-        <Button
-          size='small'
-          icon={<PlusOutlined />}
-          onClick={() => updateQuantity(id, quantity + 1)}
-        />
+        <Button size='small' icon={<PlusOutlined />} onClick={handleIncrease} />
       </QuantityControls>
-      <Btn
-        type='text'
-        icon={<CloseBtn />}
-        onClick={() => removeFromBasket(id)}
-      />
+      <Btn type='text' icon={<CloseBtn />} onClick={handleRemove} />
     </DrawerItemWrapper>
   );
 };

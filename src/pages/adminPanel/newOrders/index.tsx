@@ -1,5 +1,5 @@
 import { Container } from './style';
-import { useGetOrdersQuery } from '@/services/ordersApi';
+import { useGetOrdersQuery } from '@/store/services/ordersApi';
 import { OrderCard, Spinner } from '@/components';
 import { useTranslation } from 'react-i18next';
 

@@ -7,7 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useNotificationContext } from '@/context/notificationContext';
 import { useAuth } from '@/context/authContext';
-import { useLoginMutation, useRegisterMutation } from '@/services/authApi';
+import {
+  useLoginMutation,
+  useRegisterMutation,
+} from '@/store/services/authApi';
 import { LanguageSelect } from '@/components';
 
 const AuthPage: FC = () => {

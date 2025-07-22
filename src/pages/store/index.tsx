@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Wrapper } from './style';
-import { useGetProductsQuery } from '@/services/productsApi';
+import { useGetProductsQuery } from '@/store/services/productsApi';
 import { BasketItem } from '@/types';
 import ProductList from './productList';
 

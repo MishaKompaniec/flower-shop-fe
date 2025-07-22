@@ -12,7 +12,7 @@ import {
   Title,
 } from './style';
 import { useNotificationContext } from '@/context/notificationContext';
-import { useUploadAvatarMutation } from '@/services/userApi';
+import { useUploadAvatarMutation } from '@/store/services/userApi';
 import { useUser } from '@/context/userContext';
 import { largeIconStyle } from '@/utils';
 import { TabPassword } from './tabPassword';

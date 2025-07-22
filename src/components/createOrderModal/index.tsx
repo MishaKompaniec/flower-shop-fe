@@ -1,11 +1,13 @@
-import { useCart } from '@/context/basketContext';
 import { useNotificationContext } from '@/context/notificationContext';
 import { useUser } from '@/context/userContext';
-import { useCreateOrderMutation } from '@/services/ordersApi';
+import { useCreateOrderMutation } from '@/store/services/ordersApi';
+import { clearBasket, closeBasket } from '@/store/slices/basketSlice';
+import { AppDispatch, RootState } from '@/store/store';
 import { formatPhoneNumber } from '@/utils';
 import { Form, Input, Modal } from 'antd';
 import { Dispatch, FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface CreateOrderModalProps {
   isModalOpen: boolean;
@@ -22,18 +24,20 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
   isModalOpen,
   isLoading,
 }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
   const api = useNotificationContext();
   const [form] = Form.useForm();
   const { user } = useUser();
+  const basket = useSelector((state: RootState) => state.basket.basket);
+  const handleCloseBasket = () => dispatch(closeBasket());
+  const handleClearBasket = () => dispatch(clearBasket());
 
   useEffect(() => {
     if (isModalOpen && user?.phoneNumber) {
       form.setFieldsValue({ phone: formatPhoneNumber(user.phoneNumber) });
     }
   }, [isModalOpen, user, form]);
-
-  const { closeBasket, clearBasket, basket } = useCart();
 
   const handleOk = async () => {
     try {
@@ -58,8 +62,8 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
         duration: 3,
       });
 
-      clearBasket();
-      closeBasket();
+      handleClearBasket();
+      handleCloseBasket();
       setIsModalOpen(false);
       form.resetFields();
     } catch (error: any) {

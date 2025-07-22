@@ -1,5 +1,5 @@
 import { useNotificationContext } from '@/context/notificationContext';
-import { useChangePasswordMutation } from '@/services/userApi';
+import { useChangePasswordMutation } from '@/store/services/userApi';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 

@@ -8,7 +8,7 @@ import {
   useGetProductsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from '@/services/productsApi';
+} from '@/store/services/productsApi';
 import { BasketItem } from '@/types';
 import { Spinner } from '@/components';
 import { getColumns } from './getColumns';

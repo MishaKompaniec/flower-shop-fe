@@ -11,24 +11,33 @@ import {
   List,
   Btn,
 } from './style';
-import { useCart } from '../../context/basketContext';
+import { useSelector, useDispatch } from 'react-redux';
 import { CreateOrderModal } from '../createOrderModal';
-import { useCreateOrderMutation } from '@/services/ordersApi';
+import { useCreateOrderMutation } from '@/store/services/ordersApi';
 import { UnauthorizedModal } from '../unauthorizedModal';
+import { AppDispatch } from '@/store/store';
+import {
+  selectIsBasketOpen,
+  selectTotalItems,
+  selectTotalPrice,
+  selectBasket,
+  closeBasket,
+  openBasket,
+} from '@/store/slices/basketSlice';
 
 const Drawer = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
+
   const [isUnauthorizedModalOpen, setIsUnauthorizedModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const {
-    isBasketOpen,
-    closeBasket,
-    totalPrice,
-    openBasket,
-    totalItems,
-    basket,
-  } = useCart();
+
+  const isBasketOpen = useSelector(selectIsBasketOpen);
+  const basket = useSelector(selectBasket);
+  const totalItems = useSelector(selectTotalItems);
+  const totalPrice = useSelector(selectTotalPrice);
+
   const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   useEffect(() => {
@@ -41,12 +50,13 @@ const Drawer = () => {
   return (
     <>
       <BasketWrapper>
-        <Basket onClick={openBasket} />
+        <Basket onClick={() => dispatch(openBasket())} />
         {totalItems > 0 && <Badge>{totalItems}</Badge>}
       </BasketWrapper>
+
       <AntDrawer
         title={t('basket.title')}
-        onClose={closeBasket}
+        onClose={() => dispatch(closeBasket())}
         open={isBasketOpen}
         width={isMobile ? '100%' : 500}
       >

@@ -1,8 +1,7 @@
 import { Provider } from 'react-redux';
-import { store } from '../services/store';
+import { store } from '../store/store';
 import { AuthProvider } from './authContext';
 import { UserProvider } from './userContext';
-import { BasketProvider } from './basketContext';
 import { NotificationProvider } from './notificationContext';
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => {
@@ -10,9 +9,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
     <Provider store={store}>
       <AuthProvider>
         <UserProvider>
-          <BasketProvider>
-            <NotificationProvider>{children}</NotificationProvider>
-          </BasketProvider>
+          <NotificationProvider>{children}</NotificationProvider>
         </UserProvider>
       </AuthProvider>
     </Provider>

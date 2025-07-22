@@ -18,7 +18,7 @@ import { Button } from 'antd';
 import {
   useCompleteOrderMutation,
   useDeleteOrderMutation,
-} from '@/services/ordersApi';
+} from '@/store/services/ordersApi';
 
 interface OrderCardProps {
   order: Order;

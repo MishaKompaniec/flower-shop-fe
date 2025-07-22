@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useAuth } from '../authContext';
-import { useGetAvatarQuery, useGetMeQuery } from '@/services/userApi';
+import { useGetAvatarQuery, useGetMeQuery } from '@/store/services/userApi';
 import { UserProfile } from '@/types';
 
 type UserContextType = {

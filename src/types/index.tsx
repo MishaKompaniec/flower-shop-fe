@@ -2,7 +2,7 @@ import {
   useDeleteProductMutation,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from '@/services/productsApi';
+} from '@/store/services/productsApi';
 
 export interface IROUTE_MODEL<T> {
   path: string;

@@ -5,26 +5,32 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useGetProductsQuery } from '@/store/services/productsApi';
+import { BasketItem } from '@/types';
+import { SwiperBreakpoints } from '@/utils/pages';
+import {
+  addToBasket,
+  toggleBasket,
+  selectBasket,
+} from '@/store/slices/basketSlice';
+import { AppDispatch } from '@/store/store';
 import {
   InnerWrapper,
   Description,
   CardTitle,
   CardInfo,
+  Spinner,
   Wrapper,
   Image,
   Title,
   Price,
-  Spinner,
 } from './style';
 
-import { useEffect, useState } from 'react';
-import { useCart } from '@/context/basketContext';
-import { useGetProductsQuery } from '@/services/productsApi';
-import { BasketItem } from '@/types';
-import { SwiperBreakpoints } from '@/utils/pages';
-
 const BestSellers = () => {
-  const { basket, addToBasket, toggleBasket } = useCart();
+  const dispatch = useDispatch<AppDispatch>();
+  const basket = useSelector(selectBasket);
   const { t } = useTranslation();
 
   const { data: products, isLoading: productsIsLoading } =
@@ -67,9 +73,7 @@ const BestSellers = () => {
                   cover={
                     <Image
                       alt={t(product.title)}
-                      src={
-                        product.image ? product.image : '/images/no-img.jpeg'
-                      }
+                      src={product.image ?? '/images/no-img.jpeg'}
                     />
                   }
                 >
@@ -81,9 +85,9 @@ const BestSellers = () => {
                       type={isInCart ? 'default' : 'primary'}
                       onClick={() => {
                         if (isInCart) {
-                          toggleBasket();
+                          dispatch(toggleBasket());
                         } else {
-                          addToBasket(product);
+                          dispatch(addToBasket(product));
                         }
                       }}
                     >

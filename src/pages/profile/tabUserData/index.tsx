@@ -1,6 +1,6 @@
 import { Spinner } from '@/components';
 import { useNotificationContext } from '@/context/notificationContext';
-import { useGetMeQuery, useUpdateUserMutation } from '@/services/userApi';
+import { useGetMeQuery, useUpdateUserMutation } from '@/store/services/userApi';
 import { ProfileFormValues } from '@/types';
 import { formatPhoneNumber } from '@/utils';
 import { Button, Form, Input } from 'antd';

@@ -1,3 +1,5 @@
+export const LOCAL_STORAGE_KEY = 'basket';
+
 export const smallIconStyle = {
   backgroundColor: '#fff',
   color: '#2ecc71',
