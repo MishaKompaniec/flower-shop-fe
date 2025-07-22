@@ -22,6 +22,7 @@ export const LogoWrapper = styled(Link)`
 export const Logo = styled.img`
   width: 35px;
   height: 35px;
+  user-select: none;
 
   &:hover {
     transform: rotate(180deg);
@@ -50,6 +51,7 @@ export const MenuItemLink = styled(NavLink).attrs(() => ({
   color: ${colors.white};
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
+  user-select: none;
 
   &:hover,
   &.active {
@@ -64,6 +66,7 @@ export const MenuItem = styled.p`
   color: ${colors.white};
   text-decoration: none;
   cursor: pointer;
+  user-select: none;
   transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
