@@ -1,9 +1,10 @@
-import { useAuth } from '@/context/authContext';
 import { useGetAvatarQuery, useGetMeQuery } from '@/store/services/userApi';
+import { RootState } from '@/store/store';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export const useUserData = () => {
-  const { token } = useAuth();
+  const token = useSelector((state: RootState) => state.auth.token);
 
   const {
     data: user,

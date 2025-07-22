@@ -16,11 +16,12 @@ import {
   AvatarWrapper,
 } from './style';
 import { Avatar } from 'antd';
-import { useAuth } from '@/context/authContext';
 import { smallIconStyle } from '@/utils';
 import { LanguageSelect } from '../select';
 import { MobileMenuDrawer } from '../mobileMenuDrawer';
 import { useUserData } from '@/hooks/useUserData';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { token } = useAuth();
+  const token = useSelector((state: RootState) => state.auth.token);
   const { avatarUrl } = useUserData();
 
   useEffect(() => {

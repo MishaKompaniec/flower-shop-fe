@@ -6,19 +6,21 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useNotificationContext } from '@/context/notificationContext';
-import { useAuth } from '@/context/authContext';
 import {
   useLoginMutation,
   useRegisterMutation,
 } from '@/store/services/authApi';
 import { LanguageSelect } from '@/components';
+import { RootState } from '@/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setToken } from '@/store/slices/authSlice';
 
 const AuthPage: FC = () => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const api = useNotificationContext();
 
-  const { setToken } = useAuth();
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
   const [register, { isLoading: isRegistering }] = useRegisterMutation();
 
@@ -28,7 +30,7 @@ const AuthPage: FC = () => {
     try {
       const res = await login(values).unwrap();
       localStorage.setItem('token', res.token);
-      setToken(res.token);
+      dispatch(setToken(res.token));
       navigate('/', { replace: false });
     } catch (error: any) {
       api.error({
