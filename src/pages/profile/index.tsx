@@ -19,17 +19,16 @@ import { TabUserData } from './tabUserData';
 import { Pages } from '@/utils/pages';
 import { useNavigate } from 'react-router-dom';
 import { useUserData } from '@/hooks/useUserData';
-import { useDispatch } from 'react-redux';
-import { logout } from '@/store/slices/authSlice';
+import { useAuth } from '@/hooks/useAuth';
 
 const Profile = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const api = useNotificationContext();
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
   const { avatarUrl } = useUserData();
+  const { logout } = useAuth();
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -53,7 +52,7 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    logout();
     navigate(Pages.AUTHORIZATION);
   };
 
