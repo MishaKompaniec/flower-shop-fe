@@ -12,6 +12,10 @@ const getInitialBasket = (): BasketItem[] => {
   }
 };
 
+const saveBasket = (basket: BasketItem[]) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(basket));
+};
+
 interface BasketState {
   basket: BasketItem[];
   isBasketOpen: boolean;
@@ -33,10 +37,14 @@ const basketSlice = createSlice({
       } else {
         state.basket.push({ ...action.payload, quantity: 1 });
       }
+      saveBasket(state.basket);
     },
+
     removeFromBasket(state, action: PayloadAction<string>) {
       state.basket = state.basket.filter((i) => i.id !== action.payload);
+      saveBasket(state.basket);
     },
+
     updateQuantity(
       state,
       action: PayloadAction<{ id: string; quantity: number }>
@@ -44,18 +52,23 @@ const basketSlice = createSlice({
       const item = state.basket.find((i) => i.id === action.payload.id);
       if (item) {
         item.quantity = Math.max(1, action.payload.quantity);
+        saveBasket(state.basket);
       }
     },
+
     clearBasket(state) {
       state.basket = [];
       localStorage.removeItem(LOCAL_STORAGE_KEY);
     },
+
     toggleBasket(state) {
       state.isBasketOpen = !state.isBasketOpen;
     },
+
     openBasket(state) {
       state.isBasketOpen = true;
     },
+
     closeBasket(state) {
       state.isBasketOpen = false;
     },
