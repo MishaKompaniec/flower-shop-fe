@@ -1,5 +1,5 @@
 import { useNotificationContext } from '@/context/notificationContext';
-import { useUser } from '@/context/userContext';
+import { useUserData } from '@/hooks/useUserData';
 import { useCreateOrderMutation } from '@/store/services/ordersApi';
 import { clearBasket, closeBasket } from '@/store/slices/basketSlice';
 import { AppDispatch, RootState } from '@/store/store';
@@ -28,7 +28,7 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
   const { t } = useTranslation();
   const api = useNotificationContext();
   const [form] = Form.useForm();
-  const { user } = useUser();
+  const { user } = useUserData();
   const basket = useSelector((state: RootState) => state.basket.basket);
   const handleCloseBasket = () => dispatch(closeBasket());
   const handleClearBasket = () => dispatch(clearBasket());

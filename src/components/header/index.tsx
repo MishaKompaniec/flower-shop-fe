@@ -17,10 +17,10 @@ import {
 } from './style';
 import { Avatar } from 'antd';
 import { useAuth } from '@/context/authContext';
-import { useUser } from '@/context/userContext';
 import { smallIconStyle } from '@/utils';
 import { LanguageSelect } from '../select';
 import { MobileMenuDrawer } from '../mobileMenuDrawer';
+import { useUserData } from '@/hooks/useUserData';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { token } = useAuth();
-  const { avatarUrl } = useUser();
+  const { avatarUrl } = useUserData();
 
   useEffect(() => {
     if (token) {

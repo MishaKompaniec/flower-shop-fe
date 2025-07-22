@@ -13,13 +13,13 @@ import {
 } from './style';
 import { useNotificationContext } from '@/context/notificationContext';
 import { useUploadAvatarMutation } from '@/store/services/userApi';
-import { useUser } from '@/context/userContext';
 import { largeIconStyle } from '@/utils';
 import { TabPassword } from './tabPassword';
 import { TabUserData } from './tabUserData';
 import { Pages } from '@/utils/pages';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/authContext';
+import { useUserData } from '@/hooks/useUserData';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Profile = () => {
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadAvatar, { isLoading: isUploading }] = useUploadAvatarMutation();
-  const { avatarUrl } = useUser();
+  const { avatarUrl } = useUserData();
   const { logout } = useAuth();
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
