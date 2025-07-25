@@ -62,7 +62,7 @@ export const Logo = styled.img`
   height: 35px;
   user-select: none;
   filter: brightness(0) saturate(100%) invert(46%) sepia(44%) saturate(738%)
-    hue-rotate(95deg) brightness(125%) contrast(85%);
+    hue-rotate(95deg) brightness(135%) contrast(85%);
 
   &:hover {
     transform: rotate(180deg);
