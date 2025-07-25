@@ -173,7 +173,7 @@ const Products = () => {
             name='description'
             rules={[
               { required: true, message: t('adminPanel.required') },
-              { max: 80, message: t('adminPanel.descriptionTooLong') },
+              { max: 1000, message: t('adminPanel.descriptionTooLong') },
             ]}
           >
             <Input.TextArea rows={3} />

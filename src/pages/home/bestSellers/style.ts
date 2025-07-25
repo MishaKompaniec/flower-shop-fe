@@ -61,6 +61,7 @@ export const CardTitle = styled.h3`
 `;
 
 export const Description = styled.p`
+  min-height: 36px;
   font-size: 12px;
   text-align: center;
   display: -webkit-box;

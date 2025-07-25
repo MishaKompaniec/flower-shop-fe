@@ -9,3 +9,4 @@ export * from './select';
 export * from './spinner';
 export * from './orderCard';
 export * from './createOrderModal';
+export * from './cardModal';

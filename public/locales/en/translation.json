@@ -17,7 +17,7 @@
     "plants": "Plants",
     "fruitBouquets": "Fruit Bouquets",
     "titleTooLong": "Title must be at most 30 characters",
-    "descriptionTooLong": "Description must be at most 80 characters",
+    "descriptionTooLong": "Description must be at most 1000 characters",
     "priceTooHigh": "Price must not exceed 100000",
     "image": "Image",
     "isBestSellers": "Best Seller",
@@ -223,5 +223,9 @@
         "feedback": "Really impressed by the fast delivery and freshness of the flowers. Will order again."
       }
     }
+  },
+  "CardModal": {
+    "updatedAt": "product was updated:",
+    "price": "Price:"
   }
 }

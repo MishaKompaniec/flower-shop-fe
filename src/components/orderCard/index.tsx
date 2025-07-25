@@ -34,9 +34,7 @@ const OrderCard: FC<OrderCardProps> = ({ order }) => {
   return (
     <OrderCardWrapper key={order.id}>
       <Header>
-        <DateText>
-          {dayjs(order.createdAt).format('MMM D, YYYY [at] HH:mm')}
-        </DateText>
+        <DateText>{dayjs(order.createdAt).format('DD.MM.YYYY HH:mm')}</DateText>
         <Status $status={order.status}>
           {t(`adminPanel.status.${order.status}`)}
         </Status>
