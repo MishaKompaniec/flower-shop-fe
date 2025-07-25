@@ -1,5 +1,5 @@
 import { Modal } from 'antd';
-import { Dispatch, FC } from 'react';
+import { Dispatch, FC, useState, useEffect } from 'react';
 import {
   Description,
   UpdateDate,
@@ -25,9 +25,28 @@ const CardModal: FC<CardModalProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const [modalWidth, setModalWidth] = useState('50%');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setModalWidth('100%');
+      } else if (window.innerWidth < 1024) {
+        setModalWidth('70%');
+      } else {
+        setModalWidth('50%');
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Modal
-      width='50%'
+      width={modalWidth}
       open={isModalOpen}
       footer={null}
       onCancel={() => setIsModalOpen(false)}
