@@ -1,4 +1,5 @@
 import { colors } from '@/theme/colors';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -47,4 +48,29 @@ export const LanguageSelectWrapper = styled.div`
   position: absolute;
   right: 25px;
   top: 25px;
+`;
+
+export const LogoWrapper = styled(Link)`
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  text-decoration: none;
+`;
+
+export const Logo = styled.img`
+  width: 35px;
+  height: 35px;
+  user-select: none;
+  filter: brightness(0) saturate(100%) invert(46%) sepia(44%) saturate(738%)
+    hue-rotate(95deg) brightness(125%) contrast(85%);
+
+  &:hover {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in;
+  }
+
+  &:not(:hover) {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in;
+  }
 `;

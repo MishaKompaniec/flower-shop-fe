@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 
-import { Title, Wrapper, Inner, LanguageSelectWrapper } from './style';
+import {
+  Title,
+  Wrapper,
+  Inner,
+  LanguageSelectWrapper,
+  LogoWrapper,
+  Logo,
+} from './style';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -61,6 +68,9 @@ const AuthPage: FC = () => {
 
   return (
     <Wrapper>
+      <LogoWrapper to='/'>
+        <Logo src='/images/logo.png' alt='flower' />
+      </LogoWrapper>
       <LanguageSelectWrapper>
         <LanguageSelect isBlack />
       </LanguageSelectWrapper>
