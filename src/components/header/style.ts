@@ -41,6 +41,10 @@ export const Menu = styled.div`
   gap: 50px;
   margin: 0 auto;
   padding: 0 15px;
+
+  @media (max-width: 1024px) {
+    gap: 25px;
+  }
 `;
 
 export const MenuItemLink = styled(NavLink).attrs(() => ({

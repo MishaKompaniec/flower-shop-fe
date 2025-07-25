@@ -85,6 +85,9 @@ const Header = () => {
           <MenuItem onClick={() => scrollToSection('contacts')}>
             {t('header.contacts')}
           </MenuItem>
+          <MenuItem onClick={() => scrollToSection('bestSellers')}>
+            {t('header.bestSellers')}
+          </MenuItem>
           {!token && (
             <MenuItemLink to={Pages.AUTHORIZATION}>
               {t('header.login')}
