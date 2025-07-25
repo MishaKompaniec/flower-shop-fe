@@ -1,7 +1,8 @@
 import { Order } from '@/types';
 import {
-  ProductList,
+  ButtonContainer,
   OrderCardWrapper,
+  ProductList,
   DateText,
   Details,
   Product,
@@ -9,7 +10,6 @@ import {
   Status,
   Title,
   Total,
-  ButtonContainer,
 } from './style';
 import { FC } from 'react';
 import dayjs from 'dayjs';
@@ -42,6 +42,9 @@ const OrderCard: FC<OrderCardProps> = ({ order }) => {
         </Status>
       </Header>
 
+      <Details>
+        <b>{t('adminPanel.fullName')}:</b> {order.fullName}
+      </Details>
       <Details>
         <b>{t('adminPanel.phone')}:</b> {order.phone}
       </Details>

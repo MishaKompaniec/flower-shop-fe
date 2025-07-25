@@ -90,6 +90,7 @@ export interface OrderProduct {
 
 export interface Order {
   id: string;
+  fullName: string;
   phone: string;
   address: string;
   userId: string;

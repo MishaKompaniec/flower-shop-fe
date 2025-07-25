@@ -13,16 +13,12 @@ interface CreateOrderModalProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<React.SetStateAction<boolean>>;
   setIsUnauthorizedModalOpen: Dispatch<React.SetStateAction<boolean>>;
-  createOrder: ReturnType<typeof useCreateOrderMutation>[0];
-  isLoading: boolean;
 }
 
 const CreateOrderModal: FC<CreateOrderModalProps> = ({
   setIsUnauthorizedModalOpen,
   setIsModalOpen,
-  createOrder,
   isModalOpen,
-  isLoading,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
@@ -32,16 +28,21 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
   const basket = useSelector((state: RootState) => state.basket.basket);
   const handleCloseBasket = () => dispatch(closeBasket());
   const handleClearBasket = () => dispatch(clearBasket());
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   useEffect(() => {
     if (isModalOpen && user?.phoneNumber) {
       form.setFieldsValue({ phone: formatPhoneNumber(user.phoneNumber) });
     }
+
+    if (isModalOpen && user?.fullName) {
+      form.setFieldsValue({ fullName: user?.fullName });
+    }
   }, [isModalOpen, user, form]);
 
   const handleOk = async () => {
     try {
-      const values = await form.validateFields();
+      const formData = await form.validateFields();
 
       const orderPayload = {
         products: basket.map(({ id: productId, quantity, price, title }) => ({
@@ -50,8 +51,9 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
           price,
           title,
         })),
-        phone: values.phone,
-        address: values.address,
+        fullName: formData.fullName,
+        phone: formData.phone,
+        address: formData.address,
       };
 
       await createOrder(orderPayload).unwrap();
@@ -99,6 +101,16 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
         initialValues={{ phone: '', address: '' }}
         preserve={false}
       >
+        <Form.Item
+          label={t('basket.fullName')}
+          name='fullName'
+          rules={[
+            { required: true, message: t('basket.required') },
+            { max: 50, message: t('basket.fullNameTooLong') },
+          ]}
+        >
+          <Input placeholder={t('basket.fullNamePlaceholder')} maxLength={50} />
+        </Form.Item>
         <Form.Item
           label={t('basket.phone')}
           name='phone'

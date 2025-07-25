@@ -32,6 +32,7 @@
       "pending": "Очікується",
       "completed": "Завершено"
     },
+    "fullName": "ПIБ",
     "phone": "Телефон",
     "address": "Адреса",
     "total": "Разом",
@@ -135,11 +136,14 @@
     "error": "Не вдалося створити замовлення.",
     "phone": "Телефон",
     "address": "Адреса",
+    "fullName": "ПIБ",
     "phonePlaceholder": "Введіть номер телефону",
     "addressPlaceholder": "Введіть адресу доставки",
+    "fullNamePlaceholder": "Введіть ваше ПIБ",
     "required": "Це поле є обовʼязковим",
     "phoneInvalid": "Номер телефону повинен бути у форматі +380 XX XXX XX XX",
     "addressTooLong": "Адреса не повинна перевищувати 70 символів",
+    "fullNameTooLong": "ПIБ не повинно перевищувати 50 символів",
     "unauthorizedTitle": "Потрібна авторизація",
     "unauthorizedMessage": "Щоб оформити замовлення, увійдіть до свого акаунта.",
     "goToLogin": "Перейти до авторизації"
@@ -163,7 +167,7 @@
   "profile": {
     "title": "Мій профіль",
     "email": "Ел. пошта",
-    "name": "Повне ім’я",
+    "name": "ПIБ",
     "phone": "Номер телефону",
     "emailPlaceholder": "Введіть ел. пошту",
     "namePlaceholder": "Введіть ім’я",

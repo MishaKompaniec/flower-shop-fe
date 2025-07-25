@@ -13,7 +13,6 @@ import {
 } from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import { CreateOrderModal } from '../createOrderModal';
-import { useCreateOrderMutation } from '@/store/services/ordersApi';
 import { UnauthorizedModal } from '../unauthorizedModal';
 import { AppDispatch } from '@/store/store';
 import {
@@ -37,8 +36,6 @@ const Drawer = () => {
   const basket = useSelector(selectBasket);
   const totalItems = useSelector(selectTotalItems);
   const totalPrice = useSelector(selectTotalPrice);
-
-  const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 768);
@@ -78,7 +75,6 @@ const Drawer = () => {
               type='primary'
               size='large'
               onClick={() => setIsModalOpen(true)}
-              loading={isLoading}
             >
               {t('basket.btn')}
             </Btn>
@@ -89,8 +85,6 @@ const Drawer = () => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         setIsUnauthorizedModalOpen={setIsUnauthorizedModalOpen}
-        createOrder={createOrder}
-        isLoading={isLoading}
       />
       <UnauthorizedModal
         setIsModalOpen={setIsModalOpen}

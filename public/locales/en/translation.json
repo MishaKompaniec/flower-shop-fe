@@ -32,6 +32,7 @@
       "pending": "Pending",
       "completed": "Completed"
     },
+    "fullName": "Full name",
     "phone": "Phone",
     "address": "Address",
     "total": "Total",
@@ -135,11 +136,14 @@
     "error": "Failed to create order.",
     "phone": "Phone",
     "address": "Address",
+    "fullName": "Full name",
     "phonePlaceholder": "Enter your phone number",
     "addressPlaceholder": "Enter delivery address",
+    "fullNamePlaceholder": "Enter your first name, last name, and patronymic",
     "required": "This field is required",
     "phoneInvalid": "Phone number must be in format +380 XX XXX XX XX",
     "addressTooLong": "Address must be 70 characters or fewer",
+    "fullNameTooLong": "Full name must be 50 characters or fewer",
     "unauthorizedTitle": "Authorization required",
     "unauthorizedMessage": "To place an order, you need to be logged in.",
     "goToLogin": "Go to login"

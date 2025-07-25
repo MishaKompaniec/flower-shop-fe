@@ -34,6 +34,7 @@
       "pending": "В ожидании",
       "completed": "Завершён"
     },
+    "fullName": "ФИО",
     "phone": "Телефон",
     "address": "Адрес",
     "total": "Итого",
@@ -137,11 +138,14 @@
     "error": "Не удалось создать заказ.",
     "phone": "Телефон",
     "address": "Адрес",
+    "fullName": "ФИО",
     "phonePlaceholder": "Введите номер телефона",
     "addressPlaceholder": "Введите адрес доставки",
+    "fullNamePlaceholder": "Введите ваше ФИО",
     "required": "Это поле обязательно",
     "phoneInvalid": "Номер телефона должен быть в формате +380 XX XXX XX XX",
     "addressTooLong": "Адрес не должен превышать 70 символов",
+    "fullNameTooLong": "ФИО не должно превышать 50 символов",
     "unauthorizedTitle": "Требуется авторизация",
     "unauthorizedMessage": "Чтобы оформить заказ, необходимо войти в аккаунт.",
     "goToLogin": "Перейти к авторизации"
@@ -165,7 +169,7 @@
   "profile": {
     "title": "Мой профиль",
     "email": "Эл. почта",
-    "name": "Полное имя",
+    "name": "ФИО",
     "phone": "Номер телефона",
     "emailPlaceholder": "Введите эл. почту",
     "namePlaceholder": "Введите имя",
