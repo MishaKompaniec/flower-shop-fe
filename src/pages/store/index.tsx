@@ -8,9 +8,9 @@ import { BasketItem } from '@/types';
 import ProductList from './productList';
 
 const Store = () => {
-  const { data: products } = useGetProductsQuery();
   const { t } = useTranslation();
 
+  const { data: products } = useGetProductsQuery();
   const [bouquets, setBouquets] = useState<BasketItem[]>([]);
   const [plants, setPlants] = useState<BasketItem[]>([]);
   const [fruitBouquets, setFruitBouquets] = useState<BasketItem[]>([]);
