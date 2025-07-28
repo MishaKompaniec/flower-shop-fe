@@ -10,3 +10,4 @@ export * from './spinner';
 export * from './orderCard';
 export * from './createOrderModal';
 export * from './cardModal';
+export * from './productModal';
