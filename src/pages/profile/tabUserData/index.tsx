@@ -51,7 +51,7 @@ const TabUserData = () => {
     checkChanges();
   };
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: ProfileFormValues) => {
     if (!hasChanges) {
       api.success({
         message: t('profile.noChanges'),

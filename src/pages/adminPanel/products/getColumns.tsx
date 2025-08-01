@@ -108,7 +108,7 @@ export const getColumns = ({
       title: ' ',
       key: 'actions',
       width: 140,
-      render: (_: any, record: BasketItem) => {
+      render: (_, record: BasketItem) => {
         const uploadProps: UploadProps = {
           name: 'image',
           showUploadList: false,
