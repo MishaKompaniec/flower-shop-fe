@@ -11,6 +11,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { useNotificationContext } from '@/context/notificationContext';
 import { BasketItem, ColumnsProps } from '@/types';
 import { CheckOutlinedAnt, UploadWrapper, WrapperCheckOutlined } from './style';
+import { parseApiError } from '@/utils/parseApiError';
 
 export const getColumns = ({
   onEdit,
@@ -91,10 +92,10 @@ export const getColumns = ({
                 placement: 'topRight',
                 duration: 3,
               });
-            } catch (error: any) {
-              console.error(error);
+            } catch (error) {
+              const { message } = parseApiError(error);
               api.error({
-                message: error.data.error || t('adminPanel.updateError'),
+                message: message || t('adminPanel.updateError'),
                 placement: 'topRight',
                 duration: 3,
               });
@@ -123,14 +124,13 @@ export const getColumns = ({
                 duration: 3,
               });
               onSuccess?.({}, new XMLHttpRequest());
-            } catch (error: any) {
-              console.error(error);
+            } catch (error) {
+              const { message } = parseApiError(error);
               api.error({
-                message: error.data.error,
+                message: message,
                 placement: 'topRight',
                 duration: 3,
               });
-              onError?.(error as any);
             }
           },
         };

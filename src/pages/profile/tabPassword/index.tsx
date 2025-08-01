@@ -1,5 +1,6 @@
 import { useNotificationContext } from '@/context/notificationContext';
 import { useChangePasswordMutation } from '@/store/services/userApi';
+import { parseApiError } from '@/utils/parseApiError';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -23,9 +24,10 @@ const TabPassword = () => {
         duration: 3,
       });
       passwordForm.resetFields();
-    } catch (error: any) {
+    } catch (error) {
+      const { message } = parseApiError(error);
       api.error({
-        message: error.data?.error || t('profile.passwordError'),
+        message: message || t('profile.passwordError'),
         placement: 'topRight',
         duration: 3,
       });

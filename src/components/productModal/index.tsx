@@ -4,6 +4,7 @@ import {
   useUpdateProductMutation,
 } from '@/store/services/productsApi';
 import { BasketItem } from '@/types';
+import { parseApiError } from '@/utils/parseApiError';
 import { Checkbox, Form, Input, InputNumber, Modal, Select } from 'antd';
 import { Dispatch, FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -52,10 +53,10 @@ const ProductModal: FC<ProductModalProps> = ({
 
       setIsModalOpen(false);
       setEditingItem(null);
-    } catch (error: any) {
-      console.log(error);
+    } catch (error) {
+      const { message } = parseApiError(error);
       api.error({
-        message: error.data.error || t('adminPanel.submitError'),
+        message: message || t('adminPanel.submitError'),
         placement: 'topRight',
         duration: 3,
       });

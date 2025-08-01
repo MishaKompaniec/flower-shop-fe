@@ -4,6 +4,7 @@ import { useCreateOrderMutation } from '@/store/services/ordersApi';
 import { clearBasket, closeBasket } from '@/store/slices/basketSlice';
 import { AppDispatch, RootState } from '@/store/store';
 import { formatPhoneNumber } from '@/utils';
+import { parseApiError } from '@/utils/parseApiError';
 import { Form, Input, Modal } from 'antd';
 import { Dispatch, FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -68,13 +69,14 @@ const CreateOrderModal: FC<CreateOrderModalProps> = ({
       handleCloseBasket();
       setIsModalOpen(false);
       form.resetFields();
-    } catch (error: any) {
-      if (error?.status === 401) {
+    } catch (error) {
+      const { message, status } = parseApiError(error);
+
+      if (status === 401) {
         setIsUnauthorizedModalOpen(true);
-      } else if (!error?.errorFields) {
-        console.error('Failed to create order:', error);
+      } else {
         api.error({
-          message: error.data?.error || t('basket.error'),
+          message: message || t('basket.error'),
           placement: 'topRight',
           duration: 3,
         });

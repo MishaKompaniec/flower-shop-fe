@@ -20,6 +20,7 @@ import { Pages } from '@/utils/pages';
 import { useNavigate } from 'react-router-dom';
 import { useUserData } from '@/hooks/useUserData';
 import { useAuth } from '@/hooks/useAuth';
+import { parseApiError } from '@/utils/parseApiError';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -40,10 +41,10 @@ const Profile = () => {
           placement: 'topRight',
           duration: 3,
         });
-      } catch (error: any) {
-        console.error('Upload avatar failed:', error);
+      } catch (error) {
+        const { message } = parseApiError(error);
         api.error({
-          message: error.data.error,
+          message: message,
           placement: 'topRight',
           duration: 3,
         });

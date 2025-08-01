@@ -20,6 +20,7 @@ import {
 import { LanguageSelect } from '@/components';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/slices/authSlice';
+import { parseApiError } from '@/utils/parseApiError';
 
 const AuthPage: FC = () => {
   const dispatch = useDispatch();
@@ -38,16 +39,13 @@ const AuthPage: FC = () => {
       localStorage.setItem('token', res.token);
       dispatch(setToken(res.token));
       navigate('/', { replace: false });
-    } catch (error: any) {
-      const errorMessage = error.data?.error;
-
+    } catch (error) {
+      const { message } = parseApiError(error);
       const errorMessageMap: Record<string, string> = {
         'Invalid password': 'authorization.loginErrorInvalidPassword',
         'User not found': 'authorization.loginErrorUserNotFound',
       };
-
-      const messageKey =
-        errorMessageMap[errorMessage] || 'authorization.loginError';
+      const messageKey = errorMessageMap[message] || 'authorization.loginError';
 
       api.error({
         message: t(messageKey),
@@ -66,8 +64,9 @@ const AuthPage: FC = () => {
       const { confirmPassword, ...rest } = values;
       await register({ ...rest, role: 'user' }).unwrap();
       setIsLogin(true);
-    } catch (error: any) {
-      const isUserExists = error.data?.error === 'User already exists';
+    } catch (error) {
+      const { message } = parseApiError(error);
+      const isUserExists = message === 'User already exists';
 
       api.error({
         message: isUserExists

@@ -3,6 +3,7 @@ import { useNotificationContext } from '@/context/notificationContext';
 import { useGetMeQuery, useUpdateUserMutation } from '@/store/services/userApi';
 import { ProfileFormValues } from '@/types';
 import { formatPhoneNumber } from '@/utils';
+import { parseApiError } from '@/utils/parseApiError';
 import { Button, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -80,9 +81,10 @@ const TabUserData = () => {
       });
       setHasChanges(false);
       setIsEditing(false);
-    } catch (error: any) {
+    } catch (error) {
+      const { message } = parseApiError(error);
       api.error({
-        message: error.data.error || t('profile.error'),
+        message: message || t('profile.error'),
         placement: 'topRight',
         duration: 3,
       });
