@@ -66,7 +66,7 @@ export const AddressModal = ({
       onOk={handleSubmit}
       title={t('addressModal.title')}
     >
-      <Form form={form} layout='vertical'>
+      <Form form={form} layout='vertical' autoComplete='off'>
         <Form.Item
           name='area'
           label={t('addressModal.area')}
@@ -189,7 +189,10 @@ export const AddressModal = ({
             },
           ]}
         >
-          <Input placeholder={t('addressModal.placeholders.house')} />
+          <Input
+            placeholder={t('addressModal.placeholders.house')}
+            autoComplete='nope'
+          />
         </Form.Item>
       </Form>
     </Modal>
