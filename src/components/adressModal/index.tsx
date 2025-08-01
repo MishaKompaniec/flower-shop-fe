@@ -5,6 +5,7 @@ import {
 } from '@/store/services/adressApi';
 import { Modal, Select, Input, Form } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface AddressModalProps {
   open: boolean;
@@ -17,6 +18,8 @@ export const AddressModal = ({
   onClose,
   onSubmit,
 }: AddressModalProps) => {
+  const { t } = useTranslation();
+
   const [form] = Form.useForm();
   const [citySearch, setCitySearch] = useState('');
   const [streetSearch, setStreetSearch] = useState('');
@@ -61,12 +64,23 @@ export const AddressModal = ({
       open={open}
       onCancel={onClose}
       onOk={handleSubmit}
-      title='Выберите адрес'
+      title={t('addressModal.title')}
     >
       <Form form={form} layout='vertical'>
-        <Form.Item name='area' label='Область' rules={[{ required: true }]}>
+        <Form.Item
+          name='area'
+          label={t('addressModal.area')}
+          rules={[
+            {
+              required: true,
+              message: `${t('addressModal.area')} ${t(
+                'addressModal.required'
+              )}`,
+            },
+          ]}
+        >
           <Select
-            placeholder='Выберите область'
+            placeholder={t('addressModal.placeholders.area')}
             loading={loadingAreas}
             onChange={handleAreaChange}
             options={areas.map((area) => ({
@@ -78,12 +92,19 @@ export const AddressModal = ({
 
         <Form.Item
           name='city'
-          label='Населённый пункт'
-          rules={[{ required: true }]}
+          label={t('addressModal.city')}
+          rules={[
+            {
+              required: true,
+              message: `${t('addressModal.city')} ${t(
+                'addressModal.required'
+              )}`,
+            },
+          ]}
         >
           <Select
             showSearch
-            placeholder='Выберите город'
+            placeholder={t('addressModal.placeholders.city')}
             loading={loadingCities}
             onChange={handleCityChange}
             disabled={!selectedAreaRef}
@@ -113,10 +134,21 @@ export const AddressModal = ({
           />
         </Form.Item>
 
-        <Form.Item name='street' label='Улица' rules={[{ required: true }]}>
+        <Form.Item
+          name='street'
+          label={t('addressModal.street')}
+          rules={[
+            {
+              required: true,
+              message: `${t('addressModal.street')} ${t(
+                'addressModal.required'
+              )}`,
+            },
+          ]}
+        >
           <Select
             showSearch
-            placeholder='Выберите улицу'
+            placeholder={t('addressModal.placeholders.street')}
             loading={loadingStreets}
             disabled={!selectedCityRef}
             onSearch={handleStreetSearch}
@@ -145,8 +177,19 @@ export const AddressModal = ({
           />
         </Form.Item>
 
-        <Form.Item name='houseNumber' label='Дом' rules={[{ required: true }]}>
-          <Input placeholder='Номер дома' />
+        <Form.Item
+          name='houseNumber'
+          label={t('addressModal.house')}
+          rules={[
+            {
+              required: true,
+              message: `${t('addressModal.house')} ${t(
+                'addressModal.required'
+              )}`,
+            },
+          ]}
+        >
+          <Input placeholder={t('addressModal.placeholders.house')} />
         </Form.Item>
       </Form>
     </Modal>

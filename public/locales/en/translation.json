@@ -233,5 +233,19 @@
   "CardModal": {
     "updatedAt": "product was updated:",
     "price": "Price:"
+  },
+  "addressModal": {
+    "title": "Select Address",
+    "area": "Region",
+    "city": "City",
+    "street": "Street",
+    "house": "House",
+    "placeholders": {
+      "area": "Select a region",
+      "city": "Select a city",
+      "street": "Select a street",
+      "house": "House number"
+    },
+    "required": "required"
   }
 }
