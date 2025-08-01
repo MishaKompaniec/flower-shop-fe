@@ -62,7 +62,11 @@
     "confirmPassword": "Подтверждение пароля",
     "confirmPasswordRequired": "Пожалуйста, подтвердите пароль!",
     "passwordsNotMatch": "Пароли не совпадают!",
-    "registerError:": "При регистрации произошла ошибка!"
+    "registerError:": "При регистрации произошла ошибка!",
+    "registerErrorExists": "Пользователь с таким email уже существует.",
+    "loginErrorInvalidPassword": "Неверный пароль.",
+    "loginError": "Произошла непредвиденная ошибка при входе.",
+    "loginErrorUserNotFound": "Пользователь с таким email не найден."
   },
   "header": {
     "main": "ГЛАВНАЯ",

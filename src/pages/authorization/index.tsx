@@ -18,8 +18,7 @@ import {
   useRegisterMutation,
 } from '@/store/services/authApi';
 import { LanguageSelect } from '@/components';
-import { RootState } from '@/store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/slices/authSlice';
 
 const AuthPage: FC = () => {
@@ -40,8 +39,18 @@ const AuthPage: FC = () => {
       dispatch(setToken(res.token));
       navigate('/', { replace: false });
     } catch (error: any) {
+      const errorMessage = error.data?.error;
+
+      const errorMessageMap: Record<string, string> = {
+        'Invalid password': 'authorization.loginErrorInvalidPassword',
+        'User not found': 'authorization.loginErrorUserNotFound',
+      };
+
+      const messageKey =
+        errorMessageMap[errorMessage] || 'authorization.loginError';
+
       api.error({
-        message: error.data.error || t('authorization.loginError'),
+        message: t(messageKey),
         placement: 'topRight',
         duration: 3,
       });
@@ -58,8 +67,12 @@ const AuthPage: FC = () => {
       await register({ ...rest, role: 'user' }).unwrap();
       setIsLogin(true);
     } catch (error: any) {
+      const isUserExists = error.data?.error === 'User already exists';
+
       api.error({
-        message: error.data.error || t('authorization.registerError'),
+        message: isUserExists
+          ? t('authorization.registerErrorExists')
+          : t('authorization.registerError'),
         placement: 'topRight',
         duration: 3,
       });

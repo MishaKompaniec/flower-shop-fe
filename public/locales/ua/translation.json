@@ -60,7 +60,11 @@
     "confirmPassword": "Підтвердження пароля",
     "confirmPasswordRequired": "Будь ласка, підтвердіть пароль!",
     "passwordsNotMatch": "Паролі не співпадають!",
-    "registerError:": "Під час реєстрації сталася помилка!"
+    "registerError:": "Під час реєстрації сталася помилка!",
+    "registerErrorExists": "Користувач із такою електронною поштою вже існує.",
+    "loginErrorInvalidPassword": "Невірний пароль.",
+    "loginError": "Сталася непередбачувана помилка при вході.",
+    "loginErrorUserNotFound": "Користувача з такою електронною поштою не знайдено."
   },
   "header": {
     "main": "ГОЛОВНА",

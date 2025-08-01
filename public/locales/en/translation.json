@@ -60,7 +60,11 @@
     "confirmPassword": "Confirm Password",
     "confirmPasswordRequired": "Please confirm your password!",
     "passwordsNotMatch": "Passwords do not match!",
-    "registerError:": "There was an error during registration!"
+    "registerError:": "There was an error during registration!",
+    "registerErrorExists": "A user with this email already exists.",
+    "loginErrorInvalidPassword": "Incorrect password.",
+    "loginError": "An unexpected login error occurred.",
+    "loginErrorUserNotFound": "User with this email was not found."
   },
   "header": {
     "main": "MAIN",
