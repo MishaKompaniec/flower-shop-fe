@@ -199,7 +199,9 @@
     "passwordSuccess": "Пароль успішно змінено",
     "logoutButton": "Вийти",
     "selectAddress": "Оберіть адресу",
-    "addressSelected": "Адресу успішно вибрано"
+    "addressSelected": "Адресу успішно вибрано",
+    "addressNotSelected": "Адреса не вибрана",
+    "changeAddress": "Змінити адресу"
   },
   "feedbacks": {
     "title": "Відгуки",

@@ -201,7 +201,9 @@
     "passwordSuccess": "Пароль успешно изменён",
     "logoutButton": "Выйти",
     "selectAddress": "Выбрать адрес",
-    "addressSelected": "Адрес успешно выбран"
+    "addressSelected": "Адрес успешно выбран",
+    "addressNotSelected": "Адрес не выбран",
+    "changeAddress": "Изменить адрес"
   },
   "feedbacks": {
     "title": "Отзывы",

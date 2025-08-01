@@ -46,7 +46,8 @@ export const AddressModal = ({
 
   const handleSubmit = () => {
     form.validateFields().then((values) => {
-      onSubmit(values);
+      const formattedAddress = getAddressString(values);
+      onSubmit({ raw: values, formatted: formattedAddress });
       onClose();
     });
   };
@@ -57,6 +58,20 @@ export const AddressModal = ({
 
   const handleStreetSearch = (value: string) => {
     setStreetSearch(value);
+  };
+
+  const getAddressString = (data: {
+    area: string;
+    city: string;
+    street: string;
+    houseNumber: string;
+  }) => {
+    const areaName = areas.find((a) => a.Ref === data.area)?.Description || '';
+    const cityName = cities.find((c) => c.Ref === data.city)?.Description || '';
+    const streetName =
+      streets.find((s) => s.Ref === data.street)?.Description || '';
+
+    return `${areaName}, ${cityName}, ${streetName}, ${data.houseNumber}`;
   };
 
   return (

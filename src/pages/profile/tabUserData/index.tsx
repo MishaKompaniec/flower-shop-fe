@@ -94,6 +94,16 @@ const TabUserData = () => {
     }
   };
 
+  const handleAddressSubmit = (data: any) => {
+    setSelectedAddress(data);
+    setIsAddressModalOpen(false);
+    api.success({
+      message: t('profile.addressSelected'),
+      placement: 'topRight',
+    });
+    console.log('Selected address:', data);
+  };
+
   if (isUserLoading) {
     return <Spinner />;
   }
@@ -116,7 +126,6 @@ const TabUserData = () => {
           disabled={!isEditing}
         />
       </Form.Item>
-
       <Form.Item
         label={t('profile.name')}
         name='name'
@@ -132,7 +141,6 @@ const TabUserData = () => {
           disabled={!isEditing}
         />
       </Form.Item>
-
       <Form.Item
         label={t('profile.phone')}
         name='phone'
@@ -152,15 +160,26 @@ const TabUserData = () => {
           }}
         />
       </Form.Item>
-
       <Form.Item>
+        {selectedAddress ? (
+          <div style={{ marginBottom: 8, fontWeight: 'bold' }}>
+            {selectedAddress.formatted ||
+              JSON.stringify(selectedAddress.raw || selectedAddress)}
+          </div>
+        ) : (
+          <div style={{ marginBottom: 8, fontStyle: 'italic', color: '#888' }}>
+            {t('profile.addressNotSelected')}
+          </div>
+        )}
         <Button
           type='dashed'
           onClick={() => setIsAddressModalOpen(true)}
           block
           style={{ marginBottom: 8 }}
         >
-          {t('profile.selectAddress')}
+          {selectedAddress
+            ? t('profile.changeAddress')
+            : t('profile.selectAddress')}
         </Button>
 
         {!isEditing ? (
@@ -196,15 +215,7 @@ const TabUserData = () => {
       <AddressModal
         open={isAddressModalOpen}
         onClose={() => setIsAddressModalOpen(false)}
-        onSubmit={(data) => {
-          setSelectedAddress(data);
-          setIsAddressModalOpen(false);
-          api.success({
-            message: t('profile.addressSelected'),
-            placement: 'topRight',
-          });
-          console.log('Selected address:', data);
-        }}
+        onSubmit={handleAddressSubmit}
       />
     </Form>
   );

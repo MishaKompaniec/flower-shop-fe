@@ -199,7 +199,9 @@
     "cancel": "Cancel",
     "logoutButton": "Log out",
     "selectAddress": "Select Address",
-    "addressSelected": "Address selected successfully"
+    "addressSelected": "Address selected successfully",
+    "addressNotSelected": "Address not selected",
+    "changeAddress": "Change address"
   },
   "feedbacks": {
     "title": "Reviews",
