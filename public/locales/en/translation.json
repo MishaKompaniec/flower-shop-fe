@@ -197,7 +197,9 @@
     "passwordMinLength": "Password must be at least 6 characters long",
     "passwordSuccess": "Password changed successfully",
     "cancel": "Cancel",
-    "logoutButton": "Log out"
+    "logoutButton": "Log out",
+    "selectAddress": "Select Address",
+    "addressSelected": "Address selected successfully"
   },
   "feedbacks": {
     "title": "Reviews",

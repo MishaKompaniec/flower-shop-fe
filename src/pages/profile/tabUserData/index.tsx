@@ -1,4 +1,5 @@
 import { Spinner } from '@/components';
+import { AddressModal } from '@/components/adressModal';
 import { useNotificationContext } from '@/context/notificationContext';
 import { useGetMeQuery, useUpdateUserMutation } from '@/store/services/userApi';
 import { ProfileFormValues } from '@/types';
@@ -12,6 +13,8 @@ const TabUserData = () => {
   const { t } = useTranslation();
   const api = useNotificationContext();
   const [form] = Form.useForm();
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState<any | null>(null);
   const [hasChanges, setHasChanges] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [initialValues, setInitialValues] = useState<ProfileFormValues | null>(
@@ -151,6 +154,15 @@ const TabUserData = () => {
       </Form.Item>
 
       <Form.Item>
+        <Button
+          type='dashed'
+          onClick={() => setIsAddressModalOpen(true)}
+          block
+          style={{ marginBottom: 8 }}
+        >
+          {t('profile.selectAddress')}
+        </Button>
+
         {!isEditing ? (
           <Button type='default' onClick={() => setIsEditing(true)} block>
             {t('profile.edit')}
@@ -181,6 +193,19 @@ const TabUserData = () => {
           </>
         )}
       </Form.Item>
+      <AddressModal
+        open={isAddressModalOpen}
+        onClose={() => setIsAddressModalOpen(false)}
+        onSubmit={(data) => {
+          setSelectedAddress(data);
+          setIsAddressModalOpen(false);
+          api.success({
+            message: t('profile.addressSelected'),
+            placement: 'topRight',
+          });
+          console.log('Selected address:', data);
+        }}
+      />
     </Form>
   );
 };

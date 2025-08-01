@@ -197,7 +197,9 @@
     "requiredField": "Це поле обов’язкове",
     "passwordMinLength": "Пароль має містити щонайменше 6 символів",
     "passwordSuccess": "Пароль успішно змінено",
-    "logoutButton": "Вийти"
+    "logoutButton": "Вийти",
+    "selectAddress": "Оберіть адресу",
+    "addressSelected": "Адресу успішно вибрано"
   },
   "feedbacks": {
     "title": "Відгуки",

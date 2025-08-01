@@ -5,6 +5,7 @@ import { productsApi } from './services/productsApi';
 import { ordersApi } from './services/ordersApi';
 import basketReducer from './slices/basketSlice';
 import authReducer from './slices/authSlice';
+import { novaPoshtaApi } from './services/adressApi';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [ordersApi.reducerPath]: ordersApi.reducer,
+    [novaPoshtaApi.reducerPath]: novaPoshtaApi.reducer,
     basket: basketReducer,
     auth: authReducer,
   },
@@ -20,7 +22,8 @@ export const store = configureStore({
       authApi.middleware,
       productsApi.middleware,
       userApi.middleware,
-      ordersApi.middleware
+      ordersApi.middleware,
+      novaPoshtaApi.middleware
     ),
 });
 
