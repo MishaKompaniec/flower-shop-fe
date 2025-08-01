@@ -18,6 +18,8 @@ export const AddressModal = ({
   onSubmit,
 }: AddressModalProps) => {
   const [form] = Form.useForm();
+  const [citySearch, setCitySearch] = useState('');
+  const [streetSearch, setStreetSearch] = useState('');
   const { data: areas = [], isLoading: loadingAreas } = useGetAreasQuery();
   const [fetchCities, { data: cities = [], isFetching: loadingCities }] =
     useLazyGetCitiesQuery();
@@ -46,6 +48,14 @@ export const AddressModal = ({
     });
   };
 
+  const handleCitySearch = (value: string) => {
+    setCitySearch(value);
+  };
+
+  const handleStreetSearch = (value: string) => {
+    setStreetSearch(value);
+  };
+
   return (
     <Modal
       open={open}
@@ -56,7 +66,6 @@ export const AddressModal = ({
       <Form form={form} layout='vertical'>
         <Form.Item name='area' label='Область' rules={[{ required: true }]}>
           <Select
-            showSearch
             placeholder='Выберите область'
             loading={loadingAreas}
             onChange={handleAreaChange}
@@ -78,10 +87,29 @@ export const AddressModal = ({
             loading={loadingCities}
             onChange={handleCityChange}
             disabled={!selectedAreaRef}
-            options={cities.map((city) => ({
-              label: city.Description,
-              value: city.Ref,
-            }))}
+            onSearch={handleCitySearch}
+            filterOption={(input, option) =>
+              option
+                ? option.label.toLowerCase().includes(input.toLowerCase())
+                : false
+            }
+            options={
+              citySearch
+                ? cities
+                    .filter((city) =>
+                      city.Description.toLowerCase().includes(
+                        citySearch.toLowerCase()
+                      )
+                    )
+                    .map((city) => ({
+                      label: city.Description,
+                      value: city.Ref,
+                    }))
+                : cities.map((city) => ({
+                    label: city.Description,
+                    value: city.Ref,
+                  }))
+            }
           />
         </Form.Item>
 
@@ -91,10 +119,29 @@ export const AddressModal = ({
             placeholder='Выберите улицу'
             loading={loadingStreets}
             disabled={!selectedCityRef}
-            options={streets.map((street) => ({
-              label: street.Description,
-              value: street.Ref,
-            }))}
+            onSearch={handleStreetSearch}
+            filterOption={(input, option) =>
+              option
+                ? option.label.toLowerCase().includes(input.toLowerCase())
+                : false
+            }
+            options={
+              streetSearch
+                ? streets
+                    .filter((street) =>
+                      street.Description.toLowerCase().includes(
+                        streetSearch.toLowerCase()
+                      )
+                    )
+                    .map((street) => ({
+                      label: street.Description,
+                      value: street.Ref,
+                    }))
+                : streets.map((street) => ({
+                    label: street.Description,
+                    value: street.Ref,
+                  }))
+            }
           />
         </Form.Item>
 
